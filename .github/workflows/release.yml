@@ -1,0 +1,129 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (ej: 1.2.3)'
+        required: true
+        type: string
+      release_type:
+        description: 'Tipo de release'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+          else
+            VERSION=${GITHUB_REF#refs/tags/v}
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+          fi
+          echo "📦 Version: $VERSION"
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Generar changelog desde commits desde último tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            echo "No previous tag found, using all commits"
+            CHANGELOG=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          else
+            echo "Comparing with last tag: $LAST_TAG"
+            CHANGELOG=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          fi
+          
+          if [ -z "$CHANGELOG" ]; then
+            CHANGELOG="- No changes detected"
+          fi
+          
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          release_name: Release v${{ steps.version.outputs.version }}
+          body: |
+            ## 🚀 Release v${{ steps.version.outputs.version }}
+
+            ### 📋 Cambios
+
+            ${{ steps.changelog.outputs.changelog }}
+
+            ### 📦 Instalación
+
+            ```bash
+            npm install
+            ```
+
+            ### 🔗 Links
+
+            - [Documentación](https://github.com/${{ github.repository }}/tree/main/docs)
+            - [Changelog completo](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md)
+          draft: false
+          prerelease: false
+
+      - name: Update CHANGELOG.md
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          DATE=$(date +"%Y-%m-%d")
+          CHANGELOG_ENTRY="## [$VERSION] - $DATE\n\n${{ steps.changelog.outputs.changelog }}\n"
+          
+          if [ -f "CHANGELOG.md" ]; then
+            # Prepend to existing changelog
+            echo -e "$CHANGELOG_ENTRY\n$(cat CHANGELOG.md)" > CHANGELOG.md
+          else
+            # Create new changelog
+            echo -e "# Changelog\n\n$CHANGELOG_ENTRY" > CHANGELOG.md
+          fi
+
+      - name: Commit CHANGELOG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "chore: update CHANGELOG for v${{ steps.version.outputs.version }}" || exit 0
+          git push || exit 0
+

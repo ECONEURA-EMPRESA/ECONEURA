@@ -1,0 +1,180 @@
+name: App Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment (dev/staging/prod)'
+        required: true
+        default: 'dev'
+
+jobs:
+  app-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Validate required secrets
+        run: |
+          echo "Validating required secrets..."
+          MISSING_SECRETS=0
+          
+          if [ -z "${{ secrets.AZURE_CREDENTIALS }}" ]; then
+            echo "❌ AZURE_CREDENTIALS is missing"
+            MISSING_SECRETS=$((MISSING_SECRETS + 1))
+          fi
+          if [ -z "${{ secrets.AZURE_WEBAPP_NAME_BACKEND }}" ]; then
+            echo "❌ AZURE_WEBAPP_NAME_BACKEND is missing"
+            MISSING_SECRETS=$((MISSING_SECRETS + 1))
+          fi
+          if [ -z "${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_BACKEND }}" ]; then
+            echo "❌ AZURE_WEBAPP_PUBLISH_PROFILE_BACKEND is missing"
+            MISSING_SECRETS=$((MISSING_SECRETS + 1))
+          fi
+          if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
+            echo "❌ AZURE_STATIC_WEB_APPS_API_TOKEN is missing"
+            MISSING_SECRETS=$((MISSING_SECRETS + 1))
+          fi
+          
+          if [ $MISSING_SECRETS -gt 0 ]; then
+            echo ""
+            echo "❌ FALTAN $MISSING_SECRETS SECRETS CRÍTICOS"
+            echo "Configurar en: https://github.com/${{ github.repository }}/settings/secrets/actions"
+            echo "Ver documentación: docs/TROUBLESHOOTING-GUIA-COMPLETA.md"
+            exit 1
+          fi
+          
+          echo "✅ All required secrets are present"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build backend
+        run: |
+          echo "Building backend..."
+          npm run build:backend
+          if [ $? -ne 0 ]; then
+            echo "❌ Backend build failed"
+            echo "Ejecutar localmente: npm run build:backend"
+            echo "Verificar errores: npm run type-check:backend"
+            exit 1
+          fi
+          echo "✅ Backend build successful"
+
+      - name: Build frontend
+        run: |
+          echo "Building frontend..."
+          npm run build:frontend
+          if [ $? -ne 0 ]; then
+            echo "❌ Frontend build failed"
+            echo "Ejecutar localmente: npm run build:frontend"
+            echo "Verificar errores: npm run type-check:frontend"
+            exit 1
+          fi
+          echo "✅ Frontend build successful"
+
+      - name: Verify backend build
+        run: |
+          if [ ! -d "packages/backend/dist" ]; then
+            echo "❌ Backend build failed: dist folder not found"
+            exit 1
+          fi
+          echo "✅ Backend build verified"
+
+      - name: Verify frontend build
+        run: |
+          if [ ! -d "packages/frontend/dist" ]; then
+            echo "❌ Frontend build failed: dist folder not found"
+            exit 1
+          fi
+          echo "✅ Frontend build verified"
+
+      - name: Deploy backend to Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME_BACKEND }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_BACKEND }}
+          package: ./packages/backend
+
+      - name: Deploy frontend to Azure Static Web App
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          #### IMPORTANTE: ajustar estas rutas si cambia la estructura
+          app_location: "packages/frontend"
+          output_location: "dist"
+          skip_app_build: true # Ya hicimos build arriba
+
+      - name: Wait for backend to be ready
+        run: |
+          BACKEND_NAME="${{ secrets.AZURE_WEBAPP_NAME_BACKEND }}"
+          BACKEND_URL="https://${BACKEND_NAME}.azurewebsites.net"
+          echo "Esperando que el backend esté listo..."
+          MAX_ATTEMPTS=30
+          ATTEMPT=1
+          
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "${BACKEND_URL}/health" 2>/dev/null || echo "000")
+            
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "✅ Backend está listo (HTTP $HTTP_CODE)"
+              exit 0
+            elif [ "$HTTP_CODE" = "503" ] || [ "$HTTP_CODE" = "000" ]; then
+              echo "Intento $ATTEMPT/$MAX_ATTEMPTS: Backend aún no está listo (HTTP $HTTP_CODE), esperando 10 segundos..."
+              sleep 10
+              ATTEMPT=$((ATTEMPT + 1))
+            else
+              echo "⚠️  Backend responde con HTTP $HTTP_CODE (puede ser normal si requiere auth)"
+              # Continuar de todas formas
+              break
+            fi
+          done
+          
+          if [ $ATTEMPT -gt $MAX_ATTEMPTS ]; then
+            echo "❌ Backend no respondió después de 5 minutos"
+            echo "Verificar logs: az webapp log tail --name ${BACKEND_NAME} --resource-group rg-econeura-full-staging"
+            echo "Verificar variables de entorno en App Service"
+            exit 1
+          fi
+
+      - name: Smoke test backend health
+        run: |
+          BACKEND_NAME="${{ secrets.AZURE_WEBAPP_NAME_BACKEND }}"
+          BACKEND_URL="https://${BACKEND_NAME}.azurewebsites.net"
+          echo "Haciendo health check contra ${BACKEND_URL}/health"
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${BACKEND_URL}/health")
+          if [ "$HTTP_CODE" -eq 200 ]; then
+            echo "✅ Health check passed (HTTP $HTTP_CODE)"
+          else
+            echo "⚠️ Health check returned HTTP $HTTP_CODE (puede ser normal si requiere auth)"
+          fi
+          
+          echo ""
+          echo "Verificando que el endpoint de API está accesible..."
+          API_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X GET \
+            "${BACKEND_URL}/api/neuras" \
+            -H "Content-Type: application/json")
+          if [ "$API_CODE" -eq 200 ] || [ "$API_CODE" -eq 401 ]; then
+            echo "✅ API endpoint responde (HTTP $API_CODE - 401 es esperado sin auth)"
+          else
+            echo "⚠️ API endpoint returned HTTP $API_CODE"
+          fi
+
+
+

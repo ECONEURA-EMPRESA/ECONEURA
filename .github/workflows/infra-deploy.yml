@@ -1,0 +1,94 @@
+name: Infra Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment (dev/staging/prod)'
+        required: true
+        default: 'dev'
+      resourceGroupName:
+        description: 'Nombre del Resource Group existente donde desplegar la infra'
+        required: true
+
+jobs:
+  infra-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Validate required secrets
+        run: |
+          echo "Validating required secrets..."
+          if [ -z "${{ secrets.AZURE_CREDENTIALS }}" ]; then
+            echo "❌ AZURE_CREDENTIALS is missing"
+            exit 1
+          fi
+          echo "✅ AZURE_CREDENTIALS is present"
+
+      - name: Validate inputs
+        run: |
+          ENV="${{ github.event.inputs.environment }}"
+          RG="${{ github.event.inputs.resourceGroupName }}"
+          
+          if [ -z "$ENV" ]; then
+            echo "❌ Environment is required"
+            exit 1
+          fi
+          
+          if [ -z "$RG" ]; then
+            echo "❌ Resource Group name is required"
+            exit 1
+          fi
+          
+          echo "✅ Environment: $ENV"
+          echo "✅ Resource Group: $RG"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Verify Resource Group exists
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            RG="${{ github.event.inputs.resourceGroupName }}"
+            if ! az group show --name "$RG" > /dev/null 2>&1; then
+              echo "❌ Resource Group '$RG' does not exist"
+              echo "Creating Resource Group..."
+              az group create \
+                --name "$RG" \
+                --location westeurope \
+                --tags Environment=${{ github.event.inputs.environment }} Project=ECO
+            else
+              echo "✅ Resource Group '$RG' exists"
+            fi
+
+      - name: Deploy Bicep main (scope grupo de recursos)
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            az deployment group create \
+              --name econeura-full-${{ github.event.inputs.environment }}-$(date +%Y%m%d-%H%M%S) \
+              --resource-group "${{ github.event.inputs.resourceGroupName }}" \
+              --template-file infrastructure/azure/main.bicep \
+              --parameters environment=${{ github.event.inputs.environment }} \
+                           location=westeurope \
+                           baseName=econeura-full \
+                           postgresAdminPassword='${{ secrets.POSTGRES_ADMIN_PASSWORD }}' \
+                           openAiApiKey='${{ secrets.OPENAI_API_KEY }}' \
+                           databaseUrlPlaceholder='postgresql://placeholder:placeholder@placeholder:5432/placeholder?sslmode=require'
+        
+      - name: Deployment summary
+        if: always()
+        run: |
+          echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Environment: ${{ github.event.inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Resource Group: ${{ github.event.inputs.resourceGroupName }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+
+
+
