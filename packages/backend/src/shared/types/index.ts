@@ -24,6 +24,6 @@ export type NeuraDepartment =
   | 'Datos'
   | 'Innovacion';
 
-export type LLMProvider = 'openai' | 'mistral' | 'azure-openai' | 'anthropic' | 'other';
+export type LLMProvider = 'openai' | 'mistral' | 'azure-openai' | 'anthropic' | 'gemini' | 'other';
 
 

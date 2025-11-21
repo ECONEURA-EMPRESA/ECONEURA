@@ -44,26 +44,30 @@ export async function fullHealthCheck(_req: Request, res: Response): Promise<voi
   let overallStatus: HealthStatus['status'] = 'healthy';
 
   // Check PostgreSQL
-  try {
-    const pool = getPostgresPool();
-    if (pool) {
-      const client = await pool.connect();
-      try {
-        await client.query('SELECT 1');
-        checks.database = 'ok';
-      } finally {
-        client.release();
+  if (process.env['USE_MEMORY_STORE'] === 'true') {
+    checks.database = 'ok';
+  } else {
+    try {
+      const pool = getPostgresPool();
+      if (pool) {
+        const client = await pool.connect();
+        try {
+          await client.query('SELECT 1');
+          checks.database = 'ok';
+        } finally {
+          client.release();
+        }
+      } else {
+        checks.database = 'error';
+        overallStatus = 'degraded';
       }
-    } else {
+    } catch (error) {
+      logger.error('[HealthCheck] Database check failed', {
+        error: error instanceof Error ? error.message : String(error)
+      });
       checks.database = 'error';
-      overallStatus = 'degraded';
+      overallStatus = 'unhealthy';
     }
-  } catch (error) {
-    logger.error('[HealthCheck] Database check failed', {
-      error: error instanceof Error ? error.message : String(error)
-    });
-    checks.database = 'error';
-    overallStatus = 'unhealthy';
   }
 
   // Check Redis
@@ -130,20 +134,24 @@ export async function readinessProbe(_req: Request, res: Response): Promise<void
   let isReady = true;
 
   // Check database (crítico)
-  try {
-    const pool = getPostgresPool();
-    if (pool) {
-      const client = await pool.connect();
-      try {
-        await client.query('SELECT 1');
-      } finally {
-        client.release();
+  if (process.env['USE_MEMORY_STORE'] === 'true') {
+    // Skip DB check
+  } else {
+    try {
+      const pool = getPostgresPool();
+      if (pool) {
+        const client = await pool.connect();
+        try {
+          await client.query('SELECT 1');
+        } finally {
+          client.release();
+        }
+      } else {
+        isReady = false;
       }
-    } else {
+    } catch {
       isReady = false;
     }
-  } catch {
-    isReady = false;
   }
 
   if (isReady) {

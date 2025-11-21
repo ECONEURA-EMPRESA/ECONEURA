@@ -8,13 +8,14 @@ const router = Router();
 
 router.post('/api/neuras/:neuraId/chat', requireRoles('admin', 'user'), async (req, res) => {
   const { neuraId } = req.params;
+  const normalizedNeuraId = neuraId.toLowerCase();
   const authContext = req.authContext;
 
   try {
     const parsed = sendNeuraChatSchema.parse(req.body);
 
     const result = await sendNeuraMessage({
-      neuraId: neuraId as NeuraId,
+      neuraId: normalizedNeuraId as NeuraId,
       tenantId: authContext?.tenantId ?? null,
       conversationId: parsed.conversationId ?? undefined,
       message: parsed.message,

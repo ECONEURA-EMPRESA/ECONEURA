@@ -97,8 +97,12 @@ export function errorHandler(
 
   // Response
   res.status(statusCode).json({
-    error: message,
-    code,
+    success: false,
+    error: {
+      code,
+      message,
+      details: err instanceof AppError ? err.metadata : undefined
+    },
     requestId: reqWithId.id ?? 'unknown',
     timestamp: new Date().toISOString()
   });

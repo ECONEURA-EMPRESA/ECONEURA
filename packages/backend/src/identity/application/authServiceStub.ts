@@ -12,6 +12,15 @@ export class DevAuthService implements AuthService {
   // Simulación de base de datos en memoria (solo para desarrollo)
   private users: Map<string, { email: string; password: string; name: string }> = new Map();
 
+  constructor() {
+    // ✅ SEED: Usuario por defecto para facilitar el login
+    this.users.set('admin@econeura.com', {
+      email: 'admin@econeura.com',
+      password: 'admin123', // Cumple con length >= 6
+      name: 'Administrador'
+    });
+  }
+
   async validateSession(token: string): Promise<AuthContext | null> {
     if (!token) {
       return null;

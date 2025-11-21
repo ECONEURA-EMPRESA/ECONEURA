@@ -8,6 +8,8 @@ import { openAIAdapter } from './OpenAIAdapter';
 import { mistralAdapter } from './MistralAdapter';
 import { logger } from '../../shared/logger';
 
+import { getGeminiAdapter } from './GeminiRestAdapter';
+
 /**
  * Obtener el cliente LLM según el provider
  */
@@ -17,6 +19,8 @@ export function getLLMClient(provider: LLMProvider): LLMClient {
       return openAIAdapter;
     case 'mistral':
       return mistralAdapter;
+    case 'gemini':
+      return getGeminiAdapter();
     case 'azure-openai':
       // ✅ AUDITORÍA: FUTURO - Implementar Azure OpenAI adapter cuando sea necesario
       logger.warn('[getLLMClient] Azure OpenAI no implementado, usando OpenAI como fallback');

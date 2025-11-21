@@ -45,6 +45,9 @@ import './infra/observability/applicationInsights';
 // Inicializar Redis (para rate limiting distribuido)
 import './infra/cache/redisClient';
 
+// Inicializar Base de Datos (Tablas)
+import { initDatabase } from './infra/persistence/initDb';
+
 // Inicializar servicios en DI Container
 try {
   initializeServices();
@@ -60,6 +63,13 @@ try {
 
 // Función async para inicializar el servidor
 async function startServer() {
+  // Inicializar tablas de BD solo si NO estamos en modo memoria
+  if (process.env['USE_MEMORY_STORE'] !== 'true') {
+    await initDatabase();
+  } else {
+    logger.warn('[Startup] Skipping database initialization (USE_MEMORY_STORE=true)');
+  }
+
   const app = await createServer();
 
   const port = Number(env.PORT ?? 3001); // Backend en puerto 3001, frontend en 3000
@@ -75,8 +85,10 @@ async function startServer() {
 
 // Iniciar servidor
 startServer().catch((error) => {
+  console.error('FATAL STARTUP ERROR:', error);
   logger.error('[Startup] Error fatal iniciando servidor', {
-    error: error instanceof Error ? error.message : String(error)
+    error: error instanceof Error ? error.message : String(error),
+    stack: error instanceof Error ? error.stack : undefined
   });
   process.exit(1);
 });

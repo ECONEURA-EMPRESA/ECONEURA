@@ -21,8 +21,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-ceo',
     displayName: 'NEURA CEO',
     description: 'Agente estratégico de dirección general, visión global del negocio.',
-    provider: 'openai', // Usa OpenAIAdapter que apunta a Mammouth.ai
-    model: 'mistral-medium', // Mammouth.ai - Mistral Medium 3.1 (vía OpenAIAdapter)
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA CEO, el asistente ejecutivo de la compañía. Tu función es ayudar al CEO a tomar decisiones estratégicas de forma clara y accionable.
 
 **Cómo respondes:**
@@ -71,8 +71,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-cto',
     displayName: 'NEURA CTO',
     description: 'Responsable de estrategia tecnológica, arquitectura y plataformas.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA CTO, el Chief Technology Officer de la compañía. Tu función es liderar la estrategia tecnológica y arquitectura de sistemas.
 
 **Cómo respondes:**
@@ -123,8 +123,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-cfo',
     displayName: 'NEURA CFO',
     description: 'Gestión financiera, previsiones, cashflow y control de costes.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA CFO, el Chief Financial Officer de la compañía. Tu función es liderar la estrategia financiera y control de costes.
 
 **Cómo respondes:**
@@ -174,8 +174,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-cmo',
     displayName: 'NEURA CMO',
     description: 'Marketing, growth y contenido alineado con la marca.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA CMO, el Chief Marketing Officer de la compañía. Tu función es liderar la estrategia de marketing y crecimiento.
 
 **Cómo respondes:**
@@ -225,8 +225,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-ventas',
     displayName: 'NEURA Ventas',
     description: 'Soporte a ventas, argumentarios, objeciones y cierre.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA Ventas, el director comercial de la compañía. Tu función es liderar la estrategia de ventas y optimizar el proceso comercial.
 
 **Cómo respondes:**
@@ -276,8 +276,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-atencion-cliente',
     displayName: 'NEURA Atención Cliente',
     description: 'Soporte y éxito de cliente multicanal.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA Atención Cliente, el director de experiencia del cliente. Tu función es liderar la estrategia de soporte y éxito del cliente.
 
 **Cómo respondes:**
@@ -327,8 +327,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-rrhh',
     displayName: 'NEURA RRHH',
     description: 'Personas, talento, cultura y organización.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA RRHH, el director de recursos humanos de la compañía. Tu función es liderar la estrategia de talento y cultura organizacional.
 
 **Cómo respondes:**
@@ -378,8 +378,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-operaciones',
     displayName: 'NEURA Operaciones',
     description: 'Optimización de procesos, SLAs y eficiencia operativa.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA Operaciones, el director de operaciones de la compañía. Tu función es liderar la optimización de procesos y eficiencia operativa.
 
 **Cómo respondes:**
@@ -429,8 +429,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-legal',
     displayName: 'NEURA Legal',
     description: 'Aspectos legales y cumplimiento (no asesoría oficial).',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA Legal, el asesor legal interno de la compañía. Tu función es proporcionar orientación legal y asegurar el cumplimiento normativo.
 
 **IMPORTANTE:** No proporcionas asesoría legal oficial. Siempre recomiendas consultar con abogados cualificados para decisiones legales importantes.
@@ -482,8 +482,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-datos',
     displayName: 'NEURA Datos',
     description: 'Análisis de datos, KPIs y reporting.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA Datos, el director de datos y analytics de la compañía. Tu función es liderar la estrategia de datos y proporcionar insights accionables.
 
 **Cómo respondes:**
@@ -533,8 +533,8 @@ export const llmAgents: LLMAgent[] = [
     id: 'neura-innovacion',
     displayName: 'NEURA Innovación',
     description: 'Nuevos modelos de negocio, productos y experimentos.',
-    provider: 'openai',
-    model: 'mistral-medium',
+    provider: 'gemini',
+    model: 'gemini-2.5-pro-preview-03-25',
     systemPrompt: `Eres NEURA Innovación, el director de innovación de la compañía. Tu función es liderar la estrategia de innovación y desarrollo de nuevos productos.
 
 **Cómo respondes:**

@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
-import { 
-  shouldExecuteAgentsForNeura, 
-  getSpecializedContext, 
-  getSpecializedReasoning, 
-  calculateAgentConfidence 
+import {
+  shouldExecuteAgentsForNeura,
+  getSpecializedContext,
+  getSpecializedReasoning,
+  calculateAgentConfidence
 } from '../services/NeuraAgentIntegration';
 import { getApiUrl, createAuthHeaders } from '../utils/apiUrl';
 
@@ -57,7 +57,7 @@ export function useChatOperations({
   uploadedImage,
   removeImage
 }: UseChatOperationsParams) {
-  
+
   function correlationId() {
     try {
       const rnd = (globalThis as any).crypto?.getRandomValues(new Uint32Array(4));
@@ -120,7 +120,7 @@ export function useChatOperations({
 
       const data = await res.json();
       let output = data?.output || data?.message || 'Sin respuesta';
-      const model = data?.model || 'mistral-medium-3.1';
+      const model = data?.model || 'gemini-3-pro';
       const tokens = data?.tokens || 0;
       const cost = data?.cost || 0;
       const references = [];
@@ -150,10 +150,10 @@ export function useChatOperations({
       // Si NEURA ejecutó una función
       if (functionCall) {
         const funcEmoji = functionCall.name === 'agendar_reunion' ? '📅' :
-                         functionCall.name === 'consultar_datos' ? '📊' :
-                         functionCall.name === 'enviar_alerta' ? '🚨' :
-                         functionCall.name === 'generar_reporte' ? '📄' :
-                         functionCall.name === 'ejecutar_webhook' ? '⚡' : '🔧';
+          functionCall.name === 'consultar_datos' ? '📊' :
+            functionCall.name === 'enviar_alerta' ? '🚨' :
+              functionCall.name === 'generar_reporte' ? '📄' :
+                functionCall.name === 'ejecutar_webhook' ? '⚡' : '🔧';
 
         let funcOutput = `${output}\n\n${funcEmoji} **Función Ejecutada:** \`${functionCall.name}\`\n\n` +
           `**Resultado:** ${functionCall.result?.message || 'Ejecutado'}\n`;

@@ -38,9 +38,16 @@ export class ResilientAIGateway implements LLMClient {
       openai: {
         name: 'OpenAI',
         models: ['mistral-medium', 'gpt-4', 'gpt-3.5-turbo'], // Mistral Medium como principal
-        priority: 1,
+        priority: 2,
         timeout: 60000,
         retryAttempts: 2
+      },
+      gemini: {
+        name: 'Gemini',
+        models: ['gemini-2.5-pro-preview-03-25', 'gemini-1.5-pro'],
+        priority: 1, // Prioridad máxima
+        timeout: 30000,
+        retryAttempts: 3
       }
     };
 

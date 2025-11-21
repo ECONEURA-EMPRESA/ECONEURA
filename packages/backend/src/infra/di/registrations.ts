@@ -11,8 +11,10 @@ import { keyVaultService } from '../keyvault/KeyVaultService';
 import { InMemoryDocumentStore } from '../../knowledge/infra/inMemoryDocumentStore';
 import { InMemoryDocumentChunkStore } from '../../knowledge/infra/inMemoryDocumentChunkStore';
 import { StubDocumentProcessor } from '../../knowledge/infra/stubDocumentProcessor';
+import { PostgresEventStore } from '../persistence/PostgresEventStore';
+import { PostgresConversationStore } from '../persistence/PostgresConversationStore';
 import { InMemoryEventStore } from '../persistence/InMemoryEventStore';
-import { InMemoryConversationStore } from '../../conversation/store/inMemoryConversationStore';
+import { InMemoryConversationStore } from '../persistence/InMemoryConversationStore';
 import { logger } from '../../shared/logger';
 
 /**
@@ -21,27 +23,27 @@ import { logger } from '../../shared/logger';
 export const ServiceTokens = {
   // Secrets
   SecretsManager: Symbol('SecretsManager'),
-  
+
   // Cache
   RedisClient: Symbol('RedisClient'),
-  
+
   // Observability
   TelemetryClient: Symbol('TelemetryClient'),
-  
+
   // Storage
   StorageService: Symbol('StorageService'),
-  
+
   // Key Vault
   KeyVaultService: Symbol('KeyVaultService'),
-  
+
   // Knowledge Domain
   DocumentStore: Symbol('DocumentStore'),
   DocumentChunkStore: Symbol('DocumentChunkStore'),
   DocumentProcessor: Symbol('DocumentProcessor'),
-  
+
   // Persistence
   EventStore: Symbol('EventStore'),
-  
+
   // Conversation
   ConversationStore: Symbol('ConversationStore')
 } as const;
@@ -101,12 +103,27 @@ export function registerServices(): void {
 
   // Event Store (singleton)
   container.registerSingleton(ServiceTokens.EventStore, () => {
-    return new InMemoryEventStore();
+    if (process.env['USE_MEMORY_STORE'] === 'true') {
+      logger.warn('[DI] Using InMemoryEventStore');
+      return new InMemoryEventStore();
+    }
+    return new PostgresEventStore();
   });
 
   // Conversation Store (singleton)
   container.registerSingleton(ServiceTokens.ConversationStore, () => {
-    return new InMemoryConversationStore();
+    if (process.env['USE_MEMORY_STORE'] === 'true') {
+      logger.warn('[DI] Using InMemoryConversationStore');
+      return new InMemoryConversationStore();
+    }
+    return new PostgresConversationStore();
+  });
+
+  // Gemini Adapter (singleton)
+  // Aunque getLLMClient usa el singleton exportado, lo registramos aquí para completitud
+  container.registerSingleton('GeminiClient', () => {
+    const { getGeminiAdapter } = require('../llm/GeminiRestAdapter');
+    return getGeminiAdapter();
   });
 }
 
