@@ -17,7 +17,8 @@
     "dev:frontend": "npm run dev --workspace=@econeura/frontend",
     "test:backend": "npm run test --workspace=@econeura/backend",
     "type-check:backend": "npm run type-check --workspace=@econeura/backend",
-    "type-check:frontend": "npm run type-check --workspace=@econeura/frontend"
+    "type-check:frontend": "npm run type-check --workspace=@econeura/frontend",
+    "lint:backend": "npm run lint --workspace=@econeura/backend"
   },
   "engines": {
     "node": ">=20.0.0"
