@@ -46,7 +46,7 @@ jobs:
           
           echo "✅ All required secrets are present"
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Azure Login
         uses: azure/login@v2
