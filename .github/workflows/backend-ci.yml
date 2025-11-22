@@ -67,6 +67,37 @@ jobs:
     name: Test Backend
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: econeura_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+      
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+    
+    env:
+      DATABASE_URL: postgresql://test:test@localhost:5432/econeura_test
+      REDIS_URL: redis://localhost:6379
+      USE_MEMORY_STORE: false
+      GEMINI_API_KEY: test_key
 
     steps:
       - name: Checkout
@@ -86,7 +117,7 @@ jobs:
 
       - name: Generate coverage
         run: npm run test:backend -- --coverage || echo "⚠️ Coverage no configurado"
-        continue-on-error: true
+
 
       - name: Upload coverage
         uses: codecov/codecov-action@v5
@@ -94,7 +125,7 @@ jobs:
           files: ./packages/backend/coverage/lcov.info
           flags: backend
           name: backend-coverage
-        continue-on-error: true
+
 
   build:
     name: Build Backend
