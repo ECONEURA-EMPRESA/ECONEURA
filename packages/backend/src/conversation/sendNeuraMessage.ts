@@ -196,8 +196,8 @@ export async function sendNeuraMessage(
         // Para evitar ciclos infinitos, llamamos a invokeLLMAgent directamente para el sub-agente
         // sin pasarle tools (o limitando). Por simplicidad, invocamos sin tools.
         const subAgentResult = await invokeLLMAgent({
-          agentId: targetAgentId,
-          userInput: taskDescription,
+          agentId: targetAgentId as string,
+          userInput: taskDescription as string,
           correlationId: input.correlationId
         }, { llmClient }); // Sin tools para el sub-agente
 

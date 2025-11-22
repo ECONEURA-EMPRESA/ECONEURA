@@ -7,6 +7,7 @@ on:
       - 'packages/backend/**'
       - 'tsconfig.base.json'
       - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/backend-ci.yml'
   pull_request:
     branches: [main, develop]
@@ -14,6 +15,7 @@ on:
       - 'packages/backend/**'
       - 'tsconfig.base.json'
       - 'package.json'
+      - 'package-lock.json'
 
 env:
   NODE_VERSION: '20'

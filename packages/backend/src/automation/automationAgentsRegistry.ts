@@ -42,7 +42,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Agenda Consejo',
     description: 'Preparación de agenda del consejo ejecutivo',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CEO_AGENDA_CONSEJO,
+    webhookUrl: process.env['WEBHOOK_CEO_AGENDA_CONSEJO'],
     trigger: 'manual',
     active: true
   },
@@ -53,7 +53,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Anuncio Semanal',
     description: 'Comunicación semanal a toda la empresa',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CEO_ANUNCIO_SEMANAL,
+    webhookUrl: process.env['WEBHOOK_CEO_ANUNCIO_SEMANAL'],
     trigger: 'manual',
     active: true
   },
@@ -64,7 +64,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Resumen Ejecutivo',
     description: 'Resumen ejecutivo del día',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CEO_RESUMEN_EJECUTIVO,
+    webhookUrl: process.env['WEBHOOK_CEO_RESUMEN_EJECUTIVO'],
     trigger: 'auto',
     active: true
   },
@@ -75,7 +75,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Seguimiento OKR',
     description: 'Tracking de OKRs trimestrales',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CEO_SEGUIMIENTO_OKR,
+    webhookUrl: process.env['WEBHOOK_CEO_SEGUIMIENTO_OKR'],
     trigger: 'manual',
     active: true
   },
@@ -87,7 +87,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Salud y Failover',
     description: 'Monitoreo de salud y failover de modelos IA',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_IA_SALUD_FAILOVER,
+    webhookUrl: process.env['WEBHOOK_IA_SALUD_FAILOVER'],
     trigger: 'auto',
     active: true
   },
@@ -98,7 +98,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Cost Tracker',
     description: 'Tracking de costos de APIs de IA',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_IA_COST_TRACKER,
+    webhookUrl: process.env['WEBHOOK_IA_COST_TRACKER'],
     trigger: 'auto',
     active: true
   },
@@ -109,7 +109,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Revisión Prompts',
     description: 'Análisis y optimización de prompts',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_IA_REVISION_PROMPTS,
+    webhookUrl: process.env['WEBHOOK_IA_REVISION_PROMPTS'],
     trigger: 'manual',
     active: true
   },
@@ -120,7 +120,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Vigilancia Cuotas',
     description: 'Monitoreo de cuotas de API',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_IA_VIGILANCIA_CUOTAS,
+    webhookUrl: process.env['WEBHOOK_IA_VIGILANCIA_CUOTAS'],
     trigger: 'auto',
     active: true
   },
@@ -132,7 +132,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Gestor de Riesgos',
     description: 'Gestión de riesgos estratégicos',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CSO_GESTOR_RIESGOS,
+    webhookUrl: process.env['WEBHOOK_CSO_GESTOR_RIESGOS'],
     trigger: 'manual',
     active: true
   },
@@ -143,7 +143,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Vigilancia Competitiva',
     description: 'Monitoreo de competidores',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CSO_VIGILANCIA_COMPETITIVA,
+    webhookUrl: process.env['WEBHOOK_CSO_VIGILANCIA_COMPETITIVA'],
     trigger: 'auto',
     active: true
   },
@@ -154,7 +154,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Radar de Tendencias',
     description: 'Detección de tendencias del sector',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CSO_RADAR_TENDENCIAS,
+    webhookUrl: process.env['WEBHOOK_CSO_RADAR_TENDENCIAS'],
     trigger: 'auto',
     active: true
   },
@@ -165,7 +165,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'M&A Sync',
     description: 'Sincronización de operaciones M&A',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CSO_MA_SYNC,
+    webhookUrl: process.env['WEBHOOK_CSO_MA_SYNC'],
     trigger: 'manual',
     active: true
   },
@@ -177,7 +177,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'FinOps Cloud',
     description: 'Optimización de costos cloud',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CTO_FINOPS_CLOUD,
+    webhookUrl: process.env['WEBHOOK_CTO_FINOPS_CLOUD'],
     trigger: 'auto',
     active: true
   },
@@ -188,7 +188,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Seguridad CI/CD',
     description: 'Seguridad en pipelines CI/CD',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CTO_SEGURIDAD_CICD,
+    webhookUrl: process.env['WEBHOOK_CTO_SEGURIDAD_CICD'],
     trigger: 'auto',
     active: true
   },
@@ -199,7 +199,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Observabilidad SLO',
     description: 'Monitoreo de SLOs y SLAs',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CTO_OBSERVABILIDAD_SLO,
+    webhookUrl: process.env['WEBHOOK_CTO_OBSERVABILIDAD_SLO'],
     trigger: 'auto',
     active: true
   },
@@ -210,7 +210,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Gestión Incidencias',
     description: 'Gestión de incidentes técnicos',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CTO_GESTION_INCIDENCIAS,
+    webhookUrl: process.env['WEBHOOK_CTO_GESTION_INCIDENCIAS'],
     trigger: 'manual',
     active: true
   },
@@ -222,7 +222,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Vulnerabilidades',
     description: 'Escaneo y gestión de vulnerabilidades',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CISO_VULNERABILIDADES,
+    webhookUrl: process.env['WEBHOOK_CISO_VULNERABILIDADES'],
     trigger: 'auto',
     active: true
   },
@@ -233,7 +233,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Phishing Triage',
     description: 'Análisis y triage de reportes de phishing',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CISO_PHISHING_TRIAGE,
+    webhookUrl: process.env['WEBHOOK_CISO_PHISHING_TRIAGE'],
     trigger: 'auto',
     active: true
   },
@@ -244,7 +244,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Backup/Restore DR',
     description: 'Gestión de backups y disaster recovery',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CISO_BACKUP_RESTORE_DR,
+    webhookUrl: process.env['WEBHOOK_CISO_BACKUP_RESTORE_DR'],
     trigger: 'manual',
     active: true
   },
@@ -255,7 +255,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Recertificación',
     description: 'Recertificación de accesos',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CISO_RECERTIFICACION,
+    webhookUrl: process.env['WEBHOOK_CISO_RECERTIFICACION'],
     trigger: 'manual',
     active: true
   },
@@ -267,7 +267,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Atrasos y Excepciones',
     description: 'Monitoreo de pedidos atrasados',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_COO_ATRASOS_EXCEPCIONES,
+    webhookUrl: process.env['WEBHOOK_COO_ATRASOS_EXCEPCIONES'],
     trigger: 'auto',
     active: true
   },
@@ -278,7 +278,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Centro NPS/CSAT',
     description: 'Análisis de satisfacción del cliente',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_COO_CENTRO_NPS_CSAT,
+    webhookUrl: process.env['WEBHOOK_COO_CENTRO_NPS_CSAT'],
     trigger: 'auto',
     active: true
   },
@@ -289,7 +289,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Latido de SLA',
     description: 'Monitoreo en tiempo real de SLAs',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_COO_LATIDO_SLA,
+    webhookUrl: process.env['WEBHOOK_COO_LATIDO_SLA'],
     trigger: 'auto',
     active: true
   },
@@ -300,7 +300,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Torre de Control',
     description: 'Dashboard operativo centralizado',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_COO_TORRE_CONTROL,
+    webhookUrl: process.env['WEBHOOK_COO_TORRE_CONTROL'],
     trigger: 'manual',
     active: true
   },
@@ -312,7 +312,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Encuesta de Pulso',
     description: 'Encuestas de clima organizacional',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CHRO_ENCUESTA_PULSO,
+    webhookUrl: process.env['WEBHOOK_CHRO_ENCUESTA_PULSO'],
     trigger: 'manual',
     active: true
   },
@@ -323,7 +323,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Offboarding Seguro',
     description: 'Proceso de offboarding automatizado',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CHRO_OFFBOARDING_SEGURO,
+    webhookUrl: process.env['WEBHOOK_CHRO_OFFBOARDING_SEGURO'],
     trigger: 'manual',
     active: true
   },
@@ -334,7 +334,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Onboarding Orquestado',
     description: 'Onboarding automatizado de nuevos empleados',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CHRO_ONBOARDING_ORQUESTADO,
+    webhookUrl: process.env['WEBHOOK_CHRO_ONBOARDING_ORQUESTADO'],
     trigger: 'manual',
     active: true
   },
@@ -345,7 +345,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Pipeline Contratación',
     description: 'Gestión de pipeline de reclutamiento',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CHRO_PIPELINE_CONTRATACION,
+    webhookUrl: process.env['WEBHOOK_CHRO_PIPELINE_CONTRATACION'],
     trigger: 'auto',
     active: true
   },
@@ -357,7 +357,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Embudo Comercial',
     description: 'Análisis del funnel comercial',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CMO_EMBUDO_COMERCIAL,
+    webhookUrl: process.env['WEBHOOK_CMO_EMBUDO_COMERCIAL'],
     trigger: 'auto',
     active: true
   },
@@ -368,7 +368,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Salud de Pipeline',
     description: 'Monitoreo de salud del pipeline de ventas',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CMO_SALUD_PIPELINE,
+    webhookUrl: process.env['WEBHOOK_CMO_SALUD_PIPELINE'],
     trigger: 'auto',
     active: true
   },
@@ -379,7 +379,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Calidad de Leads',
     description: 'Análisis de calidad de leads',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CMO_CALIDAD_LEADS,
+    webhookUrl: process.env['WEBHOOK_CMO_CALIDAD_LEADS'],
     trigger: 'auto',
     active: true
   },
@@ -390,7 +390,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Post-Campaña',
     description: 'Análisis post-mortem de campañas',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CMO_POST_CAMPANA,
+    webhookUrl: process.env['WEBHOOK_CMO_POST_CAMPANA'],
     trigger: 'manual',
     active: true
   },
@@ -402,7 +402,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Tesorería',
     description: 'Gestión de tesorería y cash flow',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CFO_TESORERIA,
+    webhookUrl: process.env['WEBHOOK_CFO_TESORERIA'],
     trigger: 'auto',
     active: true
   },
@@ -413,7 +413,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Variance',
     description: 'Análisis de variance vs presupuesto',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CFO_VARIANCE,
+    webhookUrl: process.env['WEBHOOK_CFO_VARIANCE'],
     trigger: 'auto',
     active: true
   },
@@ -424,7 +424,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Facturación',
     description: 'Automatización de facturación',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CFO_FACTURACION,
+    webhookUrl: process.env['WEBHOOK_CFO_FACTURACION'],
     trigger: 'auto',
     active: true
   },
@@ -435,7 +435,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Compras',
     description: 'Gestión de órdenes de compra',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CFO_COMPRAS,
+    webhookUrl: process.env['WEBHOOK_CFO_COMPRAS'],
     trigger: 'manual',
     active: true
   },
@@ -447,7 +447,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Linaje',
     description: 'Tracking de linaje de datos',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CDO_LINAJE,
+    webhookUrl: process.env['WEBHOOK_CDO_LINAJE'],
     trigger: 'auto',
     active: true
   },
@@ -458,7 +458,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Calidad de Datos',
     description: 'Monitoreo de calidad de datos',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CDO_CALIDAD_DATOS,
+    webhookUrl: process.env['WEBHOOK_CDO_CALIDAD_DATOS'],
     trigger: 'auto',
     active: true
   },
@@ -469,7 +469,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Catálogo',
     description: 'Gestión de catálogo de datos',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CDO_CATALOGO,
+    webhookUrl: process.env['WEBHOOK_CDO_CATALOGO'],
     trigger: 'manual',
     active: true
   },
@@ -480,7 +480,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Coste DWH',
     description: 'Optimización de costos de data warehouse',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CDO_COSTE_DWH,
+    webhookUrl: process.env['WEBHOOK_CDO_COSTE_DWH'],
     trigger: 'auto',
     active: true
   },
@@ -492,7 +492,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Explorador de Patentes y Papers',
     description: 'Búsqueda y análisis de patentes y papers científicos',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CINO_PATENTES_PAPERS,
+    webhookUrl: process.env['WEBHOOK_CINO_PATENTES_PAPERS'],
     trigger: 'manual',
     active: true
   },
@@ -503,7 +503,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Radar de Startups y Ecosistemas',
     description: 'Monitoreo de ecosistema de startups',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CINO_RADAR_STARTUPS,
+    webhookUrl: process.env['WEBHOOK_CINO_RADAR_STARTUPS'],
     trigger: 'auto',
     active: true
   },
@@ -514,7 +514,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Generador de Prototipos IA/No-Code',
     description: 'Generación automática de prototipos',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CINO_PROTOTIPOS_IA,
+    webhookUrl: process.env['WEBHOOK_CINO_PROTOTIPOS_IA'],
     trigger: 'manual',
     active: true
   },
@@ -525,7 +525,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Agente de Tendencias de Usuario',
     description: 'Análisis de tendencias de comportamiento',
     provider: 'n8n',
-    webhookUrl: process.env.WEBHOOK_CINO_TENDENCIAS_USUARIO,
+    webhookUrl: process.env['WEBHOOK_CINO_TENDENCIAS_USUARIO'],
     trigger: 'auto',
     active: true
   },
@@ -536,7 +536,7 @@ const automationAgentsRaw: AutomationAgent[] = [
     name: 'Innovation Lab',
     description: 'Laboratorio de innovación experimental',
     provider: 'make',
-    webhookUrl: process.env.WEBHOOK_CINO_INNOVATION_LAB,
+    webhookUrl: process.env['WEBHOOK_CINO_INNOVATION_LAB'],
     trigger: 'manual',
     active: true
   }
