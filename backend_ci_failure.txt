@@ -1,0 +1,770 @@
+Lint Backend	Set up job	﻿2025-11-22T17:00:10.6688874Z Current runner version: '2.329.0'
+Lint Backend	Set up job	2025-11-22T17:00:10.6714367Z ##[group]Runner Image Provisioner
+Lint Backend	Set up job	2025-11-22T17:00:10.6715333Z Hosted Compute Agent
+Lint Backend	Set up job	2025-11-22T17:00:10.6715912Z Version: 20251016.436
+Lint Backend	Set up job	2025-11-22T17:00:10.6716540Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+Lint Backend	Set up job	2025-11-22T17:00:10.6717199Z Build Date: 2025-10-15T20:44:12Z
+Lint Backend	Set up job	2025-11-22T17:00:10.6718141Z ##[endgroup]
+Lint Backend	Set up job	2025-11-22T17:00:10.6718690Z ##[group]Operating System
+Lint Backend	Set up job	2025-11-22T17:00:10.6719300Z Ubuntu
+Lint Backend	Set up job	2025-11-22T17:00:10.6719728Z 24.04.3
+Lint Backend	Set up job	2025-11-22T17:00:10.6720289Z LTS
+Lint Backend	Set up job	2025-11-22T17:00:10.6720868Z ##[endgroup]
+Lint Backend	Set up job	2025-11-22T17:00:10.6721347Z ##[group]Runner Image
+Lint Backend	Set up job	2025-11-22T17:00:10.6721993Z Image: ubuntu-24.04
+Lint Backend	Set up job	2025-11-22T17:00:10.6722468Z Version: 20251112.124.1
+Lint Backend	Set up job	2025-11-22T17:00:10.6723483Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+Lint Backend	Set up job	2025-11-22T17:00:10.6724928Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+Lint Backend	Set up job	2025-11-22T17:00:10.6726163Z ##[endgroup]
+Lint Backend	Set up job	2025-11-22T17:00:10.6727225Z ##[group]GITHUB_TOKEN Permissions
+Lint Backend	Set up job	2025-11-22T17:00:10.6729288Z Contents: read
+Lint Backend	Set up job	2025-11-22T17:00:10.6729955Z Metadata: read
+Lint Backend	Set up job	2025-11-22T17:00:10.6730691Z Packages: read
+Lint Backend	Set up job	2025-11-22T17:00:10.6731233Z ##[endgroup]
+Lint Backend	Set up job	2025-11-22T17:00:10.6733223Z Secret source: Actions
+Lint Backend	Set up job	2025-11-22T17:00:10.6733957Z Prepare workflow directory
+Lint Backend	Set up job	2025-11-22T17:00:10.7126024Z Prepare all required actions
+Lint Backend	Set up job	2025-11-22T17:00:10.7180781Z Getting action download info
+Lint Backend	Set up job	2025-11-22T17:00:11.1253605Z Download action repository 'actions/checkout@v6' (SHA:1af3b93b6815bc44a9784bd300feb67ff0d1eeb3)
+Lint Backend	Set up job	2025-11-22T17:00:12.2023445Z Download action repository 'actions/setup-node@v6' (SHA:2028fbc5c25fe9cf00d9f06a71cc4710d4507903)
+Lint Backend	Set up job	2025-11-22T17:00:12.4395146Z Complete job name: Lint Backend
+Lint Backend	Checkout	﻿2025-11-22T17:00:12.5108822Z ##[group]Run actions/checkout@v6
+Lint Backend	Checkout	2025-11-22T17:00:12.5109800Z with:
+Lint Backend	Checkout	2025-11-22T17:00:12.5110470Z   repository: ECONEURA-EMPRESA/ECONEURA
+Lint Backend	Checkout	2025-11-22T17:00:12.5111410Z   token: ***
+Lint Backend	Checkout	2025-11-22T17:00:12.5111910Z   ssh-strict: true
+Lint Backend	Checkout	2025-11-22T17:00:12.5112389Z   ssh-user: git
+Lint Backend	Checkout	2025-11-22T17:00:12.5112888Z   persist-credentials: true
+Lint Backend	Checkout	2025-11-22T17:00:12.5113441Z   clean: true
+Lint Backend	Checkout	2025-11-22T17:00:12.5113924Z   sparse-checkout-cone-mode: true
+Lint Backend	Checkout	2025-11-22T17:00:12.5114518Z   fetch-depth: 1
+Lint Backend	Checkout	2025-11-22T17:00:12.5114984Z   fetch-tags: false
+Lint Backend	Checkout	2025-11-22T17:00:12.5115468Z   show-progress: true
+Lint Backend	Checkout	2025-11-22T17:00:12.5115954Z   lfs: false
+Lint Backend	Checkout	2025-11-22T17:00:12.5116410Z   submodules: false
+Lint Backend	Checkout	2025-11-22T17:00:12.5116893Z   set-safe-directory: true
+Lint Backend	Checkout	2025-11-22T17:00:12.5117671Z env:
+Lint Backend	Checkout	2025-11-22T17:00:12.5118112Z   NODE_VERSION: 20
+Lint Backend	Checkout	2025-11-22T17:00:12.5118585Z ##[endgroup]
+Lint Backend	Checkout	2025-11-22T17:00:12.6039445Z Syncing repository: ECONEURA-EMPRESA/ECONEURA
+Lint Backend	Checkout	2025-11-22T17:00:12.6041684Z ##[group]Getting Git version info
+Lint Backend	Checkout	2025-11-22T17:00:12.6042552Z Working directory is '/home/runner/work/ECONEURA/ECONEURA'
+Lint Backend	Checkout	2025-11-22T17:00:12.6043848Z [command]/usr/bin/git version
+Lint Backend	Checkout	2025-11-22T17:00:12.6849489Z git version 2.51.2
+Lint Backend	Checkout	2025-11-22T17:00:12.6872428Z ##[endgroup]
+Lint Backend	Checkout	2025-11-22T17:00:12.6886867Z Temporarily overriding HOME='/home/runner/work/_temp/1fa23aef-0f02-47a5-beb4-7daa8fd5fbf5' before making global git config changes
+Lint Backend	Checkout	2025-11-22T17:00:12.6889572Z Adding repository directory to the temporary git global config as a safe directory
+Lint Backend	Checkout	2025-11-22T17:00:12.6892070Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+Lint Backend	Checkout	2025-11-22T17:00:12.6969564Z Deleting the contents of '/home/runner/work/ECONEURA/ECONEURA'
+Lint Backend	Checkout	2025-11-22T17:00:12.6972965Z ##[group]Initializing the repository
+Lint Backend	Checkout	2025-11-22T17:00:12.6977173Z [command]/usr/bin/git init /home/runner/work/ECONEURA/ECONEURA
+Lint Backend	Checkout	2025-11-22T17:00:12.7567301Z hint: Using 'master' as the name for the initial branch. This default branch name
+Lint Backend	Checkout	2025-11-22T17:00:12.7569537Z hint: is subject to change. To configure the initial branch name to use in all
+Lint Backend	Checkout	2025-11-22T17:00:12.7571918Z hint: of your new repositories, which will suppress this warning, call:
+Lint Backend	Checkout	2025-11-22T17:00:12.7573472Z hint:
+Lint Backend	Checkout	2025-11-22T17:00:12.7574948Z hint: 	git config --global init.defaultBranch <name>
+Lint Backend	Checkout	2025-11-22T17:00:12.7576257Z hint:
+Lint Backend	Checkout	2025-11-22T17:00:12.7577487Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Lint Backend	Checkout	2025-11-22T17:00:12.7579523Z hint: 'development'. The just-created branch can be renamed via this command:
+Lint Backend	Checkout	2025-11-22T17:00:12.7581465Z hint:
+Lint Backend	Checkout	2025-11-22T17:00:12.7582295Z hint: 	git branch -m <name>
+Lint Backend	Checkout	2025-11-22T17:00:12.7583262Z hint:
+Lint Backend	Checkout	2025-11-22T17:00:12.7584538Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Lint Backend	Checkout	2025-11-22T17:00:12.7602127Z Initialized empty Git repository in /home/runner/work/ECONEURA/ECONEURA/.git/
+Lint Backend	Checkout	2025-11-22T17:00:12.7617366Z [command]/usr/bin/git remote add origin https://github.com/ECONEURA-EMPRESA/ECONEURA
+Lint Backend	Checkout	2025-11-22T17:00:12.7724629Z ##[endgroup]
+Lint Backend	Checkout	2025-11-22T17:00:12.7726811Z ##[group]Disabling automatic garbage collection
+Lint Backend	Checkout	2025-11-22T17:00:12.7728423Z [command]/usr/bin/git config --local gc.auto 0
+Lint Backend	Checkout	2025-11-22T17:00:12.7759112Z ##[endgroup]
+Lint Backend	Checkout	2025-11-22T17:00:12.7761160Z ##[group]Setting up auth
+Lint Backend	Checkout	2025-11-22T17:00:12.7762780Z Removing SSH command configuration
+Lint Backend	Checkout	2025-11-22T17:00:12.7766557Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Lint Backend	Checkout	2025-11-22T17:00:12.7799936Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Lint Backend	Checkout	2025-11-22T17:00:12.9384997Z Removing HTTP extra header
+Lint Backend	Checkout	2025-11-22T17:00:12.9392294Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Lint Backend	Checkout	2025-11-22T17:00:12.9426913Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Lint Backend	Checkout	2025-11-22T17:00:12.9646214Z Removing includeIf entries pointing to credentials config files
+Lint Backend	Checkout	2025-11-22T17:00:12.9653999Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Lint Backend	Checkout	2025-11-22T17:00:12.9686932Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Lint Backend	Checkout	2025-11-22T17:00:12.9918663Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-4b616a27-74ec-46ca-bc7a-5be7c3f2f6ca.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Lint Backend	Checkout	2025-11-22T17:00:12.9959551Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-4b616a27-74ec-46ca-bc7a-5be7c3f2f6ca.config
+Lint Backend	Checkout	2025-11-22T17:00:12.9990108Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4b616a27-74ec-46ca-bc7a-5be7c3f2f6ca.config
+Lint Backend	Checkout	2025-11-22T17:00:13.0015901Z ##[endgroup]
+Lint Backend	Checkout	2025-11-22T17:00:13.0016743Z ##[group]Fetching the repository
+Lint Backend	Checkout	2025-11-22T17:00:13.0025060Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +03856c57d9076ebfbdeae9e376a4757e1e7dab65:refs/remotes/origin/main
+Lint Backend	Checkout	2025-11-22T17:00:13.7238864Z From https://github.com/ECONEURA-EMPRESA/ECONEURA
+Lint Backend	Checkout	2025-11-22T17:00:13.7241989Z  * [new ref]         03856c57d9076ebfbdeae9e376a4757e1e7dab65 -> origin/main
+Lint Backend	Checkout	2025-11-22T17:00:13.7317020Z ##[endgroup]
+Lint Backend	Checkout	2025-11-22T17:00:13.7318515Z ##[group]Determining the checkout info
+Lint Backend	Checkout	2025-11-22T17:00:13.7320230Z ##[endgroup]
+Lint Backend	Checkout	2025-11-22T17:00:13.7325451Z [command]/usr/bin/git sparse-checkout disable
+Lint Backend	Checkout	2025-11-22T17:00:13.7408412Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Lint Backend	Checkout	2025-11-22T17:00:13.7436650Z ##[group]Checking out the ref
+Lint Backend	Checkout	2025-11-22T17:00:13.7440910Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Lint Backend	Checkout	2025-11-22T17:00:13.8420277Z Switched to a new branch 'main'
+Lint Backend	Checkout	2025-11-22T17:00:13.8423232Z branch 'main' set up to track 'origin/main'.
+Lint Backend	Checkout	2025-11-22T17:00:13.8432295Z ##[endgroup]
+Lint Backend	Checkout	2025-11-22T17:00:13.8472154Z [command]/usr/bin/git log -1 --format=%H
+Lint Backend	Checkout	2025-11-22T17:00:13.8497913Z 03856c57d9076ebfbdeae9e376a4757e1e7dab65
+Lint Backend	Setup Node	﻿2025-11-22T17:00:13.8802074Z ##[group]Run actions/setup-node@v6
+Lint Backend	Setup Node	2025-11-22T17:00:13.8803074Z with:
+Lint Backend	Setup Node	2025-11-22T17:00:13.8803729Z   node-version: 20
+Lint Backend	Setup Node	2025-11-22T17:00:13.8804429Z   cache: npm
+Lint Backend	Setup Node	2025-11-22T17:00:13.8805117Z   always-auth: false
+Lint Backend	Setup Node	2025-11-22T17:00:13.8805877Z   check-latest: false
+Lint Backend	Setup Node	2025-11-22T17:00:13.8806978Z   token: ***
+Lint Backend	Setup Node	2025-11-22T17:00:13.8807706Z   package-manager-cache: true
+Lint Backend	Setup Node	2025-11-22T17:00:13.8808573Z env:
+Lint Backend	Setup Node	2025-11-22T17:00:13.8809198Z   NODE_VERSION: 20
+Lint Backend	Setup Node	2025-11-22T17:00:13.8809905Z ##[endgroup]
+Lint Backend	Setup Node	2025-11-22T17:00:14.0722918Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+Lint Backend	Setup Node	2025-11-22T17:00:14.0726705Z (node:2111) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Lint Backend	Setup Node	2025-11-22T17:00:14.0731836Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Lint Backend	Setup Node	2025-11-22T17:00:14.0734544Z ##[group]Environment details
+Lint Backend	Setup Node	2025-11-22T17:00:16.2716895Z node: v20.19.5
+Lint Backend	Setup Node	2025-11-22T17:00:16.2717281Z npm: 10.8.2
+Lint Backend	Setup Node	2025-11-22T17:00:16.2717475Z yarn: 1.22.22
+Lint Backend	Setup Node	2025-11-22T17:00:16.2718118Z ##[endgroup]
+Lint Backend	Setup Node	2025-11-22T17:00:16.2739725Z [command]/opt/hostedtoolcache/node/20.19.5/x64/bin/npm config get cache
+Lint Backend	Setup Node	2025-11-22T17:00:16.5396710Z /home/runner/.npm
+Lint Backend	Setup Node	2025-11-22T17:00:16.8177193Z npm cache is not found
+Lint Backend	Install dependencies	﻿2025-11-22T17:00:16.8296534Z ##[group]Run npm ci
+Lint Backend	Install dependencies	2025-11-22T17:00:16.8296841Z [36;1mnpm ci[0m
+Lint Backend	Install dependencies	2025-11-22T17:00:16.8343546Z shell: /usr/bin/bash -e {0}
+Lint Backend	Install dependencies	2025-11-22T17:00:16.8343852Z env:
+Lint Backend	Install dependencies	2025-11-22T17:00:16.8344056Z   NODE_VERSION: 20
+Lint Backend	Install dependencies	2025-11-22T17:00:16.8344289Z ##[endgroup]
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3275550Z npm error code EUSAGE
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3276020Z npm error
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3276687Z npm error The `npm ci` command can only install with an existing package-lock.json or
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3277602Z npm error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3278415Z npm error later to generate a package-lock.json file, then try again.
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3278914Z npm error
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3279250Z npm error Clean install a project
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3279565Z npm error
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3279807Z npm error Usage:
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3280083Z npm error npm ci
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3280508Z npm error
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3280825Z npm error Options:
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3281429Z npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3282374Z npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3283309Z npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3284660Z npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3285271Z npm error [--no-bin-links] [--no-fund] [--dry-run]
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3285814Z npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3286396Z npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3286783Z npm error
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3287436Z npm error aliases: clean-install, ic, install-clean, isntall-clean
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3288006Z npm error
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3288447Z npm error Run "npm help ci" for more info
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3289102Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-11-22T17_00_16_897Z-debug-0.log
+Lint Backend	Install dependencies	2025-11-22T17:00:18.3347186Z ##[error]Process completed with exit code 1.
+Lint Backend	Post Checkout	﻿2025-11-22T17:00:18.3442730Z Post job cleanup.
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4262784Z [command]/usr/bin/git version
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4297716Z git version 2.51.2
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4335469Z Temporarily overriding HOME='/home/runner/work/_temp/d7224189-0486-4493-83f5-8f4990ec4ad9' before making global git config changes
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4336923Z Adding repository directory to the temporary git global config as a safe directory
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4341456Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4372524Z Removing SSH command configuration
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4378551Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4410277Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4629430Z Removing HTTP extra header
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4634873Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4666135Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4883921Z Removing includeIf entries pointing to credentials config files
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4889667Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4912845Z includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4913504Z includeif.gitdir:/github/workspace/.git.path
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4922593Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4942822Z /home/runner/work/_temp/git-credentials-4b616a27-74ec-46ca-bc7a-5be7c3f2f6ca.config
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4952599Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-4b616a27-74ec-46ca-bc7a-5be7c3f2f6ca.config
+Lint Backend	Post Checkout	2025-11-22T17:00:18.4983386Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Lint Backend	Post Checkout	2025-11-22T17:00:18.5003954Z /github/runner_temp/git-credentials-4b616a27-74ec-46ca-bc7a-5be7c3f2f6ca.config
+Lint Backend	Post Checkout	2025-11-22T17:00:18.5012538Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4b616a27-74ec-46ca-bc7a-5be7c3f2f6ca.config
+Lint Backend	Post Checkout	2025-11-22T17:00:18.5043021Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Lint Backend	Post Checkout	2025-11-22T17:00:18.5256884Z Removing credentials config '/home/runner/work/_temp/git-credentials-4b616a27-74ec-46ca-bc7a-5be7c3f2f6ca.config'
+Lint Backend	Complete job	﻿2025-11-22T17:00:18.5391084Z Cleaning up orphan processes
+Type Check Backend	Set up job	﻿2025-11-22T17:00:10.2706418Z Current runner version: '2.329.0'
+Type Check Backend	Set up job	2025-11-22T17:00:10.2730240Z ##[group]Runner Image Provisioner
+Type Check Backend	Set up job	2025-11-22T17:00:10.2731315Z Hosted Compute Agent
+Type Check Backend	Set up job	2025-11-22T17:00:10.2731871Z Version: 20251016.436
+Type Check Backend	Set up job	2025-11-22T17:00:10.2732440Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+Type Check Backend	Set up job	2025-11-22T17:00:10.2733040Z Build Date: 2025-10-15T20:44:12Z
+Type Check Backend	Set up job	2025-11-22T17:00:10.2733593Z ##[endgroup]
+Type Check Backend	Set up job	2025-11-22T17:00:10.2734058Z ##[group]Operating System
+Type Check Backend	Set up job	2025-11-22T17:00:10.2734609Z Ubuntu
+Type Check Backend	Set up job	2025-11-22T17:00:10.2735006Z 24.04.3
+Type Check Backend	Set up job	2025-11-22T17:00:10.2735463Z LTS
+Type Check Backend	Set up job	2025-11-22T17:00:10.2735841Z ##[endgroup]
+Type Check Backend	Set up job	2025-11-22T17:00:10.2736276Z ##[group]Runner Image
+Type Check Backend	Set up job	2025-11-22T17:00:10.2736821Z Image: ubuntu-24.04
+Type Check Backend	Set up job	2025-11-22T17:00:10.2737238Z Version: 20251112.124.1
+Type Check Backend	Set up job	2025-11-22T17:00:10.2738135Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+Type Check Backend	Set up job	2025-11-22T17:00:10.2739352Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+Type Check Backend	Set up job	2025-11-22T17:00:10.2740696Z ##[endgroup]
+Type Check Backend	Set up job	2025-11-22T17:00:10.2741714Z ##[group]GITHUB_TOKEN Permissions
+Type Check Backend	Set up job	2025-11-22T17:00:10.2743822Z Contents: read
+Type Check Backend	Set up job	2025-11-22T17:00:10.2744367Z Metadata: read
+Type Check Backend	Set up job	2025-11-22T17:00:10.2744779Z Packages: read
+Type Check Backend	Set up job	2025-11-22T17:00:10.2745213Z ##[endgroup]
+Type Check Backend	Set up job	2025-11-22T17:00:10.2747206Z Secret source: Actions
+Type Check Backend	Set up job	2025-11-22T17:00:10.2747842Z Prepare workflow directory
+Type Check Backend	Set up job	2025-11-22T17:00:10.3119728Z Prepare all required actions
+Type Check Backend	Set up job	2025-11-22T17:00:10.3160144Z Getting action download info
+Type Check Backend	Set up job	2025-11-22T17:00:10.7797727Z Download action repository 'actions/checkout@v6' (SHA:1af3b93b6815bc44a9784bd300feb67ff0d1eeb3)
+Type Check Backend	Set up job	2025-11-22T17:00:11.7154639Z Download action repository 'actions/setup-node@v6' (SHA:2028fbc5c25fe9cf00d9f06a71cc4710d4507903)
+Type Check Backend	Set up job	2025-11-22T17:00:11.9714047Z Complete job name: Type Check Backend
+Type Check Backend	Checkout	﻿2025-11-22T17:00:12.0436747Z ##[group]Run actions/checkout@v6
+Type Check Backend	Checkout	2025-11-22T17:00:12.0438260Z with:
+Type Check Backend	Checkout	2025-11-22T17:00:12.0439135Z   repository: ECONEURA-EMPRESA/ECONEURA
+Type Check Backend	Checkout	2025-11-22T17:00:12.0440802Z   token: ***
+Type Check Backend	Checkout	2025-11-22T17:00:12.0441664Z   ssh-strict: true
+Type Check Backend	Checkout	2025-11-22T17:00:12.0442562Z   ssh-user: git
+Type Check Backend	Checkout	2025-11-22T17:00:12.0443441Z   persist-credentials: true
+Type Check Backend	Checkout	2025-11-22T17:00:12.0444382Z   clean: true
+Type Check Backend	Checkout	2025-11-22T17:00:12.0445277Z   sparse-checkout-cone-mode: true
+Type Check Backend	Checkout	2025-11-22T17:00:12.0446288Z   fetch-depth: 1
+Type Check Backend	Checkout	2025-11-22T17:00:12.0447159Z   fetch-tags: false
+Type Check Backend	Checkout	2025-11-22T17:00:12.0448003Z   show-progress: true
+Type Check Backend	Checkout	2025-11-22T17:00:12.0448924Z   lfs: false
+Type Check Backend	Checkout	2025-11-22T17:00:12.0449684Z   submodules: false
+Type Check Backend	Checkout	2025-11-22T17:00:12.0450684Z   set-safe-directory: true
+Type Check Backend	Checkout	2025-11-22T17:00:12.0451909Z env:
+Type Check Backend	Checkout	2025-11-22T17:00:12.0452680Z   NODE_VERSION: 20
+Type Check Backend	Checkout	2025-11-22T17:00:12.0453585Z ##[endgroup]
+Type Check Backend	Checkout	2025-11-22T17:00:12.1422654Z Syncing repository: ECONEURA-EMPRESA/ECONEURA
+Type Check Backend	Checkout	2025-11-22T17:00:12.1425651Z ##[group]Getting Git version info
+Type Check Backend	Checkout	2025-11-22T17:00:12.1427125Z Working directory is '/home/runner/work/ECONEURA/ECONEURA'
+Type Check Backend	Checkout	2025-11-22T17:00:12.1429329Z [command]/usr/bin/git version
+Type Check Backend	Checkout	2025-11-22T17:00:12.1464715Z git version 2.51.2
+Type Check Backend	Checkout	2025-11-22T17:00:12.1484476Z ##[endgroup]
+Type Check Backend	Checkout	2025-11-22T17:00:12.1497148Z Temporarily overriding HOME='/home/runner/work/_temp/81d1f1dd-5691-4243-81a7-ab9c325ecea8' before making global git config changes
+Type Check Backend	Checkout	2025-11-22T17:00:12.1500198Z Adding repository directory to the temporary git global config as a safe directory
+Type Check Backend	Checkout	2025-11-22T17:00:12.1503598Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+Type Check Backend	Checkout	2025-11-22T17:00:12.1534951Z Deleting the contents of '/home/runner/work/ECONEURA/ECONEURA'
+Type Check Backend	Checkout	2025-11-22T17:00:12.1538283Z ##[group]Initializing the repository
+Type Check Backend	Checkout	2025-11-22T17:00:12.1542536Z [command]/usr/bin/git init /home/runner/work/ECONEURA/ECONEURA
+Type Check Backend	Checkout	2025-11-22T17:00:12.1648495Z hint: Using 'master' as the name for the initial branch. This default branch name
+Type Check Backend	Checkout	2025-11-22T17:00:12.1652571Z hint: is subject to change. To configure the initial branch name to use in all
+Type Check Backend	Checkout	2025-11-22T17:00:12.1656043Z hint: of your new repositories, which will suppress this warning, call:
+Type Check Backend	Checkout	2025-11-22T17:00:12.1658312Z hint:
+Type Check Backend	Checkout	2025-11-22T17:00:12.1659549Z hint: 	git config --global init.defaultBranch <name>
+Type Check Backend	Checkout	2025-11-22T17:00:12.1661003Z hint:
+Type Check Backend	Checkout	2025-11-22T17:00:12.1662756Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Type Check Backend	Checkout	2025-11-22T17:00:12.1664537Z hint: 'development'. The just-created branch can be renamed via this command:
+Type Check Backend	Checkout	2025-11-22T17:00:12.1665992Z hint:
+Type Check Backend	Checkout	2025-11-22T17:00:12.1666790Z hint: 	git branch -m <name>
+Type Check Backend	Checkout	2025-11-22T17:00:12.1667725Z hint:
+Type Check Backend	Checkout	2025-11-22T17:00:12.1668905Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Type Check Backend	Checkout	2025-11-22T17:00:12.1671013Z Initialized empty Git repository in /home/runner/work/ECONEURA/ECONEURA/.git/
+Type Check Backend	Checkout	2025-11-22T17:00:12.1674279Z [command]/usr/bin/git remote add origin https://github.com/ECONEURA-EMPRESA/ECONEURA
+Type Check Backend	Checkout	2025-11-22T17:00:12.1696156Z ##[endgroup]
+Type Check Backend	Checkout	2025-11-22T17:00:12.1697780Z ##[group]Disabling automatic garbage collection
+Type Check Backend	Checkout	2025-11-22T17:00:12.1699434Z [command]/usr/bin/git config --local gc.auto 0
+Type Check Backend	Checkout	2025-11-22T17:00:12.1723563Z ##[endgroup]
+Type Check Backend	Checkout	2025-11-22T17:00:12.1725369Z ##[group]Setting up auth
+Type Check Backend	Checkout	2025-11-22T17:00:12.1726516Z Removing SSH command configuration
+Type Check Backend	Checkout	2025-11-22T17:00:12.1728668Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Type Check Backend	Checkout	2025-11-22T17:00:12.1756350Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Type Check Backend	Checkout	2025-11-22T17:00:12.2041679Z Removing HTTP extra header
+Type Check Backend	Checkout	2025-11-22T17:00:12.2047679Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Type Check Backend	Checkout	2025-11-22T17:00:12.2078078Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Type Check Backend	Checkout	2025-11-22T17:00:12.2250920Z Removing includeIf entries pointing to credentials config files
+Type Check Backend	Checkout	2025-11-22T17:00:12.2257157Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Type Check Backend	Checkout	2025-11-22T17:00:12.2287432Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Type Check Backend	Checkout	2025-11-22T17:00:12.2485229Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-af8a31d5-fc75-4939-9749-a0e52689b4c7.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Type Check Backend	Checkout	2025-11-22T17:00:12.2523067Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-af8a31d5-fc75-4939-9749-a0e52689b4c7.config
+Type Check Backend	Checkout	2025-11-22T17:00:12.2552386Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-af8a31d5-fc75-4939-9749-a0e52689b4c7.config
+Type Check Backend	Checkout	2025-11-22T17:00:12.2576510Z ##[endgroup]
+Type Check Backend	Checkout	2025-11-22T17:00:12.2578817Z ##[group]Fetching the repository
+Type Check Backend	Checkout	2025-11-22T17:00:12.2587073Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +03856c57d9076ebfbdeae9e376a4757e1e7dab65:refs/remotes/origin/main
+Type Check Backend	Checkout	2025-11-22T17:00:13.1159487Z From https://github.com/ECONEURA-EMPRESA/ECONEURA
+Type Check Backend	Checkout	2025-11-22T17:00:13.1161007Z  * [new ref]         03856c57d9076ebfbdeae9e376a4757e1e7dab65 -> origin/main
+Type Check Backend	Checkout	2025-11-22T17:00:13.1186366Z ##[endgroup]
+Type Check Backend	Checkout	2025-11-22T17:00:13.1187109Z ##[group]Determining the checkout info
+Type Check Backend	Checkout	2025-11-22T17:00:13.1188025Z ##[endgroup]
+Type Check Backend	Checkout	2025-11-22T17:00:13.1193177Z [command]/usr/bin/git sparse-checkout disable
+Type Check Backend	Checkout	2025-11-22T17:00:13.1233407Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Type Check Backend	Checkout	2025-11-22T17:00:13.1257511Z ##[group]Checking out the ref
+Type Check Backend	Checkout	2025-11-22T17:00:13.1374198Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Type Check Backend	Checkout	2025-11-22T17:00:13.2131254Z Switched to a new branch 'main'
+Type Check Backend	Checkout	2025-11-22T17:00:13.2132183Z branch 'main' set up to track 'origin/main'.
+Type Check Backend	Checkout	2025-11-22T17:00:13.2138199Z ##[endgroup]
+Type Check Backend	Checkout	2025-11-22T17:00:13.2172126Z [command]/usr/bin/git log -1 --format=%H
+Type Check Backend	Checkout	2025-11-22T17:00:13.2192892Z 03856c57d9076ebfbdeae9e376a4757e1e7dab65
+Type Check Backend	Setup Node	﻿2025-11-22T17:00:13.2396010Z ##[group]Run actions/setup-node@v6
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2396367Z with:
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2396592Z   node-version: 20
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2396834Z   cache: npm
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2397055Z   always-auth: false
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2397312Z   check-latest: false
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2397721Z   token: ***
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2397971Z   package-manager-cache: true
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2398246Z env:
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2398459Z   NODE_VERSION: 20
+Type Check Backend	Setup Node	2025-11-22T17:00:13.2398694Z ##[endgroup]
+Type Check Backend	Setup Node	2025-11-22T17:00:13.3808441Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+Type Check Backend	Setup Node	2025-11-22T17:00:13.3813683Z (node:2114) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Type Check Backend	Setup Node	2025-11-22T17:00:13.3814468Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Type Check Backend	Setup Node	2025-11-22T17:00:13.3816200Z ##[group]Environment details
+Type Check Backend	Setup Node	2025-11-22T17:00:13.7431887Z node: v20.19.5
+Type Check Backend	Setup Node	2025-11-22T17:00:13.7432422Z npm: 10.8.2
+Type Check Backend	Setup Node	2025-11-22T17:00:13.7432750Z yarn: 1.22.22
+Type Check Backend	Setup Node	2025-11-22T17:00:13.7433641Z ##[endgroup]
+Type Check Backend	Setup Node	2025-11-22T17:00:13.7455365Z [command]/opt/hostedtoolcache/node/20.19.5/x64/bin/npm config get cache
+Type Check Backend	Setup Node	2025-11-22T17:00:14.0038888Z /home/runner/.npm
+Type Check Backend	Setup Node	2025-11-22T17:00:14.2506777Z npm cache is not found
+Type Check Backend	Install dependencies	﻿2025-11-22T17:00:14.2606568Z ##[group]Run npm ci
+Type Check Backend	Install dependencies	2025-11-22T17:00:14.2606940Z [36;1mnpm ci[0m
+Type Check Backend	Install dependencies	2025-11-22T17:00:14.2641659Z shell: /usr/bin/bash -e {0}
+Type Check Backend	Install dependencies	2025-11-22T17:00:14.2641977Z env:
+Type Check Backend	Install dependencies	2025-11-22T17:00:14.2642196Z   NODE_VERSION: 20
+Type Check Backend	Install dependencies	2025-11-22T17:00:14.2642414Z ##[endgroup]
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7584039Z npm error code EUSAGE
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7584568Z npm error
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7585062Z npm error The `npm ci` command can only install with an existing package-lock.json or
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7585799Z npm error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7586447Z npm error later to generate a package-lock.json file, then try again.
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7586893Z npm error
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7587154Z npm error Clean install a project
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7587416Z npm error
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7587629Z npm error Usage:
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7587845Z npm error npm ci
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7588061Z npm error
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7588255Z npm error Options:
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7588668Z npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7589297Z npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7589878Z npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7590723Z npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7591186Z npm error [--no-bin-links] [--no-fund] [--dry-run]
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7591670Z npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7592253Z npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7592763Z npm error
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7593184Z npm error aliases: clean-install, ic, install-clean, isntall-clean
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7593722Z npm error
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7594067Z npm error Run "npm help ci" for more info
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7594685Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-11-22T17_00_14_321Z-debug-0.log
+Type Check Backend	Install dependencies	2025-11-22T17:00:15.7642254Z ##[error]Process completed with exit code 1.
+Type Check Backend	Post Checkout	﻿2025-11-22T17:00:15.7740444Z Post job cleanup.
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8488125Z [command]/usr/bin/git version
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8521130Z git version 2.51.2
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8554956Z Temporarily overriding HOME='/home/runner/work/_temp/f8e9142a-838b-44dc-b150-2941c2207605' before making global git config changes
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8556450Z Adding repository directory to the temporary git global config as a safe directory
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8560951Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8588742Z Removing SSH command configuration
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8595271Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8649813Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8832905Z Removing HTTP extra header
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8838480Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.8866225Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9039491Z Removing includeIf entries pointing to credentials config files
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9045756Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9066026Z includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9066898Z includeif.gitdir:/github/workspace/.git.path
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9075627Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9093070Z /home/runner/work/_temp/git-credentials-af8a31d5-fc75-4939-9749-a0e52689b4c7.config
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9102733Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-af8a31d5-fc75-4939-9749-a0e52689b4c7.config
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9129877Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9148224Z /github/runner_temp/git-credentials-af8a31d5-fc75-4939-9749-a0e52689b4c7.config
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9155743Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-af8a31d5-fc75-4939-9749-a0e52689b4c7.config
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9182729Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Type Check Backend	Post Checkout	2025-11-22T17:00:15.9354694Z Removing credentials config '/home/runner/work/_temp/git-credentials-af8a31d5-fc75-4939-9749-a0e52689b4c7.config'
+Type Check Backend	Complete job	﻿2025-11-22T17:00:15.9458262Z Cleaning up orphan processes
+Test Backend	Set up job	﻿2025-11-22T17:00:09.7560266Z Current runner version: '2.329.0'
+Test Backend	Set up job	2025-11-22T17:00:09.7585014Z ##[group]Runner Image Provisioner
+Test Backend	Set up job	2025-11-22T17:00:09.7585801Z Hosted Compute Agent
+Test Backend	Set up job	2025-11-22T17:00:09.7586368Z Version: 20251016.436
+Test Backend	Set up job	2025-11-22T17:00:09.7586928Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+Test Backend	Set up job	2025-11-22T17:00:09.7587747Z Build Date: 2025-10-15T20:44:12Z
+Test Backend	Set up job	2025-11-22T17:00:09.7588324Z ##[endgroup]
+Test Backend	Set up job	2025-11-22T17:00:09.7588921Z ##[group]Operating System
+Test Backend	Set up job	2025-11-22T17:00:09.7589515Z Ubuntu
+Test Backend	Set up job	2025-11-22T17:00:09.7589969Z 24.04.3
+Test Backend	Set up job	2025-11-22T17:00:09.7590479Z LTS
+Test Backend	Set up job	2025-11-22T17:00:09.7590927Z ##[endgroup]
+Test Backend	Set up job	2025-11-22T17:00:09.7591462Z ##[group]Runner Image
+Test Backend	Set up job	2025-11-22T17:00:09.7591964Z Image: ubuntu-24.04
+Test Backend	Set up job	2025-11-22T17:00:09.7592557Z Version: 20251112.124.1
+Test Backend	Set up job	2025-11-22T17:00:09.7593570Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+Test Backend	Set up job	2025-11-22T17:00:09.7595191Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+Test Backend	Set up job	2025-11-22T17:00:09.7596456Z ##[endgroup]
+Test Backend	Set up job	2025-11-22T17:00:09.7597590Z ##[group]GITHUB_TOKEN Permissions
+Test Backend	Set up job	2025-11-22T17:00:09.7599407Z Contents: read
+Test Backend	Set up job	2025-11-22T17:00:09.7599947Z Metadata: read
+Test Backend	Set up job	2025-11-22T17:00:09.7600547Z Packages: read
+Test Backend	Set up job	2025-11-22T17:00:09.7601102Z ##[endgroup]
+Test Backend	Set up job	2025-11-22T17:00:09.7603065Z Secret source: Actions
+Test Backend	Set up job	2025-11-22T17:00:09.7604409Z Prepare workflow directory
+Test Backend	Set up job	2025-11-22T17:00:09.7976210Z Prepare all required actions
+Test Backend	Set up job	2025-11-22T17:00:09.8013266Z Getting action download info
+Test Backend	Set up job	2025-11-22T17:00:10.0812344Z Download action repository 'actions/checkout@v6' (SHA:1af3b93b6815bc44a9784bd300feb67ff0d1eeb3)
+Test Backend	Set up job	2025-11-22T17:00:10.3879526Z Download action repository 'actions/setup-node@v6' (SHA:2028fbc5c25fe9cf00d9f06a71cc4710d4507903)
+Test Backend	Set up job	2025-11-22T17:00:10.5191275Z Download action repository 'codecov/codecov-action@v5' (SHA:5a1091511ad55cbe89839c7260b706298ca349f7)
+Test Backend	Set up job	2025-11-22T17:00:10.7772042Z Getting action download info
+Test Backend	Set up job	2025-11-22T17:00:10.8858762Z Download action repository 'actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea' (SHA:60a0d83039c74a4aee543508d2ffcb1c3799cdea)
+Test Backend	Set up job	2025-11-22T17:00:11.1692630Z Complete job name: Test Backend
+Test Backend	Checkout	﻿2025-11-22T17:00:11.2458736Z ##[group]Run actions/checkout@v6
+Test Backend	Checkout	2025-11-22T17:00:11.2460020Z with:
+Test Backend	Checkout	2025-11-22T17:00:11.2460845Z   repository: ECONEURA-EMPRESA/ECONEURA
+Test Backend	Checkout	2025-11-22T17:00:11.2462147Z   token: ***
+Test Backend	Checkout	2025-11-22T17:00:11.2462915Z   ssh-strict: true
+Test Backend	Checkout	2025-11-22T17:00:11.2464030Z   ssh-user: git
+Test Backend	Checkout	2025-11-22T17:00:11.2464905Z   persist-credentials: true
+Test Backend	Checkout	2025-11-22T17:00:11.2465806Z   clean: true
+Test Backend	Checkout	2025-11-22T17:00:11.2466618Z   sparse-checkout-cone-mode: true
+Test Backend	Checkout	2025-11-22T17:00:11.2467598Z   fetch-depth: 1
+Test Backend	Checkout	2025-11-22T17:00:11.2468385Z   fetch-tags: false
+Test Backend	Checkout	2025-11-22T17:00:11.2469196Z   show-progress: true
+Test Backend	Checkout	2025-11-22T17:00:11.2470013Z   lfs: false
+Test Backend	Checkout	2025-11-22T17:00:11.2470755Z   submodules: false
+Test Backend	Checkout	2025-11-22T17:00:11.2471572Z   set-safe-directory: true
+Test Backend	Checkout	2025-11-22T17:00:11.2472718Z env:
+Test Backend	Checkout	2025-11-22T17:00:11.2473447Z   NODE_VERSION: 20
+Test Backend	Checkout	2025-11-22T17:00:11.2474360Z ##[endgroup]
+Test Backend	Checkout	2025-11-22T17:00:11.3377966Z Syncing repository: ECONEURA-EMPRESA/ECONEURA
+Test Backend	Checkout	2025-11-22T17:00:11.3380853Z ##[group]Getting Git version info
+Test Backend	Checkout	2025-11-22T17:00:11.3382150Z Working directory is '/home/runner/work/ECONEURA/ECONEURA'
+Test Backend	Checkout	2025-11-22T17:00:11.3384416Z [command]/usr/bin/git version
+Test Backend	Checkout	2025-11-22T17:00:11.3442933Z git version 2.51.2
+Test Backend	Checkout	2025-11-22T17:00:11.3464210Z ##[endgroup]
+Test Backend	Checkout	2025-11-22T17:00:11.3478076Z Temporarily overriding HOME='/home/runner/work/_temp/f5e1f305-3dbf-4e6e-8756-4658e1145f45' before making global git config changes
+Test Backend	Checkout	2025-11-22T17:00:11.3481597Z Adding repository directory to the temporary git global config as a safe directory
+Test Backend	Checkout	2025-11-22T17:00:11.3484659Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+Test Backend	Checkout	2025-11-22T17:00:11.3518735Z Deleting the contents of '/home/runner/work/ECONEURA/ECONEURA'
+Test Backend	Checkout	2025-11-22T17:00:11.3522306Z ##[group]Initializing the repository
+Test Backend	Checkout	2025-11-22T17:00:11.3526629Z [command]/usr/bin/git init /home/runner/work/ECONEURA/ECONEURA
+Test Backend	Checkout	2025-11-22T17:00:11.3645544Z hint: Using 'master' as the name for the initial branch. This default branch name
+Test Backend	Checkout	2025-11-22T17:00:11.3647478Z hint: is subject to change. To configure the initial branch name to use in all
+Test Backend	Checkout	2025-11-22T17:00:11.3649854Z hint: of your new repositories, which will suppress this warning, call:
+Test Backend	Checkout	2025-11-22T17:00:11.3651777Z hint:
+Test Backend	Checkout	2025-11-22T17:00:11.3652717Z hint: 	git config --global init.defaultBranch <name>
+Test Backend	Checkout	2025-11-22T17:00:11.3654172Z hint:
+Test Backend	Checkout	2025-11-22T17:00:11.3655286Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Test Backend	Checkout	2025-11-22T17:00:11.3657048Z hint: 'development'. The just-created branch can be renamed via this command:
+Test Backend	Checkout	2025-11-22T17:00:11.3658835Z hint:
+Test Backend	Checkout	2025-11-22T17:00:11.3659816Z hint: 	git branch -m <name>
+Test Backend	Checkout	2025-11-22T17:00:11.3660676Z hint:
+Test Backend	Checkout	2025-11-22T17:00:11.3661832Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Test Backend	Checkout	2025-11-22T17:00:11.3663933Z Initialized empty Git repository in /home/runner/work/ECONEURA/ECONEURA/.git/
+Test Backend	Checkout	2025-11-22T17:00:11.3666999Z [command]/usr/bin/git remote add origin https://github.com/ECONEURA-EMPRESA/ECONEURA
+Test Backend	Checkout	2025-11-22T17:00:11.3698633Z ##[endgroup]
+Test Backend	Checkout	2025-11-22T17:00:11.3700072Z ##[group]Disabling automatic garbage collection
+Test Backend	Checkout	2025-11-22T17:00:11.3701298Z [command]/usr/bin/git config --local gc.auto 0
+Test Backend	Checkout	2025-11-22T17:00:11.3727022Z ##[endgroup]
+Test Backend	Checkout	2025-11-22T17:00:11.3728511Z ##[group]Setting up auth
+Test Backend	Checkout	2025-11-22T17:00:11.3729766Z Removing SSH command configuration
+Test Backend	Checkout	2025-11-22T17:00:11.3734066Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test Backend	Checkout	2025-11-22T17:00:11.3767387Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test Backend	Checkout	2025-11-22T17:00:11.4101563Z Removing HTTP extra header
+Test Backend	Checkout	2025-11-22T17:00:11.4107678Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test Backend	Checkout	2025-11-22T17:00:11.4140123Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test Backend	Checkout	2025-11-22T17:00:11.4350670Z Removing includeIf entries pointing to credentials config files
+Test Backend	Checkout	2025-11-22T17:00:11.4357085Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test Backend	Checkout	2025-11-22T17:00:11.4390641Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test Backend	Checkout	2025-11-22T17:00:11.4614284Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-58f1f04f-6b00-4915-9693-783e6ee0a624.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Test Backend	Checkout	2025-11-22T17:00:11.4649290Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-58f1f04f-6b00-4915-9693-783e6ee0a624.config
+Test Backend	Checkout	2025-11-22T17:00:11.4682063Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-58f1f04f-6b00-4915-9693-783e6ee0a624.config
+Test Backend	Checkout	2025-11-22T17:00:11.4707154Z ##[endgroup]
+Test Backend	Checkout	2025-11-22T17:00:11.4709557Z ##[group]Fetching the repository
+Test Backend	Checkout	2025-11-22T17:00:11.4718169Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +03856c57d9076ebfbdeae9e376a4757e1e7dab65:refs/remotes/origin/main
+Test Backend	Checkout	2025-11-22T17:00:11.8007075Z From https://github.com/ECONEURA-EMPRESA/ECONEURA
+Test Backend	Checkout	2025-11-22T17:00:11.8011694Z  * [new ref]         03856c57d9076ebfbdeae9e376a4757e1e7dab65 -> origin/main
+Test Backend	Checkout	2025-11-22T17:00:11.8047390Z ##[endgroup]
+Test Backend	Checkout	2025-11-22T17:00:11.8049711Z ##[group]Determining the checkout info
+Test Backend	Checkout	2025-11-22T17:00:11.8052412Z ##[endgroup]
+Test Backend	Checkout	2025-11-22T17:00:11.8054164Z [command]/usr/bin/git sparse-checkout disable
+Test Backend	Checkout	2025-11-22T17:00:11.8098999Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Test Backend	Checkout	2025-11-22T17:00:11.8132591Z ##[group]Checking out the ref
+Test Backend	Checkout	2025-11-22T17:00:11.8136197Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Test Backend	Checkout	2025-11-22T17:00:11.9072828Z Switched to a new branch 'main'
+Test Backend	Checkout	2025-11-22T17:00:11.9075790Z branch 'main' set up to track 'origin/main'.
+Test Backend	Checkout	2025-11-22T17:00:11.9085085Z ##[endgroup]
+Test Backend	Checkout	2025-11-22T17:00:11.9122831Z [command]/usr/bin/git log -1 --format=%H
+Test Backend	Checkout	2025-11-22T17:00:11.9146694Z 03856c57d9076ebfbdeae9e376a4757e1e7dab65
+Test Backend	Setup Node	﻿2025-11-22T17:00:11.9481671Z ##[group]Run actions/setup-node@v6
+Test Backend	Setup Node	2025-11-22T17:00:11.9482661Z with:
+Test Backend	Setup Node	2025-11-22T17:00:11.9483365Z   node-version: 20
+Test Backend	Setup Node	2025-11-22T17:00:11.9484270Z   cache: npm
+Test Backend	Setup Node	2025-11-22T17:00:11.9485001Z   always-auth: false
+Test Backend	Setup Node	2025-11-22T17:00:11.9485784Z   check-latest: false
+Test Backend	Setup Node	2025-11-22T17:00:11.9486826Z   token: ***
+Test Backend	Setup Node	2025-11-22T17:00:11.9487589Z   package-manager-cache: true
+Test Backend	Setup Node	2025-11-22T17:00:11.9488462Z env:
+Test Backend	Setup Node	2025-11-22T17:00:11.9489126Z   NODE_VERSION: 20
+Test Backend	Setup Node	2025-11-22T17:00:11.9489881Z ##[endgroup]
+Test Backend	Setup Node	2025-11-22T17:00:12.0906970Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+Test Backend	Setup Node	2025-11-22T17:00:12.0912914Z (node:2098) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Test Backend	Setup Node	2025-11-22T17:00:12.0917287Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Test Backend	Setup Node	2025-11-22T17:00:12.0920701Z ##[group]Environment details
+Test Backend	Setup Node	2025-11-22T17:00:12.4445767Z node: v20.19.5
+Test Backend	Setup Node	2025-11-22T17:00:12.4447247Z npm: 10.8.2
+Test Backend	Setup Node	2025-11-22T17:00:12.4448437Z yarn: 1.22.22
+Test Backend	Setup Node	2025-11-22T17:00:12.4451047Z ##[endgroup]
+Test Backend	Setup Node	2025-11-22T17:00:12.4469371Z [command]/opt/hostedtoolcache/node/20.19.5/x64/bin/npm config get cache
+Test Backend	Setup Node	2025-11-22T17:00:12.5667423Z /home/runner/.npm
+Test Backend	Setup Node	2025-11-22T17:00:12.6754669Z npm cache is not found
+Test Backend	Install dependencies	﻿2025-11-22T17:00:12.6900830Z ##[group]Run npm ci
+Test Backend	Install dependencies	2025-11-22T17:00:12.6901683Z [36;1mnpm ci[0m
+Test Backend	Install dependencies	2025-11-22T17:00:12.6948416Z shell: /usr/bin/bash -e {0}
+Test Backend	Install dependencies	2025-11-22T17:00:12.6949301Z env:
+Test Backend	Install dependencies	2025-11-22T17:00:12.6949981Z   NODE_VERSION: 20
+Test Backend	Install dependencies	2025-11-22T17:00:12.6950735Z ##[endgroup]
+Test Backend	Install dependencies	2025-11-22T17:00:13.3017552Z npm error code EUSAGE
+Test Backend	Install dependencies	2025-11-22T17:00:13.3018110Z npm error
+Test Backend	Install dependencies	2025-11-22T17:00:13.3018664Z npm error The `npm ci` command can only install with an existing package-lock.json or
+Test Backend	Install dependencies	2025-11-22T17:00:13.3019386Z npm error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+Test Backend	Install dependencies	2025-11-22T17:00:13.3020034Z npm error later to generate a package-lock.json file, then try again.
+Test Backend	Install dependencies	2025-11-22T17:00:13.3020449Z npm error
+Test Backend	Install dependencies	2025-11-22T17:00:13.3020743Z npm error Clean install a project
+Test Backend	Install dependencies	2025-11-22T17:00:13.3021045Z npm error
+Test Backend	Install dependencies	2025-11-22T17:00:13.3021270Z npm error Usage:
+Test Backend	Install dependencies	2025-11-22T17:00:13.3021512Z npm error npm ci
+Test Backend	Install dependencies	2025-11-22T17:00:13.3021740Z npm error
+Test Backend	Install dependencies	2025-11-22T17:00:13.3021977Z npm error Options:
+Test Backend	Install dependencies	2025-11-22T17:00:13.3022476Z npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+Test Backend	Install dependencies	2025-11-22T17:00:13.3023229Z npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+Test Backend	Install dependencies	2025-11-22T17:00:13.3024194Z npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+Test Backend	Install dependencies	2025-11-22T17:00:13.3024926Z npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+Test Backend	Install dependencies	2025-11-22T17:00:13.3025462Z npm error [--no-bin-links] [--no-fund] [--dry-run]
+Test Backend	Install dependencies	2025-11-22T17:00:13.3026036Z npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+Test Backend	Install dependencies	2025-11-22T17:00:13.3026670Z npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+Test Backend	Install dependencies	2025-11-22T17:00:13.3027066Z npm error
+Test Backend	Install dependencies	2025-11-22T17:00:13.3027494Z npm error aliases: clean-install, ic, install-clean, isntall-clean
+Test Backend	Install dependencies	2025-11-22T17:00:13.3027891Z npm error
+Test Backend	Install dependencies	2025-11-22T17:00:13.3028197Z npm error Run "npm help ci" for more info
+Test Backend	Install dependencies	2025-11-22T17:00:13.3028911Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-11-22T17_00_12_760Z-debug-0.log
+Test Backend	Install dependencies	2025-11-22T17:00:13.3092224Z ##[error]Process completed with exit code 1.
+Test Backend	Post Checkout	﻿2025-11-22T17:00:13.3209599Z Post job cleanup.
+Test Backend	Post Checkout	2025-11-22T17:00:13.3974409Z [command]/usr/bin/git version
+Test Backend	Post Checkout	2025-11-22T17:00:13.4009041Z git version 2.51.2
+Test Backend	Post Checkout	2025-11-22T17:00:13.4079658Z Temporarily overriding HOME='/home/runner/work/_temp/eb978fba-5781-4f64-8fd2-77819799cfda' before making global git config changes
+Test Backend	Post Checkout	2025-11-22T17:00:13.4081409Z Adding repository directory to the temporary git global config as a safe directory
+Test Backend	Post Checkout	2025-11-22T17:00:13.4085630Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+Test Backend	Post Checkout	2025-11-22T17:00:13.4114328Z Removing SSH command configuration
+Test Backend	Post Checkout	2025-11-22T17:00:13.4120801Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test Backend	Post Checkout	2025-11-22T17:00:13.4154071Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test Backend	Post Checkout	2025-11-22T17:00:13.4375768Z Removing HTTP extra header
+Test Backend	Post Checkout	2025-11-22T17:00:13.4380832Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test Backend	Post Checkout	2025-11-22T17:00:13.4412549Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test Backend	Post Checkout	2025-11-22T17:00:13.4625346Z Removing includeIf entries pointing to credentials config files
+Test Backend	Post Checkout	2025-11-22T17:00:13.4631165Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test Backend	Post Checkout	2025-11-22T17:00:13.4652328Z includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+Test Backend	Post Checkout	2025-11-22T17:00:13.4653245Z includeif.gitdir:/github/workspace/.git.path
+Test Backend	Post Checkout	2025-11-22T17:00:13.4663426Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+Test Backend	Post Checkout	2025-11-22T17:00:13.4683538Z /home/runner/work/_temp/git-credentials-58f1f04f-6b00-4915-9693-783e6ee0a624.config
+Test Backend	Post Checkout	2025-11-22T17:00:13.4694468Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-58f1f04f-6b00-4915-9693-783e6ee0a624.config
+Test Backend	Post Checkout	2025-11-22T17:00:13.4726139Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Test Backend	Post Checkout	2025-11-22T17:00:13.4747419Z /github/runner_temp/git-credentials-58f1f04f-6b00-4915-9693-783e6ee0a624.config
+Test Backend	Post Checkout	2025-11-22T17:00:13.4756129Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-58f1f04f-6b00-4915-9693-783e6ee0a624.config
+Test Backend	Post Checkout	2025-11-22T17:00:13.4786210Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test Backend	Post Checkout	2025-11-22T17:00:13.5001900Z Removing credentials config '/home/runner/work/_temp/git-credentials-58f1f04f-6b00-4915-9693-783e6ee0a624.config'
+Test Backend	Complete job	﻿2025-11-22T17:00:13.5138307Z Cleaning up orphan processes
+Security Scan	Set up job	﻿2025-11-22T17:00:10.3375750Z Current runner version: '2.329.0'
+Security Scan	Set up job	2025-11-22T17:00:10.3399639Z ##[group]Runner Image Provisioner
+Security Scan	Set up job	2025-11-22T17:00:10.3400752Z Hosted Compute Agent
+Security Scan	Set up job	2025-11-22T17:00:10.3401395Z Version: 20251016.436
+Security Scan	Set up job	2025-11-22T17:00:10.3402020Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+Security Scan	Set up job	2025-11-22T17:00:10.3402673Z Build Date: 2025-10-15T20:44:12Z
+Security Scan	Set up job	2025-11-22T17:00:10.3403298Z ##[endgroup]
+Security Scan	Set up job	2025-11-22T17:00:10.3403837Z ##[group]Operating System
+Security Scan	Set up job	2025-11-22T17:00:10.3404392Z Ubuntu
+Security Scan	Set up job	2025-11-22T17:00:10.3404825Z 24.04.3
+Security Scan	Set up job	2025-11-22T17:00:10.3405367Z LTS
+Security Scan	Set up job	2025-11-22T17:00:10.3405791Z ##[endgroup]
+Security Scan	Set up job	2025-11-22T17:00:10.3406262Z ##[group]Runner Image
+Security Scan	Set up job	2025-11-22T17:00:10.3406895Z Image: ubuntu-24.04
+Security Scan	Set up job	2025-11-22T17:00:10.3407359Z Version: 20251112.124.1
+Security Scan	Set up job	2025-11-22T17:00:10.3408362Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+Security Scan	Set up job	2025-11-22T17:00:10.3409768Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+Security Scan	Set up job	2025-11-22T17:00:10.3411018Z ##[endgroup]
+Security Scan	Set up job	2025-11-22T17:00:10.3412166Z ##[group]GITHUB_TOKEN Permissions
+Security Scan	Set up job	2025-11-22T17:00:10.3413962Z Contents: read
+Security Scan	Set up job	2025-11-22T17:00:10.3414617Z Metadata: read
+Security Scan	Set up job	2025-11-22T17:00:10.3415083Z Packages: read
+Security Scan	Set up job	2025-11-22T17:00:10.3415570Z ##[endgroup]
+Security Scan	Set up job	2025-11-22T17:00:10.3417971Z Secret source: Actions
+Security Scan	Set up job	2025-11-22T17:00:10.3418717Z Prepare workflow directory
+Security Scan	Set up job	2025-11-22T17:00:10.3824871Z Prepare all required actions
+Security Scan	Set up job	2025-11-22T17:00:10.3881941Z Getting action download info
+Security Scan	Set up job	2025-11-22T17:00:10.8446996Z Download action repository 'actions/checkout@v6' (SHA:1af3b93b6815bc44a9784bd300feb67ff0d1eeb3)
+Security Scan	Set up job	2025-11-22T17:00:11.7469619Z Download action repository 'snyk/actions@master' (SHA:9adf32b1121593767fc3c057af55b55db032dc04)
+Security Scan	Set up job	2025-11-22T17:00:12.6608007Z Complete job name: Security Scan
+Security Scan	Pull snyk/snyk:node	﻿2025-11-22T17:00:12.7097015Z ##[group]Pull down action image 'snyk/snyk:node'
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:12.7152039Z ##[command]/usr/bin/docker pull snyk/snyk:node
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:13.8499237Z node: Pulling from snyk/snyk
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0667347Z 708274aafe49: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0668070Z 8cdff261ed5c: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0668495Z 078b2eece9b2: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0668854Z a1208d53eb06: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0669203Z 78c780840163: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0669556Z 435cbc1d6a03: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0669903Z 29dd662fc17f: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0670517Z 73d86704c819: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0670903Z 5a628ceaf18b: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0671292Z 14ead582146d: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0671697Z 1e8c28825fc2: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0672080Z 4f4fb700ef54: Pulling fs layer
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0672450Z a1208d53eb06: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0672764Z 78c780840163: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0673157Z 435cbc1d6a03: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0673479Z 29dd662fc17f: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0673775Z 73d86704c819: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0674093Z 5a628ceaf18b: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0674411Z 14ead582146d: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0674710Z 1e8c28825fc2: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.0675034Z 4f4fb700ef54: Waiting
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.5810955Z 8cdff261ed5c: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:14.5811488Z 8cdff261ed5c: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:15.2853138Z 708274aafe49: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:15.2853800Z 708274aafe49: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:15.5749628Z 78c780840163: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:15.5751234Z 78c780840163: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:15.5997933Z 078b2eece9b2: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:15.5998516Z 078b2eece9b2: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.2330594Z 29dd662fc17f: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.5058708Z 73d86704c819: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.5062072Z 73d86704c819: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.5385027Z 435cbc1d6a03: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.5386952Z 435cbc1d6a03: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.7964187Z 5a628ceaf18b: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.7967634Z 5a628ceaf18b: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.8277490Z 14ead582146d: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:16.8278030Z 14ead582146d: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:17.0826166Z a1208d53eb06: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:17.0826694Z a1208d53eb06: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:17.1285430Z 708274aafe49: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:17.1797322Z 4f4fb700ef54: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:17.1798195Z 4f4fb700ef54: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:17.5635539Z 1e8c28825fc2: Verifying Checksum
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:17.5636118Z 1e8c28825fc2: Download complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:18.9747119Z 8cdff261ed5c: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:21.2975962Z 078b2eece9b2: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:27.6985199Z a1208d53eb06: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:27.7127677Z 78c780840163: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:29.9459037Z 435cbc1d6a03: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:29.9814817Z 29dd662fc17f: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:29.9922808Z 73d86704c819: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:30.0019306Z 5a628ceaf18b: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:30.0116173Z 14ead582146d: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:30.6829360Z 1e8c28825fc2: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:30.6921429Z 4f4fb700ef54: Pull complete
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:30.6965451Z Digest: sha256:72686d855a0025816ded35f6afda27fa444af305ef899920e10dfb9c7e589cb2
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:30.6978796Z Status: Downloaded newer image for snyk/snyk:node
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:30.6993103Z docker.io/snyk/snyk:node
+Security Scan	Pull snyk/snyk:node	2025-11-22T17:00:30.7015669Z ##[endgroup]
+Security Scan	Checkout	﻿2025-11-22T17:00:30.7257099Z ##[group]Run actions/checkout@v6
+Security Scan	Checkout	2025-11-22T17:00:30.7257631Z with:
+Security Scan	Checkout	2025-11-22T17:00:30.7257825Z   repository: ECONEURA-EMPRESA/ECONEURA
+Security Scan	Checkout	2025-11-22T17:00:30.7258217Z   token: ***
+Security Scan	Checkout	2025-11-22T17:00:30.7258389Z   ssh-strict: true
+Security Scan	Checkout	2025-11-22T17:00:30.7258571Z   ssh-user: git
+Security Scan	Checkout	2025-11-22T17:00:30.7258754Z   persist-credentials: true
+Security Scan	Checkout	2025-11-22T17:00:30.7258967Z   clean: true
+Security Scan	Checkout	2025-11-22T17:00:30.7259157Z   sparse-checkout-cone-mode: true
+Security Scan	Checkout	2025-11-22T17:00:30.7259382Z   fetch-depth: 1
+Security Scan	Checkout	2025-11-22T17:00:30.7259557Z   fetch-tags: false
+Security Scan	Checkout	2025-11-22T17:00:30.7259748Z   show-progress: true
+Security Scan	Checkout	2025-11-22T17:00:30.7259928Z   lfs: false
+Security Scan	Checkout	2025-11-22T17:00:30.7260083Z   submodules: false
+Security Scan	Checkout	2025-11-22T17:00:30.7260442Z   set-safe-directory: true
+Security Scan	Checkout	2025-11-22T17:00:30.7260877Z env:
+Security Scan	Checkout	2025-11-22T17:00:30.7261046Z   NODE_VERSION: 20
+Security Scan	Checkout	2025-11-22T17:00:30.7261219Z ##[endgroup]
+Security Scan	Checkout	2025-11-22T17:00:30.8164741Z Syncing repository: ECONEURA-EMPRESA/ECONEURA
+Security Scan	Checkout	2025-11-22T17:00:30.8165992Z ##[group]Getting Git version info
+Security Scan	Checkout	2025-11-22T17:00:30.8166364Z Working directory is '/home/runner/work/ECONEURA/ECONEURA'
+Security Scan	Checkout	2025-11-22T17:00:30.8166942Z [command]/usr/bin/git version
+Security Scan	Checkout	2025-11-22T17:00:30.8240727Z git version 2.51.2
+Security Scan	Checkout	2025-11-22T17:00:30.8262126Z ##[endgroup]
+Security Scan	Checkout	2025-11-22T17:00:30.8276729Z Temporarily overriding HOME='/home/runner/work/_temp/8f848835-da98-46b5-a3eb-799372aa63cb' before making global git config changes
+Security Scan	Checkout	2025-11-22T17:00:30.8277592Z Adding repository directory to the temporary git global config as a safe directory
+Security Scan	Checkout	2025-11-22T17:00:30.8281972Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+Security Scan	Checkout	2025-11-22T17:00:30.8320577Z Deleting the contents of '/home/runner/work/ECONEURA/ECONEURA'
+Security Scan	Checkout	2025-11-22T17:00:30.8323884Z ##[group]Initializing the repository
+Security Scan	Checkout	2025-11-22T17:00:30.8328298Z [command]/usr/bin/git init /home/runner/work/ECONEURA/ECONEURA
+Security Scan	Checkout	2025-11-22T17:00:30.8439683Z hint: Using 'master' as the name for the initial branch. This default branch name
+Security Scan	Checkout	2025-11-22T17:00:30.8440685Z hint: is subject to change. To configure the initial branch name to use in all
+Security Scan	Checkout	2025-11-22T17:00:30.8441362Z hint: of your new repositories, which will suppress this warning, call:
+Security Scan	Checkout	2025-11-22T17:00:30.8441708Z hint:
+Security Scan	Checkout	2025-11-22T17:00:30.8441995Z hint: 	git config --global init.defaultBranch <name>
+Security Scan	Checkout	2025-11-22T17:00:30.8442316Z hint:
+Security Scan	Checkout	2025-11-22T17:00:30.8442772Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Security Scan	Checkout	2025-11-22T17:00:30.8443602Z hint: 'development'. The just-created branch can be renamed via this command:
+Security Scan	Checkout	2025-11-22T17:00:30.8444496Z hint:
+Security Scan	Checkout	2025-11-22T17:00:30.8444829Z hint: 	git branch -m <name>
+Security Scan	Checkout	2025-11-22T17:00:30.8445171Z hint:
+Security Scan	Checkout	2025-11-22T17:00:30.8445669Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Security Scan	Checkout	2025-11-22T17:00:30.8446546Z Initialized empty Git repository in /home/runner/work/ECONEURA/ECONEURA/.git/
+Security Scan	Checkout	2025-11-22T17:00:30.8456589Z [command]/usr/bin/git remote add origin https://github.com/ECONEURA-EMPRESA/ECONEURA
+Security Scan	Checkout	2025-11-22T17:00:30.8489859Z ##[endgroup]
+Security Scan	Checkout	2025-11-22T17:00:30.8490502Z ##[group]Disabling automatic garbage collection
+Security Scan	Checkout	2025-11-22T17:00:30.8493812Z [command]/usr/bin/git config --local gc.auto 0
+Security Scan	Checkout	2025-11-22T17:00:30.8521180Z ##[endgroup]
+Security Scan	Checkout	2025-11-22T17:00:30.8521538Z ##[group]Setting up auth
+Security Scan	Checkout	2025-11-22T17:00:30.8522814Z Removing SSH command configuration
+Security Scan	Checkout	2025-11-22T17:00:30.8528093Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Security Scan	Checkout	2025-11-22T17:00:30.8557756Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Security Scan	Checkout	2025-11-22T17:00:30.8909601Z Removing HTTP extra header
+Security Scan	Checkout	2025-11-22T17:00:30.8914550Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Security Scan	Checkout	2025-11-22T17:00:30.8942824Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Security Scan	Checkout	2025-11-22T17:00:30.9151157Z Removing includeIf entries pointing to credentials config files
+Security Scan	Checkout	2025-11-22T17:00:30.9156757Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Security Scan	Checkout	2025-11-22T17:00:30.9186149Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Security Scan	Checkout	2025-11-22T17:00:30.9405395Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-7c9ac172-0667-4b49-acbc-09c7490236e4.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Security Scan	Checkout	2025-11-22T17:00:30.9440456Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-7c9ac172-0667-4b49-acbc-09c7490236e4.config
+Security Scan	Checkout	2025-11-22T17:00:30.9469276Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-7c9ac172-0667-4b49-acbc-09c7490236e4.config
+Security Scan	Checkout	2025-11-22T17:00:30.9494298Z ##[endgroup]
+Security Scan	Checkout	2025-11-22T17:00:30.9494671Z ##[group]Fetching the repository
+Security Scan	Checkout	2025-11-22T17:00:30.9502915Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +03856c57d9076ebfbdeae9e376a4757e1e7dab65:refs/remotes/origin/main
+Security Scan	Checkout	2025-11-22T17:00:31.9312912Z From https://github.com/ECONEURA-EMPRESA/ECONEURA
+Security Scan	Checkout	2025-11-22T17:00:31.9313665Z  * [new ref]         03856c57d9076ebfbdeae9e376a4757e1e7dab65 -> origin/main
+Security Scan	Checkout	2025-11-22T17:00:31.9344434Z ##[endgroup]
+Security Scan	Checkout	2025-11-22T17:00:31.9345061Z ##[group]Determining the checkout info
+Security Scan	Checkout	2025-11-22T17:00:31.9347757Z ##[endgroup]
+Security Scan	Checkout	2025-11-22T17:00:31.9353350Z [command]/usr/bin/git sparse-checkout disable
+Security Scan	Checkout	2025-11-22T17:00:31.9395951Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Security Scan	Checkout	2025-11-22T17:00:31.9422160Z ##[group]Checking out the ref
+Security Scan	Checkout	2025-11-22T17:00:31.9425846Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Security Scan	Checkout	2025-11-22T17:00:32.0382962Z Switched to a new branch 'main'
+Security Scan	Checkout	2025-11-22T17:00:32.0384167Z branch 'main' set up to track 'origin/main'.
+Security Scan	Checkout	2025-11-22T17:00:32.0395570Z ##[endgroup]
+Security Scan	Checkout	2025-11-22T17:00:32.0433346Z [command]/usr/bin/git log -1 --format=%H
+Security Scan	Checkout	2025-11-22T17:00:32.0455799Z 03856c57d9076ebfbdeae9e376a4757e1e7dab65
+Security Scan	Run npm audit	﻿2025-11-22T17:00:32.0618254Z ##[group]Run cd packages/backend
+Security Scan	Run npm audit	2025-11-22T17:00:32.0618584Z [36;1mcd packages/backend[0m
+Security Scan	Run npm audit	2025-11-22T17:00:32.0618845Z [36;1mnpm audit --audit-level=moderate[0m
+Security Scan	Run npm audit	2025-11-22T17:00:32.0653133Z shell: /usr/bin/bash -e {0}
+Security Scan	Run npm audit	2025-11-22T17:00:32.0653569Z env:
+Security Scan	Run npm audit	2025-11-22T17:00:32.0653734Z   NODE_VERSION: 20
+Security Scan	Run npm audit	2025-11-22T17:00:32.0653905Z ##[endgroup]
+Security Scan	Run npm audit	2025-11-22T17:00:35.4724601Z npm error code ENOLOCK
+Security Scan	Run npm audit	2025-11-22T17:00:35.4726215Z npm error audit This command requires an existing lockfile.
+Security Scan	Run npm audit	2025-11-22T17:00:35.4727453Z npm error audit Try creating one first with: npm i --package-lock-only
+Security Scan	Run npm audit	2025-11-22T17:00:35.4728533Z npm error audit Original error: loadVirtual requires existing shrinkwrap file
+Security Scan	Run npm audit	2025-11-22T17:00:35.4745806Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-11-22T17_00_33_904Z-debug-0.log
+Security Scan	Run npm audit	2025-11-22T17:00:35.4818260Z ##[error]Process completed with exit code 1.
+Security Scan	Post Checkout	﻿2025-11-22T17:00:35.4915751Z Post job cleanup.
+Security Scan	Post Checkout	2025-11-22T17:00:35.5671215Z [command]/usr/bin/git version
+Security Scan	Post Checkout	2025-11-22T17:00:35.5707306Z git version 2.51.2
+Security Scan	Post Checkout	2025-11-22T17:00:35.5745626Z Temporarily overriding HOME='/home/runner/work/_temp/df1bc810-c6e3-42d4-9a4c-a872fbe60902' before making global git config changes
+Security Scan	Post Checkout	2025-11-22T17:00:35.5746967Z Adding repository directory to the temporary git global config as a safe directory
+Security Scan	Post Checkout	2025-11-22T17:00:35.5751747Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+Security Scan	Post Checkout	2025-11-22T17:00:35.5781273Z Removing SSH command configuration
+Security Scan	Post Checkout	2025-11-22T17:00:35.5787914Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Security Scan	Post Checkout	2025-11-22T17:00:35.5845106Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Security Scan	Post Checkout	2025-11-22T17:00:35.6068470Z Removing HTTP extra header
+Security Scan	Post Checkout	2025-11-22T17:00:35.6073534Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Security Scan	Post Checkout	2025-11-22T17:00:35.6104482Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Security Scan	Post Checkout	2025-11-22T17:00:35.6316784Z Removing includeIf entries pointing to credentials config files
+Security Scan	Post Checkout	2025-11-22T17:00:35.6323465Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Security Scan	Post Checkout	2025-11-22T17:00:35.6344970Z includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+Security Scan	Post Checkout	2025-11-22T17:00:35.6345611Z includeif.gitdir:/github/workspace/.git.path
+Security Scan	Post Checkout	2025-11-22T17:00:35.6354738Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+Security Scan	Post Checkout	2025-11-22T17:00:35.6374854Z /home/runner/work/_temp/git-credentials-7c9ac172-0667-4b49-acbc-09c7490236e4.config
+Security Scan	Post Checkout	2025-11-22T17:00:35.6385943Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-7c9ac172-0667-4b49-acbc-09c7490236e4.config
+Security Scan	Post Checkout	2025-11-22T17:00:35.6417523Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Security Scan	Post Checkout	2025-11-22T17:00:35.6438769Z /github/runner_temp/git-credentials-7c9ac172-0667-4b49-acbc-09c7490236e4.config
+Security Scan	Post Checkout	2025-11-22T17:00:35.6448209Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-7c9ac172-0667-4b49-acbc-09c7490236e4.config
+Security Scan	Post Checkout	2025-11-22T17:00:35.6479162Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Security Scan	Post Checkout	2025-11-22T17:00:35.6691169Z Removing credentials config '/home/runner/work/_temp/git-credentials-7c9ac172-0667-4b49-acbc-09c7490236e4.config'
+Security Scan	Complete job	﻿2025-11-22T17:00:35.6808272Z Cleaning up orphan processes
