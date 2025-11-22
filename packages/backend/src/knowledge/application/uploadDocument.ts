@@ -32,7 +32,7 @@ export async function uploadDocument(
   // 1. Subir archivo a storage
   const storagePath = `documents/${userId}/${Date.now()}-${file.originalName}`;
   try {
-    const uploadResult = await deps.storageService.uploadBuffer(
+    await deps.storageService.uploadBuffer(
       file.buffer,
       storagePath,
       file.mimeType
@@ -69,4 +69,3 @@ export async function uploadDocument(
   const saveResult = await deps.documentStore.save(document);
   return saveResult;
 }
-

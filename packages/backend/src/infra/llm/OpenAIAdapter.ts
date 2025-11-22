@@ -50,8 +50,8 @@ export class OpenAIAdapter implements LLMClient {
         role: 'system' | 'user' | 'assistant';
         content: string | Array<{ type: string; text?: string; image_url?: { url: string } }>;
       }> = [
-        { role: 'system', content: params.systemPrompt }
-      ];
+          { role: 'system', content: params.systemPrompt }
+        ];
 
       // ✅ CRÍTICO: Agregar historial de conversación antes del mensaje actual
       if (params.conversationHistory && params.conversationHistory.length > 0) {
@@ -72,34 +72,34 @@ export class OpenAIAdapter implements LLMClient {
       // ✅ SOLUCIÓN COMPLETA: Soporte para imágenes, archivos y audio
       if (params.image) {
         // Limpiar el prefijo data:image si existe
-        const imageBase64 = params.image.includes(',') 
-          ? params.image.split(',')[1] 
+        const imageBase64 = params.image.includes(',')
+          ? params.image.split(',')[1]
           : params.image;
-        
+
         // Detectar tipo de imagen automáticamente
         let imageMimeType = 'image/jpeg'; // Por defecto
         if (params.image.startsWith('data:image/png')) imageMimeType = 'image/png';
         else if (params.image.startsWith('data:image/gif')) imageMimeType = 'image/gif';
         else if (params.image.startsWith('data:image/webp')) imageMimeType = 'image/webp';
-        
+
         messages.push({
           role: 'user',
           content: [
             { type: 'text', text: params.userInput || 'Analiza esta imagen y proporciona información detallada.' },
-            { 
-              type: 'image_url', 
-              image_url: { 
-                url: `data:${imageMimeType};base64,${imageBase64}` 
-              } 
+            {
+              type: 'image_url',
+              image_url: {
+                url: `data:${imageMimeType};base64,${imageBase64}`
+              }
             }
           ]
         });
       } else if (params.file) {
         // ✅ Soporte para archivos: extraer texto y enviarlo al LLM
         // El texto ya debería estar extraído en invokeRoutes.ts, pero por si acaso:
-        messages.push({ 
-          role: 'user', 
-          content: params.userInput || 'Analiza este archivo y proporciona información detallada.' 
+        messages.push({
+          role: 'user',
+          content: params.userInput || 'Analiza este archivo y proporciona información detallada.'
         });
       } else {
         messages.push({ role: 'user', content: params.userInput });
@@ -109,10 +109,10 @@ export class OpenAIAdapter implements LLMClient {
       const optimizedMaxTokens = Math.min(params.maxTokens, 4096); // Hasta 4K tokens para respuestas completas
 
       const startTime = Date.now();
-      
+
       // ✅ SOLUCIÓN COMPLETA: Seleccionar el mejor modelo según el tipo de contenido
       let finalModel = params.model;
-      
+
       if (params.image) {
         // Para imágenes, usar modelo con visión disponible en Mammouth.ai
         if (params.model.includes('mistral')) {
@@ -138,12 +138,12 @@ export class OpenAIAdapter implements LLMClient {
         };
         finalModel = mamouthModelMap[params.model] || 'mistral-medium';
       }
-      
+
       const response = await client.chat.completions.create({
         model: finalModel, // Usar modelo correcto según contexto
         temperature: params.temperature,
         max_tokens: optimizedMaxTokens,
-        messages: messages as any, // OpenAI SDK types
+        messages: messages as OpenAI.Chat.ChatCompletionMessageParam[], // OpenAI SDK types
         stream: false
       });
 

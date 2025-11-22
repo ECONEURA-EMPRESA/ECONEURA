@@ -525,3 +525,4 @@ Convertir ECONEURA en el **estándar mundial** de automatización empresarial. E
 **Solo cuando TODOS los checks estén ✅, procede con el desarrollo.**
 
 **¡El futuro empresarial está en tus manos! 🚀**
+

@@ -39,7 +39,7 @@ resource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: serverName
   location: location
   sku: {
-    name: 'Standard_B1ms'
+    name: 'Standard_B2s'
     tier: 'Burstable'
   }
   properties: {

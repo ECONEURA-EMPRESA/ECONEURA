@@ -34,7 +34,7 @@ export function errorHandler(
   err: unknown,
   req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ): void {
   const reqWithId = req as RequestWithId;
   let statusCode = 500;

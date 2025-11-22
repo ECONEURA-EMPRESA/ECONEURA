@@ -1,0 +1,39 @@
+
+> @econeura/backend@1.0.0 lint
+> eslint .
+
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\middleware\userRateLimiter.ts
+  51:22  warning  'req' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\routes\agentsRoutes.ts
+  262:11  warning  'parsed' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\routes\healthRoutes.ts
+  102:0  error  Parsing error: Declaration or statement expected
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\automation\automationService.ts
+    5:3   warning  'getAutomationAgentById' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  260:11  warning  'result' is assigned a value but never used. Allowed unused vars must match /^_/u         @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\di\container.ts
+  1:2  error  Parsing error: Declaration or statement expected
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\observability\telemetryMiddleware.ts
+  44:2  error  Parsing error: ',' expected
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\persistence\PostgresEventStore.ts
+  18:8  error  Parsing error: Declaration or statement expected
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\persistence\postgresPool.ts
+  99:18  warning  '_e' is defined but never used  @typescript-eslint/no-unused-vars
+
+Ô£û 9 problems (4 errors, 5 warnings)
+
+npm error Lifecycle script `lint` failed with error:
+npm error code 1
+npm error path C:\Users\Usuario\ECONEURA-FULL\packages\backend
+npm error workspace @econeura/backend@1.0.0
+npm error location C:\Users\Usuario\ECONEURA-FULL\packages\backend
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c eslint .

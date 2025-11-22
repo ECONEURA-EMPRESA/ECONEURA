@@ -3,7 +3,7 @@
  * Caso de uso para ingerir un documento (extraer texto y crear chunks)
  */
 import type { Result } from '../../shared/Result';
-import type { Document, DocumentChunk } from '../domain/Document';
+import type { DocumentChunk } from '../domain/Document';
 import type { DocumentStore, DocumentChunkStore, DocumentProcessor } from '../domain/ports';
 import type { StorageService } from '../../infra/storage/StorageService';
 

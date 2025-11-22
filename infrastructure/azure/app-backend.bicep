@@ -49,7 +49,7 @@ resource plan 'Microsoft.Web/serverfarms@2023-01-01' = {
   location: location
   kind: 'linux'
   sku: {
-    name: 'B1'
+    name: 'B2'
     tier: 'Basic'
   }
   properties: {
@@ -94,6 +94,7 @@ resource app 'Microsoft.Web/sites@2023-01-01' = {
         // Azure Blob Storage para documentos RAG
         {
           name: 'AZURE_STORAGE_CONNECTION_STRING'
+          #disable-next-line no-hardcoded-env-urls
           value: !empty(storageAccountName) ? 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=<key>;EndpointSuffix=core.windows.net' : ''
         }
         {

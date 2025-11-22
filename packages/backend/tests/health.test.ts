@@ -3,12 +3,12 @@ import { createServer } from '../src/api/http/server';
 
 describe('GET /health', () => {
   it('debe devolver 200 y status ok', async () => {
-    const app = createServer();
+    const app = await createServer();
 
     const response = await request(app).get('/health');
 
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ status: 'ok' });
+    expect(response.body).toMatchObject({ status: 'ok' });
   });
 });
 

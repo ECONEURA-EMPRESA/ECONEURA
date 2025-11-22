@@ -8,7 +8,7 @@
 import { getPostgresPool } from '../../infra/persistence/postgresPool';
 import { logger } from '../../shared/logger';
 import { ok, err, type Result } from '../../shared/Result';
-import { retryDatabase } from '../../shared/utils/retry';
+
 import { mapPostgresError, isPostgresError } from '../../shared/utils/postgresErrorMapper';
 import { getCachedSalesMetrics } from '../infra/salesMetricsCache';
 

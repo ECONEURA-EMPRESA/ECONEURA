@@ -136,15 +136,15 @@ export async function sendNeuraMessage(
 
   // ✅ CRÍTICO: Obtener historial de la conversación para enviarlo al LLM
   const existingMessages = await inMemoryConversationStore.getMessages(conversationId);
-  // Obtener últimos 10 mensajes (excluyendo el que acabamos de agregar)
+  // Obtener últimos 20 mensajes (Mejora 5: Aumentar contexto)
   const historyMessages = existingMessages
-    .slice(0, -1) // Excluir el último mensaje (el que acabamos de agregar)
-    .slice(-10) // Últimos 10 mensajes
+    .slice(0, -1) // Excluir el último mensaje
+    .slice(-20) // Últimos 20 mensajes
     .map(m => ({
-      role: m.role === 'user' ? 'user' : m.role === 'assistant' ? 'assistant' : 'user', // Asegurar tipos correctos
-      content: m.content || '' // Asegurar que content no sea undefined
+      role: m.role === 'user' ? 'user' : m.role === 'assistant' ? 'assistant' : 'user',
+      content: m.content || ''
     }))
-    .filter(m => m.content.trim().length > 0); // Filtrar mensajes vacíos
+    .filter(m => m.content.trim().length > 0);
 
   // Obtener el agente LLM para determinar el provider
   const agentResult = getLLMAgent(neuraResult.data.llmAgentId);
@@ -152,9 +152,22 @@ export async function sendNeuraMessage(
     return err(new Error(agentResult.error));
   }
 
-  // Seleccionar el cliente LLM según el provider del agente
+  // Seleccionar el cliente LLM
   const llmClient = getLLMClient(agentResult.data.provider);
 
+  // ✅ Mejora 2: Definir herramienta para ejecutar agentes
+  const executeAgentTool = {
+    functionDeclarations: [{
+      name: 'execute_agent',
+      description: 'Ejecuta otro agente NEURA especializado para resolver una tarea específica. Úsalo cuando necesites información de otro departamento.',
+      parameters: {
+        targetAgentId: { type: 'STRING', description: 'ID del agente a ejecutar (ej: neura-datos, neura-legal)' },
+        taskDescription: { type: 'STRING', description: 'Pregunta o tarea específica para el agente' }
+      }
+    }]
+  };
+
+  // Primera llamada al LLM
   const llmResult = await invokeLLMAgent(
     {
       agentId: neuraResult.data.llmAgentId,
@@ -162,16 +175,54 @@ export async function sendNeuraMessage(
       correlationId: input.correlationId,
       image: input.image,
       file: input.file,
-      conversationHistory: historyMessages // ✅ CRÍTICO: Enviar historial al LLM
+      conversationHistory: historyMessages
     },
-    { llmClient }
+    { llmClient: { ...llmClient, generate: (p) => llmClient.generate({ ...p, tools: [executeAgentTool] }) } } // Hack para pasar tools
   );
 
   if (!llmResult.success) {
     return err(llmResult.error);
   }
 
-  const replyText = llmResult.data.outputText;
+  let replyText = llmResult.data.outputText;
+
+  // ✅ Mejora 2: Manejar ejecución de agentes (Function Calling)
+  if (llmResult.data.functionCalls && llmResult.data.functionCalls.length > 0) {
+    for (const call of llmResult.data.functionCalls) {
+      if (call.name === 'execute_agent') {
+        const { targetAgentId, taskDescription } = call.args;
+
+        // Ejecutar el sub-agente (recursivo o directo)
+        // Para evitar ciclos infinitos, llamamos a invokeLLMAgent directamente para el sub-agente
+        // sin pasarle tools (o limitando). Por simplicidad, invocamos sin tools.
+        const subAgentResult = await invokeLLMAgent({
+          agentId: targetAgentId,
+          userInput: taskDescription,
+          correlationId: input.correlationId
+        }, { llmClient }); // Sin tools para el sub-agente
+
+        const subAgentResponse = subAgentResult.success ? subAgentResult.data.outputText : `Error ejecutando agente ${targetAgentId}: ${subAgentResult.error.message}`;
+
+        // Agregar el resultado al historial como mensaje de sistema/usuario para que el agente original lo vea
+        historyMessages.push({ role: 'user', content: `[SISTEMA] Resultado de ${targetAgentId}: ${subAgentResponse}` });
+
+        // Segunda llamada al LLM con el resultado
+        const followUpResult = await invokeLLMAgent(
+          {
+            agentId: neuraResult.data.llmAgentId,
+            userInput: "Continúa basándote en el resultado del agente.", // Prompt de continuación
+            correlationId: input.correlationId,
+            conversationHistory: historyMessages
+          },
+          { llmClient } // Ya no pasamos tools para evitar bucles, o podríamos si quisiéramos encadenar
+        );
+
+        if (followUpResult.success) {
+          replyText += `\n\n${followUpResult.data.outputText}`;
+        }
+      }
+    }
+  }
 
   const assistantMsgResult = await appendMessage({
     conversationId,

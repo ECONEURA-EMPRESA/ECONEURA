@@ -31,17 +31,15 @@ export function basicHealthCheck(_req: Request, res: Response): void {
 }
 
 /**
- * Health check completo (verifica dependencias)
+ * Health check completo
  * GET /api/health
  */
-export async function fullHealthCheck(_req: Request, res: Response): Promise<void> {
-  const startTime = Date.now();
-  const checks: HealthStatus['checks'] = {
-    database: 'error',
-    redis: 'not_configured'
-  };
-
+export async function healthCheck(req: Request, res: Response): Promise<void> {
   let overallStatus: HealthStatus['status'] = 'healthy';
+  const checks: HealthStatus['checks'] = {
+    database: 'ok',
+    redis: 'ok'
+  };
 
   // Check PostgreSQL
   if (process.env['USE_MEMORY_STORE'] === 'true') {
@@ -166,4 +164,3 @@ export async function readinessProbe(_req: Request, res: Response): Promise<void
     });
   }
 }
-

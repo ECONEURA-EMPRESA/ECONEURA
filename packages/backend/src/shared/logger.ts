@@ -17,7 +17,7 @@ if (!fs.existsSync(logsDir)) {
   } catch (err) {
     // En Azure App Service, puede no tener permisos, usar console
     // ✅ AUDITORÍA: console.warn justificado aquí (bootstrap, logger aún no inicializado)
-    // eslint-disable-next-line no-console
+
     console.warn('[Logger] No se pudo crear directorio de logs:', (err as Error).message);
   }
 }
@@ -32,10 +32,10 @@ if (!fs.existsSync(logsDir)) {
 const customFormat = winston.format.printf(({ level, message, timestamp, correlationId, ...metadata }) => {
   // Sanitizar mensaje
   const sanitizedMessage = sanitizeLogMessage(String(message));
-  
+
   // Sanitizar metadata
   const sanitizedMetadata = sanitizeMetadata(metadata as Record<string, unknown>);
-  
+
   let msg = `${timestamp} [${level.toUpperCase()}]`;
 
   // En producción, no mostrar correlationId completo (solo últimos 4 caracteres)
@@ -97,7 +97,7 @@ if (process.env['NODE_ENV'] !== 'production' || fs.existsSync(logsDir)) {
       })
     );
   } catch (err) {
-    // eslint-disable-next-line no-console
+
     console.warn('[Logger] No se pudieron crear file transports:', (err as Error).message);
   }
 }
@@ -127,7 +127,7 @@ const winstonLogger = winston.createLogger({
 function logToAppInsights(level: string, message: string, metadata?: Record<string, unknown>): void {
   try {
     // Importación lazy para evitar circular dependency
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
+
     const appInsights = require('../infra/observability/applicationInsights');
     const client = appInsights.getTelemetryClient();
     if (!client) {
@@ -158,7 +158,7 @@ function logToAppInsights(level: string, message: string, metadata?: Record<stri
       default:
         appInsights.trackTrace(message, 'Verbose', properties);
     }
-  } catch (error) {
+  } catch {
     // No fallar si Application Insights tiene problemas o no está disponible
     // Silenciar errores para evitar loops
   }

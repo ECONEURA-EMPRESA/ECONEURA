@@ -1,12 +1,12 @@
-import { type EventStore, type DomainEvent } from './EventStore';
 import { getPostgresPool } from './postgresPool';
 import { logger } from '../../shared/logger';
+import type { DomainEvent, EventStore } from './EventStore';
 
 export class PostgresEventStore implements EventStore {
     async appendEvents(
         aggregateId: string,
         events: DomainEvent[],
-        expectedVersion?: number
+        _expectedVersion?: number
     ): Promise<void> {
         const pool = getPostgresPool();
         const client = await pool.connect();

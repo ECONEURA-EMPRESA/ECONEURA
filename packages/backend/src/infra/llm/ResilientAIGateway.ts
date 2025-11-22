@@ -4,9 +4,9 @@
  * Migrado desde ECONEURA-REMOTE/backend/services/resilientAIGateway.js
  */
 import { type LLMClient, type GenerationResult } from '../../llm/invokeLLMAgent';
-import { ok, err, type Result } from '../../shared/Result';
+import { err, type Result } from '../../shared/Result';
 import { logger } from '../../shared/logger';
-import { retry, type RetryOptions, CircuitBreaker } from '../../shared/utils/retry';
+import { retry, type RetryOptions } from '../../shared/utils/retry';
 
 interface ProviderConfig {
   name: string;

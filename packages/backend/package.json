@@ -8,10 +8,14 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json --skipLibCheck",
+    "start": "node dist/index.js",
     "type-check": "tsc -p tsconfig.json --noEmit --skipLibCheck",
     "dev": "tsx src/index.ts",
     "test": "jest",
-    "test:integration": "jest tests/integration"
+    "test:integration": "cross-env GEMINI_API_KEY=test-key DATABASE_URL=postgres://mock:5432/mock USE_MEMORY_STORE=true jest tests/integration",
+    "lint": "eslint .",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@azure/identity": "^4.13.0",
@@ -43,6 +47,7 @@
     "@types/node": "^20.14.10",
     "@types/pg": "^8.15.6",
     "@types/supertest": "^2.0.16",
+    "cross-env": "^10.1.0",
     "jest": "^29.7.0",
     "supertest": "^6.3.4",
     "ts-jest": "^29.2.5",

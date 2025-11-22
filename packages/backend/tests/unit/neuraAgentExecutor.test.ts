@@ -1,5 +1,5 @@
 import { detectAgentIntent, executeNeuraAgentFromChat } from '../../src/automation/neuraAgentExecutor';
-import { automationService } from '../../src/automation/automationService';
+
 
 jest.mock('../../src/automation/automationService', () => ({
   automationService: {

@@ -14,7 +14,7 @@ const __dirname = dirname(__filename);
 
 // Cargar .env desde el directorio del backend
 const envPath = resolve(__dirname, '../.env');
-const dotenvResult = config({ path: envPath }); // Carga .env desde el directorio del backend
+config({ path: envPath }); // Carga .env desde el directorio del backend
 
 import { createServer } from './api/http/server';
 import { getValidatedEnv, clearEnvCache } from './config/env';
@@ -29,9 +29,9 @@ try {
   env = getValidatedEnv();
   logger.info('[Startup] Variables de entorno validadas correctamente');
 } catch (error) {
-  // eslint-disable-next-line no-console
+
   console.error('❌ ERROR: Validación de variables de entorno falló:', error instanceof Error ? error.message : String(error));
-  // eslint-disable-next-line no-console
+
   console.error('Por favor, revisa tu archivo .env o variables de entorno');
   process.exit(1);
 }

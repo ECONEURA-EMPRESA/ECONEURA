@@ -38,36 +38,21 @@ const DEPARTMENT_LIMITS: Record<string, DepartmentLimits> = {
   }
 };
 
-function parseWindow(window: string): number {
-  const match = window.match(/^(\d+)([smhd])$/);
-  if (!match || !match[2]) return 3600000; // 1 hora por defecto
-  
-  const value = Number.parseInt(match[1] ?? '1', 10);
-  const unit = match[2];
-  
-  const multipliers: Record<string, number> = {
-    s: 1000,
-    m: 60 * 1000,
-    h: 60 * 60 * 1000,
-    d: 24 * 60 * 60 * 1000
-  };
-  
-  return value * (multipliers[unit] ?? 3600000);
-}
+
 
 function getDepartmentFromRequest(req: Request): string {
   const deptHeader = req.headers['x-department'] as string;
   if (deptHeader) {
     return deptHeader.toUpperCase();
   }
-  
+
   // Intentar inferir del path
   if (req.path.includes('/crm')) return 'MKT';
   if (req.path.includes('/invoke')) {
     // Puede venir en el body o query
     return 'default';
   }
-  
+
   return 'default';
 }
 
@@ -151,4 +136,3 @@ export function createSmartRateLimiter() {
 }
 
 export const smartRateLimiter = createSmartRateLimiter();
-

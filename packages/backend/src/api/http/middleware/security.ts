@@ -37,7 +37,7 @@ export function securityMiddleware(options: SecurityMiddlewareOptions = {}) {
 
   return (req: Request, res: Response, next: NextFunction): void => {
     // Aplicar middlewares en orden
-    let currentIndex = 0;
+
 
     const middlewares: Array<(req: Request, res: Response, next: NextFunction) => void> = [];
 

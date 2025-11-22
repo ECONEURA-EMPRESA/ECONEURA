@@ -1,0 +1,23 @@
+WARNING: A new Bicep release is available: v0.39.26. Upgrade now by running "az bicep upgrade".
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\storage.bicep(99,69) : Warning no-hardcoded-env-urls: Environment URLs should not be hardcoded. Use the environment() function to ensure compatibility across clouds. Found this disallowed host: "core.windows.net" [https://aka.ms/bicep/linter-diagnostics#no-hardcoded-env-urls]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\readmodels.bicep(2,7) : Warning no-unused-params: Parameter "environment" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\readmodels.bicep(5,7) : Warning no-unused-params: Parameter "location" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\readmodels.bicep(8,7) : Warning no-unused-params: Parameter "baseName" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\eventstore.bicep(2,7) : Warning no-unused-params: Parameter "environment" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\eventstore.bicep(5,7) : Warning no-unused-params: Parameter "location" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\eventstore.bicep(8,7) : Warning no-unused-params: Parameter "baseName" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\core.bicep(5,7) : Warning no-unused-params: Parameter "location" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\core.bicep(11,5) : Warning no-unused-vars: Variable "commonTags" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-vars]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\redis.bicep(25,7) : Warning no-unused-params: Parameter "enableAutoPause" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+
+
+ERROR: The content for this response was already consumed

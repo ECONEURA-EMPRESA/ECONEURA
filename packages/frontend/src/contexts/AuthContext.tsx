@@ -2,9 +2,9 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 import { Shield, User, Lock, Key } from 'lucide-react';
 
 export type UserRole = 'admin' | 'manager' | 'user' | 'guest';
-export type Permission = 
-  | 'read_chats' 
-  | 'write_chats' 
+export type Permission =
+  | 'read_chats'
+  | 'write_chats'
   | 'delete_chats'
   | 'manage_users'
   | 'view_analytics'
@@ -42,12 +42,12 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // Configuración de permisos por rol
 const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
   admin: [
-    'read_chats', 'write_chats', 'delete_chats', 'manage_users', 
-    'view_analytics', 'manage_agents', 'manage_proposals', 
+    'read_chats', 'write_chats', 'delete_chats', 'manage_users',
+    'view_analytics', 'manage_agents', 'manage_proposals',
     'system_settings', 'export_data', 'multi_actor_chats'
   ],
   manager: [
-    'read_chats', 'write_chats', 'manage_users', 'view_analytics', 
+    'read_chats', 'write_chats', 'manage_users', 'view_analytics',
     'manage_agents', 'manage_proposals', 'export_data', 'multi_actor_chats'
   ],
   user: [
@@ -60,6 +60,17 @@ const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
 
 // Demo users eliminados - usar OAuth Microsoft en producción
 // Backend con USE_MOCK_DB=true permite login sin DB real
+const DEMO_USERS: User[] = [
+  {
+    id: '1',
+    email: 'admin@econeura.com',
+    name: 'Admin User',
+    role: 'admin',
+    permissions: ROLE_PERMISSIONS.admin,
+    department: 'IT',
+    isActive: true
+  }
+];
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -72,7 +83,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       try {
         const userData = JSON.parse(savedUser);
         setUser(userData);
-      } catch (error) {
+      } catch {
         // Error parsing - limpiar datos corruptos
         localStorage.removeItem('econeura-user');
       }
@@ -82,26 +93,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
-    
+
     try {
       // Simular autenticación (en producción sería una llamada a la API)
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       const foundUser = DEMO_USERS.find(u => u.email === email);
-      
+
       if (foundUser && password === 'demo123') {
         const userWithLogin = {
           ...foundUser,
           lastLogin: new Date()
         };
-        
+
         setUser(userWithLogin);
         localStorage.setItem('econeura-user', JSON.stringify(userWithLogin));
         return true;
       }
-      
+
       return false;
-    } catch (error) {
+    } catch {
       // Login error manejado en UI
       return false;
     } finally {
@@ -126,7 +137,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const updateUser = (updates: Partial<User>) => {
     if (!user) return;
-    
+
     const updatedUser = { ...user, ...updates };
     setUser(updatedUser);
     localStorage.setItem('econeura-user', JSON.stringify(updatedUser));
@@ -157,11 +168,11 @@ export function useAuth() {
 }
 
 // Componente de protección de rutas
-export function ProtectedRoute({ 
-  children, 
-  permission, 
-  role, 
-  fallback 
+export function ProtectedRoute({
+  children,
+  permission,
+  role,
+  fallback
 }: {
   children: ReactNode;
   permission?: Permission;
@@ -186,9 +197,9 @@ export function ProtectedRoute({
 }
 
 // Componente de selector de permisos
-export function PermissionSelector({ 
-  user, 
-  onUpdate 
+export function PermissionSelector({
+  user,
+  onUpdate
 }: {
   user: User;
   onUpdate: (permissions: Permission[]) => void;
@@ -210,7 +221,7 @@ export function PermissionSelector({
     const newPermissions = user.permissions.includes(permission)
       ? user.permissions.filter(p => p !== permission)
       : [...user.permissions, permission];
-    
+
     onUpdate(newPermissions);
   };
 
@@ -244,7 +255,7 @@ export function PermissionSelector({
           <span className="font-medium text-blue-800 dark:text-blue-200">Rol Actual</span>
         </div>
         <p className="text-sm text-blue-700 dark:text-blue-300">
-          {user.role.charAt(0).toUpperCase() + user.role.slice(1)} - 
+          {user.role.charAt(0).toUpperCase() + user.role.slice(1)} -
           {ROLE_PERMISSIONS[user.role].length} permisos por defecto
         </p>
       </div>
@@ -281,11 +292,10 @@ export function UserProfile() {
 
         <div className="flex justify-between items-center">
           <span className="font-medium">Estado</span>
-          <span className={`px-2 py-1 rounded-full text-sm ${
-            user.isActive 
-              ? 'bg-green-100 text-green-800' 
+          <span className={`px-2 py-1 rounded-full text-sm ${user.isActive
+              ? 'bg-green-100 text-green-800'
               : 'bg-red-100 text-red-800'
-          }`}>
+            }`}>
             {user.isActive ? 'Activo' : 'Inactivo'}
           </span>
         </div>

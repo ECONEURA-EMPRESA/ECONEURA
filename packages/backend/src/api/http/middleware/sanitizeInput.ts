@@ -103,9 +103,10 @@ function sanitizeObject(obj: unknown, options: { allowHtml?: boolean } = {}): un
  */
 export function sanitizeFileName(fileName: string): string {
   // Remover path traversal
-  let sanitized = fileName.replace(/\.\./g, '').replace(/[\/\\]/g, '_');
+  let sanitized = fileName.replace(/\.\./g, '').replace(/[/\\]/g, '_');
 
   // Remover caracteres peligrosos
+  // eslint-disable-next-line no-control-regex
   sanitized = sanitized.replace(/[<>:"|?*\x00-\x1f]/g, '');
 
   // Limitar longitud

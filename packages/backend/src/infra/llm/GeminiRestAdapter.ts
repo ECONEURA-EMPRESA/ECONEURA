@@ -5,13 +5,16 @@
 import { type LLMClient, type GenerationResult } from '../../llm/invokeLLMAgent';
 import { ok, err, type Result } from '../../shared/Result';
 import { logger } from '../../shared/logger';
-import { getValidatedEnv } from '../../config/env';
 
 interface GeminiPart {
     text?: string;
     inlineData?: {
         mimeType: string;
         data: string;
+    };
+    functionCall?: {
+        name: string;
+        args: Record<string, unknown>;
     };
 }
 
@@ -24,8 +27,39 @@ interface GeminiSystemInstruction {
     parts: { text: string }[];
 }
 
+interface GeminiResponse {
+    candidates?: Array<{
+        content: {
+            parts: Array<{ text?: string; functionCall?: { name: string; args: Record<string, unknown> } }>;
+            role: string;
+        };
+        finishReason?: string;
+    }>;
+    error?: {
+        code: number;
+        message: string;
+        status: string;
+    };
+}
+
+// Interfaces para Function Calling
+interface GeminiFunctionDeclaration {
+    name: string;
+    description: string;
+    parameters?: {
+        type: string;
+        properties: Record<string, unknown>;
+        required?: string[];
+    };
+}
+
+interface GeminiTool {
+    functionDeclarations: GeminiFunctionDeclaration[];
+}
+
 interface GeminiRequest {
     contents: GeminiContent[];
+    tools?: GeminiTool[];
     systemInstruction?: GeminiSystemInstruction;
     generationConfig?: {
         temperature?: number;
@@ -39,21 +73,6 @@ interface GeminiRequest {
     }>;
 }
 
-interface GeminiResponse {
-    candidates?: Array<{
-        content: {
-            parts: Array<{ text: string }>;
-            role: string;
-        };
-        finishReason?: string;
-    }>;
-    error?: {
-        code: number;
-        message: string;
-        status: string;
-    };
-}
-
 export class GeminiRestAdapter implements LLMClient {
     private apiKey: string | null = null;
     private readonly baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models';
@@ -62,7 +81,7 @@ export class GeminiRestAdapter implements LLMClient {
         if (this.apiKey) return this.apiKey;
 
         // Intentar leer de process.env directamente si getValidatedEnv falla o no tiene la key
-        const key = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+        const key = process.env['GEMINI_API_KEY'] || process.env['GOOGLE_API_KEY'];
         if (!key) {
             throw new Error('GEMINI_API_KEY no configurada en variables de entorno');
         }
@@ -80,71 +99,53 @@ export class GeminiRestAdapter implements LLMClient {
         image?: string;
         file?: string;
         conversationHistory?: Array<{ role: string; content: string }>;
+        tools?: Array<{ functionDeclarations: Array<{ name: string; description: string; parameters?: Record<string, unknown> }> }>;
     }): Promise<Result<GenerationResult, Error>> {
         try {
             const apiKey = this.ensureApiKey();
-            // Usar el modelo especificado o fallback a gemini-3-pro
             const modelName = params.model || 'gemini-3-pro';
             const endpoint = `${this.baseUrl}/${modelName}:generateContent?key=${apiKey}`;
 
-            // 1. Construir historial (Sincronización Mistral -> Gemini)
+            // 1. Construir historial
             const contents: GeminiContent[] = [];
-
-            // Mapear historial previo
             if (params.conversationHistory && params.conversationHistory.length > 0) {
                 params.conversationHistory.forEach(msg => {
-                    const role = msg.role === 'user' ? 'user' : 'model'; // assistant -> model
-                    // Filtrar mensajes de sistema del historial si los hubiera (se manejan aparte)
+                    const role = msg.role === 'user' ? 'user' : 'model';
                     if (msg.role !== 'system') {
-                        contents.push({
-                            role,
-                            parts: [{ text: msg.content }]
-                        });
+                        contents.push({ role, parts: [{ text: msg.content }] });
                     }
                 });
             }
 
-            // 2. Construir mensaje actual (Multimodalidad)
+            // 2. Construir mensaje actual
             const currentParts: GeminiPart[] = [];
+            if (params.userInput) currentParts.push({ text: params.userInput });
+            if (params.image) currentParts.push({ inlineData: { mimeType: 'image/jpeg', data: params.image } });
+            if (params.file) currentParts.push({ inlineData: { mimeType: 'application/pdf', data: params.file } });
 
-            // Agregar texto del usuario
-            if (params.userInput) {
-                currentParts.push({ text: params.userInput });
+            contents.push({ role: 'user', parts: currentParts });
+
+            // 3. Construir Tools (Function Calling)
+            let geminiTools: GeminiTool[] | undefined;
+            if (params.tools && params.tools.length > 0) {
+                geminiTools = params.tools.map(t => ({
+                    functionDeclarations: t.functionDeclarations.map(f => ({
+                        name: f.name,
+                        description: f.description,
+                        parameters: f.parameters ? {
+                            type: 'OBJECT',
+                            properties: f.parameters,
+                            required: Object.keys(f.parameters) // Asumimos todos requeridos por simplicidad o ajustar según schema
+                        } : undefined
+                    }))
+                }));
             }
 
-            // Agregar imagen si existe
-            if (params.image) {
-                currentParts.push({
-                    inlineData: {
-                        mimeType: 'image/jpeg', // Asumimos jpeg por defecto si no viene metadata, o detectar
-                        data: params.image
-                    }
-                });
-            }
-
-            // Agregar archivo si existe
-            if (params.file) {
-                // Intentar detectar tipo MIME básico o usar application/pdf por defecto para documentos
-                // En una implementación real, params.file debería venir con metadata de tipo
-                currentParts.push({
-                    inlineData: {
-                        mimeType: 'application/pdf',
-                        data: params.file
-                    }
-                });
-            }
-
-            contents.push({
-                role: 'user',
-                parts: currentParts
-            });
-
-            // 3. Construir Request
+            // 4. Construir Request
             const requestBody: GeminiRequest = {
                 contents,
-                systemInstruction: {
-                    parts: [{ text: params.systemPrompt }]
-                },
+                tools: geminiTools,
+                systemInstruction: { parts: [{ text: params.systemPrompt }] },
                 generationConfig: {
                     temperature: params.temperature || 0.7,
                     maxOutputTokens: params.maxTokens || 2048,
@@ -152,71 +153,62 @@ export class GeminiRestAdapter implements LLMClient {
                     topK: 40
                 },
                 safetySettings: [
-                    {
-                        category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                        threshold: "BLOCK_MEDIUM_AND_ABOVE"
-                    },
-                    {
-                        category: "HARM_CATEGORY_HATE_SPEECH",
-                        threshold: "BLOCK_MEDIUM_AND_ABOVE"
-                    },
-                    {
-                        category: "HARM_CATEGORY_HARASSMENT",
-                        threshold: "BLOCK_MEDIUM_AND_ABOVE"
-                    },
-                    {
-                        category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-                        threshold: "BLOCK_MEDIUM_AND_ABOVE"
-                    }
+                    { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                    { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                    { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                    { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
                 ]
             };
 
-            // 4. Llamada REST
-            const response = await fetch(endpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                let errorMsg = `Gemini API Error: ${response.status} ${response.statusText}`;
+            // 5. Llamada REST con Retry (Mejora 4)
+            let response: Response | null = null;
+            let attempts = 0;
+            while (attempts < 3) {
                 try {
-                    const errorJson = JSON.parse(errorText);
-                    if (errorJson.error && errorJson.error.message) {
-                        errorMsg += ` - ${errorJson.error.message}`;
-                    }
-                } catch {
-                    errorMsg += ` - ${errorText}`;
+                    response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(requestBody)
+                    });
+                    if (response.ok || response.status === 400) break; // 400 no se reintenta
+                } catch (e) {
+                    logger.warn(`[GeminiRestAdapter] Intento ${attempts + 1} fallido`, { error: String(e) });
                 }
+                attempts++;
+                if (attempts < 3) await new Promise(r => setTimeout(r, 1000 * attempts));
+            }
 
-                logger.error('[GeminiRestAdapter] Error API', {
-                    status: response.status,
-                    error: errorMsg,
-                    correlationId: params.correlationId
-                });
-                return err(new Error(errorMsg));
+            if (!response || !response.ok) {
+                const errorText = response ? await response.text() : 'Network Error';
+                return err(new Error(`Gemini API Error: ${response?.status} - ${errorText}`));
             }
 
             const data = await response.json() as GeminiResponse;
 
-            // 5. Procesar respuesta
+            // 6. Procesar respuesta
             if (data.candidates && data.candidates.length > 0) {
                 const candidate = data.candidates[0];
-                const outputText = candidate.content?.parts?.map(p => p.text).join('') || '';
+                if (!candidate) {
+                    return err(new Error('Gemini devolvió un candidato vacío'));
+                }
+                let outputText = '';
+                const functionCalls: Array<{ name: string; args: Record<string, unknown> }> = [];
 
-                if (!outputText && candidate.finishReason) {
-                    logger.warn('[GeminiRestAdapter] Respuesta vacía con finishReason', {
-                        reason: candidate.finishReason,
-                        correlationId: params.correlationId
-                    });
+                if (candidate.content && candidate.content.parts) {
+                    for (const part of candidate.content.parts) {
+                        if (part.text) {
+                            outputText += part.text;
+                        }
+                        if (part.functionCall) {
+                            functionCalls.push({ name: part.functionCall.name, args: part.functionCall.args });
+                        }
+                    }
                 }
 
                 return ok({
                     agentId: '',
                     outputText,
+                    functionCalls: functionCalls.length > 0 ? functionCalls : undefined,
                     raw: data
                 });
             } else {
@@ -225,10 +217,7 @@ export class GeminiRestAdapter implements LLMClient {
 
         } catch (e: unknown) {
             const error = e instanceof Error ? e : new Error(String(e));
-            logger.error('[GeminiRestAdapter] Excepción', {
-                error: error.message,
-                correlationId: params.correlationId
-            });
+            logger.error('[GeminiRestAdapter] Excepción', { error: error.message });
             return err(error);
         }
     }

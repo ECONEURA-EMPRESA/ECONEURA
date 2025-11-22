@@ -28,6 +28,7 @@ export interface InvokeLLMAgentInput {
 export interface GenerationResult {
   agentId: string;
   outputText: string;
+  functionCalls?: Array<{ name: string; args: Record<string, unknown> }>;
   raw?: unknown;
 }
 
@@ -38,6 +39,16 @@ export interface GenerationResult {
 /**
  * Interfaz para clientes LLM (OpenAI, Mistral, etc.)
  */
+export interface LLMFunctionDeclaration {
+  name: string;
+  description: string;
+  parameters?: Record<string, unknown>;
+}
+
+export interface LLMTool {
+  functionDeclarations: LLMFunctionDeclaration[];
+}
+
 export interface LLMClient {
   generate(params: {
     model: string;
@@ -49,6 +60,7 @@ export interface LLMClient {
     image?: string; // base64 image
     file?: string; // base64 file or URL
     conversationHistory?: Array<{ role: string; content: string }>; // ✅ CRÍTICO: Historial de conversación
+    tools?: LLMTool[]; // ✅ Function Calling
   }): Promise<Result<GenerationResult, Error>>;
 }
 
@@ -88,7 +100,7 @@ export async function invokeLLMAgent(
   // ✅ Mejora 5: Cache automático - Solo cachear si no hay imagen/archivo/historial (para evitar falsos positivos)
   if (!image && !file && (!conversationHistory || conversationHistory.length === 0)) {
     try {
-      const { getCachedLLMResponse, setCachedLLMResponse } = await import('../infra/cache/llmResponseCache');
+      const { getCachedLLMResponse } = await import('../infra/cache/llmResponseCache');
       const cached = await getCachedLLMResponse(agentId, userInput, agent.systemPrompt);
       if (cached) {
         logger.debug('[LLM Cache] Respuesta obtenida de cache', { agentId, correlationId });

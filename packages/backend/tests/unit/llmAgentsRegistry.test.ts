@@ -17,7 +17,7 @@ describe('llmAgentsRegistry', () => {
 
     expect(result.success).toBe(false);
     if (!result.success) {
-      expect(result.error).toBeInstanceOf(Error);
+      expect(typeof result.error).toBe('string');
     }
   });
 });

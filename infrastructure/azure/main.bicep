@@ -74,7 +74,7 @@ module redis 'redis.bicep' = {
     environment: environment
     location: location
     baseName: baseName
-    redisSku: 'C0' // C0 = 250MB (básico), cambiar a C1+ en producción
+    redisSku: 'C1' // C1 = 1GB (Standard), recomendado para producción
     enableAutoPause: environment == 'dev' // Auto-pause solo en dev
   }
 }
@@ -113,9 +113,9 @@ module appFrontend 'app-frontend.bicep' = {
     environment: environment
     location: location
     baseName: baseName
-    backendUrl: appBackend.outputs.backendUrl
   }
 }
+
 
 // Event Store (Cosmos DB) - opcional
 module eventStore 'eventstore.bicep' = if (enableEventStore) {

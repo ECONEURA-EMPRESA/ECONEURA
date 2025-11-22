@@ -12,13 +12,13 @@ export interface CosmosEventStoreConfig {
  * En esta fase sólo definimos la forma; la lógica de persistencia real se añadirá más adelante.
  */
 export class CosmosEventStoreAdapter implements EventStore {
-  constructor(private readonly config: CosmosEventStoreConfig) {}
+  constructor(private readonly config: CosmosEventStoreConfig) { }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   async appendEvents(
-    aggregateId: string,
-    events: DomainEvent[],
-    expectedVersion?: number
+    _aggregateId: string,
+    _events: DomainEvent[],
+    _expectedVersion?: number
   ): Promise<void> {
     // Implementación real pendiente (Fase infra avanzada)
     throw new Error('CosmosEventStoreAdapter.appendEvents not implemented yet');

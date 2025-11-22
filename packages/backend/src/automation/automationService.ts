@@ -48,9 +48,9 @@ export class AutomationService implements AutomationServicePort {
     payload: AutomationExecutionPayload
   ): Promise<Result<AutomationExecutionResult, Error>> {
     const agentResult = getAutomationAgentById(agentId);
+
     if (!agentResult.success) {
-      logger.error('[AutomationService] Agente no encontrado', { agentId });
-      return err(agentResult.error);
+      return err(new Error(`Agent not found: ${agentId}`));
     }
 
     const agent = agentResult.data;
@@ -83,10 +83,10 @@ export class AutomationService implements AutomationServicePort {
         action: 'automation.execute',
         actor: payload.authContext
           ? {
-              userId: payload.authContext.userId,
-              tenantId: payload.authContext.tenantId,
-              roles: payload.authContext.roles
-            }
+            userId: payload.authContext.userId,
+            tenantId: payload.authContext.tenantId,
+            roles: payload.authContext.roles
+          }
           : null,
         target: {
           type: 'automation-agent',
@@ -122,10 +122,10 @@ export class AutomationService implements AutomationServicePort {
             action: 'automation.execute',
             actor: payload.authContext
               ? {
-                  userId: payload.authContext.userId,
-                  tenantId: payload.authContext.tenantId,
-                  roles: payload.authContext.roles
-                }
+                userId: payload.authContext.userId,
+                tenantId: payload.authContext.tenantId,
+                roles: payload.authContext.roles
+              }
               : null,
             target: {
               type: 'automation-agent',
@@ -156,10 +156,10 @@ export class AutomationService implements AutomationServicePort {
           action: 'automation.execute',
           actor: payload.authContext
             ? {
-                userId: payload.authContext.userId,
-                tenantId: payload.authContext.tenantId,
-                roles: payload.authContext.roles
-              }
+              userId: payload.authContext.userId,
+              tenantId: payload.authContext.tenantId,
+              roles: payload.authContext.roles
+            }
             : null,
           target: {
             type: 'automation-agent',
@@ -193,10 +193,10 @@ export class AutomationService implements AutomationServicePort {
             action: 'automation.execute',
             actor: payload.authContext
               ? {
-                  userId: payload.authContext.userId,
-                  tenantId: payload.authContext.tenantId,
-                  roles: payload.authContext.roles
-                }
+                userId: payload.authContext.userId,
+                tenantId: payload.authContext.tenantId,
+                roles: payload.authContext.roles
+              }
               : null,
             target: {
               type: 'automation-agent',
@@ -227,10 +227,10 @@ export class AutomationService implements AutomationServicePort {
           action: 'automation.execute',
           actor: payload.authContext
             ? {
-                userId: payload.authContext.userId,
-                tenantId: payload.authContext.tenantId,
-                roles: payload.authContext.roles
-              }
+              userId: payload.authContext.userId,
+              tenantId: payload.authContext.tenantId,
+              roles: payload.authContext.roles
+            }
             : null,
           target: {
             type: 'automation-agent',
@@ -269,21 +269,8 @@ export class AutomationService implements AutomationServicePort {
       error: error.message
     });
 
-    const result: AutomationExecutionResult = {
-      agentId: agent.id,
-      neuraKey: agent.neuraKey,
-      neuraId: agent.neuraId,
-      mode: 'real',
-      provider: agent.provider,
-      status: 'failed',
-      durationMs: duration,
-      error: error.message
-    };
-
     return err(error);
   }
 }
 
 export const automationService = new AutomationService();
-
-

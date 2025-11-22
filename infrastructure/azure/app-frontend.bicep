@@ -7,9 +7,6 @@ param location string
 @description('Nombre base del sistema ECONEURA-FULL')
 param baseName string
 
-@description('URL pública del backend para configurar VITE_API_URL')
-param backendUrl string
-
 @description('Nombre de la Static Web App (opcional)')
 @allowed([
   ''
@@ -39,10 +36,6 @@ resource staticWeb 'Microsoft.Web/staticSites@2022-03-01' = {
     buildProperties: {
       appLocation: 'packages/frontend'
       outputLocation: 'dist'
-    }
-    sku: {
-      tier: 'Free'
-      name: 'Free'
     }
   }
   tags: frontendTags

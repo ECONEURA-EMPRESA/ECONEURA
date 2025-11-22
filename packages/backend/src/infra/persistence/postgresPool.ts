@@ -50,7 +50,7 @@ export function getPostgresPool(): Pool {
         code: pgError.code,
         stack: error.stack
       });
-      
+
       // Si el pool se cae, resetear para que se recree en próxima llamada
       if (pgError.code === 'ECONNREFUSED' || pgError.code === 'ETIMEDOUT') {
         logger.warn('[PostgresPool] Pool caído, se recreará en próxima llamada');
@@ -92,15 +92,15 @@ export function getPostgresPool(): Pool {
         logger.error('[PostgresPool] Health check falló, reiniciando pool', {
           error: error instanceof Error ? error.message : String(error)
         });
-        
+
         // Cerrar pool y resetear
         try {
           await sharedPool.end();
-        } catch (e) {
+        } catch {
           // Ignorar errores al cerrar
         }
         sharedPool = null;
-        
+
         if (healthCheckInterval) {
           clearInterval(healthCheckInterval);
           healthCheckInterval = null;

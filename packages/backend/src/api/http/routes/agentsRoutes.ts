@@ -45,7 +45,7 @@ const executeAgentSchema = z.object({
  */
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const reqWithId = req as RequestWithId;
+    // const reqWithId = req as RequestWithId;
     const { platform, neura_assigned } = req.query;
 
     // Por ahora, listamos todos los agentes del registry
@@ -206,12 +206,6 @@ router.post('/:id/execute', async (req: Request, res: Response) => {
 /**
  * POST /api/agents
  * Crear un nuevo agente (stub - por ahora solo retorna éxito)
- * 
- * NOTA: Actualmente usa stubs para persistencia.
- * Para producción, implementar:
- * - Persistencia real en PostgreSQL (tabla automation_agents)
- * - Sincronización con automationAgentsRegistry
- * - Validación de webhook URLs
  */
 router.post('/', async (req: Request, res: Response) => {
   try {
@@ -219,7 +213,6 @@ router.post('/', async (req: Request, res: Response) => {
     const parsed = createAgentSchema.parse(req.body);
 
     // Por ahora, solo validamos y retornamos éxito
-    // En el futuro, esto persistirá en la base de datos
     logger.info('[Agents API] Creando agente (stub)', {
       name: parsed.name,
       platform: parsed.platform,
@@ -266,7 +259,7 @@ router.put('/:id', async (req: Request, res: Response) => {
   try {
     const reqWithId = req as RequestWithId;
     const { id } = req.params;
-    const parsed = updateAgentSchema.parse(req.body);
+    updateAgentSchema.parse(req.body);
 
     // Por ahora, solo validamos
     logger.info('[Agents API] Actualizando agente (stub)', {
@@ -333,4 +326,3 @@ router.delete('/:id', async (req: Request, res: Response) => {
 });
 
 export const agentsRoutes = router;
-

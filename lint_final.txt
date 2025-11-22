@@ -1,0 +1,99 @@
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\middleware\sanitizeInput.ts
+  106:59  error  Unnecessary escape character: \/                                   no-useless-escape
+  109:33  error  Unexpected control character(s) in regular expression: \x00, \x1f  no-control-regex
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\middleware\security.ts
+  40:11  warning  'currentIndex' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\middleware\smartRateLimiter.ts
+  41:10  warning  'parseWindow' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\middleware\userRateLimiter.ts
+   5:34  warning  'NextFunction' is defined but never used. Allowed unused vars must match /^_/u          @typescript-eslint/no-unused-vars
+  54:9   warning  'authContext' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  66:9   warning  'reqWithId' is assigned a value but never used. Allowed unused vars must match /^_/u    @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\routes\agentsRoutes.ts
+   48:11  warning  'reqWithId' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  269:11  warning  'parsed' is assigned a value but never used. Allowed unused vars must match /^_/u     @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\routes\apiDocs.ts
+  6:10  warning  'logger' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\routes\healthRoutes.ts
+  38:9  warning  'startTime' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\routes\invokeRoutes.ts
+   7:10  warning  'sendNeuraMessage' is defined but never used. Allowed unused vars must match /^_/u         @typescript-eslint/no-unused-vars
+  98:5   warning  'attachmentSize' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\api\http\server.ts
+  17:38  warning  'authLimiter' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\automation\automationService.ts
+  272:11  warning  'result' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\crm\application\getSalesMetrics.ts
+  11:10  warning  'retryDatabase' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\index.ts
+  17:7  warning  'dotenvResult' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\di\container.ts
+  5:68  warning  'ServiceScope' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\llm\GeminiRestAdapter.ts
+   17:30   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   33:80   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   51:36   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  102:118  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  195:66   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\llm\OpenAIAdapter.ts
+  146:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\llm\ResilientAIGateway.ts
+  7:10  warning  'ok' is defined but never used. Allowed unused vars must match /^_/u              @typescript-eslint/no-unused-vars
+  9:36  warning  'CircuitBreaker' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\observability\telemetryMiddleware.ts
+  32:9  warning  'operation' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\persistence\CosmosEventStoreAdapter.ts
+  19:5  warning  'aggregateId' is defined but never used. Allowed unused args must match /^_/u      @typescript-eslint/no-unused-vars
+  20:5  warning  'events' is defined but never used. Allowed unused args must match /^_/u           @typescript-eslint/no-unused-vars
+  21:5  warning  'expectedVersion' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\persistence\PostgresEventStore.ts
+  9:9  warning  'expectedVersion' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\infra\persistence\postgresPool.ts
+  99:18  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\knowledge\application\ingestDocument.ts
+  6:15  warning  'Document' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\knowledge\application\uploadDocument.ts
+  35:11  warning  'uploadResult' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\llm\invokeLLMAgent.ts
+   31:47  warning  Unexpected any. Specify a different type                                                         @typescript-eslint/no-explicit-any
+   45:31  warning  Unexpected any. Specify a different type                                                         @typescript-eslint/no-explicit-any
+  103:37  warning  'setCachedLLMResponse' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\shared\logger.ts
+  161:12  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\src\shared\utils\errorHandler.ts
+  37:3  warning  'next' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\tests\unit\authMiddleware.test.ts
+  46:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  47:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Usuario\ECONEURA-FULL\packages\backend\tests\unit\neuraAgentExecutor.test.ts
+  2:10  warning  'automationService' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+✖ 42 problems (2 errors, 40 warnings)
+

@@ -1,0 +1,14 @@
+WARNING: A new Bicep release is available: v0.39.26. Upgrade now by running "az bicep upgrade".
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\readmodels.bicep(2,7) : Warning no-unused-params: Parameter "environment" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\readmodels.bicep(5,7) : Warning no-unused-params: Parameter "location" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\readmodels.bicep(8,7) : Warning no-unused-params: Parameter "baseName" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\storage.bicep(99,69) : Warning no-hardcoded-env-urls: Environment URLs should not be hardcoded. Use the environment() function to ensure compatibility across clouds. Found this disallowed host: "core.windows.net" [https://aka.ms/bicep/linter-diagnostics#no-hardcoded-env-urls]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\core.bicep(5,7) : Warning no-unused-params: Parameter "location" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\core.bicep(11,5) : Warning no-unused-vars: Variable "commonTags" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-vars]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\eventstore.bicep(2,7) : Warning no-unused-params: Parameter "environment" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\eventstore.bicep(5,7) : Warning no-unused-params: Parameter "location" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\eventstore.bicep(8,7) : Warning no-unused-params: Parameter "baseName" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+WARNING: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\redis.bicep(25,7) : Warning no-unused-params: Parameter "enableAutoPause" is declared but never used. [https://aka.ms/bicep/linter-diagnostics#no-unused-params]
+ERROR: C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\main.bicep(83,16) : Error BCP104: The referenced module has errors. [https://aka.ms/bicep/core-diagnostics#BCP104]
+
+C:\Users\Usuario\ECONEURA-FULL\infrastructure\azure\storage.bicep(96,153) : Error BCP265: The name "environment" is not a function. Did you mean "az.environment"? [https://aka.ms/bicep/core-diagnostics#BCP265]

@@ -58,10 +58,15 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   tags: storageTags
 }
 
+resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2023-01-01' = {
+  name: 'default'
+  parent: storageAccount
+}
+
 // Container para documentos RAG
 resource documentsContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-01-01' = {
   name: 'documents'
-  parent: storageAccount::blobServices
+  parent: blobService
   properties: {
     publicAccess: 'None' // Privado, solo acceso vía connection string
     metadata: {
@@ -74,7 +79,7 @@ resource documentsContainer 'Microsoft.Storage/storageAccounts/blobServices/cont
 // Container para otros archivos (si es necesario)
 resource filesContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-01-01' = {
   name: 'files'
-  parent: storageAccount::blobServices
+  parent: blobService
   properties: {
     publicAccess: 'None'
     metadata: {
@@ -88,8 +93,10 @@ resource filesContainer 'Microsoft.Storage/storageAccounts/blobServices/containe
 output storageAccountNameOutput string = storageAccount.name
 
 @description('Connection string del Storage Account (se obtiene desde Key Vault o portal)')
+#disable-next-line no-hardcoded-env-urls
 output storageConnectionStringPlaceholder string = 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};AccountKey=<key>;EndpointSuffix=core.windows.net'
 
 @description('URL base del Blob Storage')
+#disable-next-line no-hardcoded-env-urls
 output blobStorageUrl string = 'https://${storageAccount.name}.blob.core.windows.net'
 

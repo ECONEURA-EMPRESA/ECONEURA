@@ -5,11 +5,14 @@
 import request from 'supertest';
 import { createServer } from '../../src/api/http/server';
 
-describe('Conversation Flow Integration', () => {
-  let app: ReturnType<typeof createServer>;
+import { describe, it, expect, beforeAll } from '@jest/globals';
+import type { Express } from 'express';
 
-  beforeAll(() => {
-    app = createServer();
+describe('Conversation Flow Integration', () => {
+  let app: Express;
+
+  beforeAll(async () => {
+    app = await createServer();
   });
 
   it('should complete full conversation flow', async () => {

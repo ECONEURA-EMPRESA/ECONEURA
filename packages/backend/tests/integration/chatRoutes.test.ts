@@ -3,7 +3,7 @@ import { createServer } from '../../src/api/http/server';
 
 describe('Integración HTTP: chat NEURA y Automation', () => {
   it('debe rechazar ejecución de agente sin token (middleware auth)', async () => {
-    const app = createServer();
+    const app = await createServer();
 
     const response = await request(app)
       .post('/api/chat/ceo/execute-agent')
@@ -13,7 +13,7 @@ describe('Integración HTTP: chat NEURA y Automation', () => {
   });
 
   it('debe permitir chat NEURA con token dev y devolver resultado coherente (mock/real)', async () => {
-    const app = createServer();
+    const app = await createServer();
 
     const response = await request(app)
       .post('/api/neuras/neura-ceo/chat')

@@ -69,8 +69,8 @@ function validateLead(data: unknown): CRMLead | null {
     id: validatedId,
     name: String(data.name || data.lead_name || '').trim() || 'Sin nombre',
     company: String(data.company || data.company_name || '').trim() || 'Sin empresa',
-    score: typeof data.score === 'number' ? Math.max(0, Math.min(100, data.score)) : 
-           typeof data.lead_score === 'number' ? Math.max(0, Math.min(100, data.lead_score)) : 0,
+    score: typeof data.score === 'number' ? Math.max(0, Math.min(100, data.score)) :
+      typeof data.lead_score === 'number' ? Math.max(0, Math.min(100, data.lead_score)) : 0,
     status: String(data.status || data.lead_status || '').trim() || 'Sin estado',
     owner: String(data.owner || data.assigned_agent || '').trim() || 'Sin asignar',
     last: String(data.last || data.last_contact || data.updated_at || '').trim() || 'N/A',
@@ -86,7 +86,7 @@ function validateLead(data: unknown): CRMLead | null {
  */
 export function useCRMLeads(options: UseCRMLeadsOptions = {}): UseCRMLeadsReturn {
   const { department = 'cmo', enabled = true, pageSize = 10 } = options;
-  
+
   const [leads, setLeads] = useState<CRMLead[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
@@ -113,7 +113,7 @@ export function useCRMLeads(options: UseCRMLeadsOptions = {}): UseCRMLeadsReturn
 
       // Validar que department sea 'cmo' o 'cso' (backend requiere estos valores exactos)
       const validDepartment = (department === 'cmo' || department === 'cso') ? department : 'cmo';
-      
+
       // Convertir page/pageSize a limit/offset (formato que espera el backend)
       const limit = pageSize;
       const offset = (currentPage - 1) * pageSize;
@@ -145,14 +145,14 @@ export function useCRMLeads(options: UseCRMLeadsOptions = {}): UseCRMLeadsReturn
       }
 
       const data = await response.json();
-      
+
       // Backend retorna: { success: true, data: { leads: [], total: 0 } }
       if (data && data.success && data.data) {
         const leadsData = Array.isArray(data.data.leads) ? data.data.leads : [];
         const validatedLeads = leadsData
           .map(validateLead)
           .filter((lead: CRMLead | null): lead is CRMLead => lead !== null && lead.id !== '');
-        
+
         setLeads(validatedLeads);
         setTotalCount(data.data.total || validatedLeads.length);
       } else if (data && Array.isArray(data)) {
@@ -160,7 +160,7 @@ export function useCRMLeads(options: UseCRMLeadsOptions = {}): UseCRMLeadsReturn
         const validatedLeads = data
           .map(validateLead)
           .filter((lead: CRMLead | null): lead is CRMLead => lead !== null && lead.id !== '');
-        
+
         setLeads(validatedLeads);
         setTotalCount(validatedLeads.length);
       } else {
@@ -176,7 +176,7 @@ export function useCRMLeads(options: UseCRMLeadsOptions = {}): UseCRMLeadsReturn
         // eslint-disable-next-line no-console
         console.error('[CRM] Error fetching leads:', error instanceof Error ? error.message : String(error));
       }
-      
+
       // Solo mostrar toast si no es un error 404
       if (!(err instanceof Error && err.message.includes('404'))) {
         toast.error('Error al cargar leads. Usando datos de ejemplo.');
@@ -195,7 +195,7 @@ export function useCRMLeads(options: UseCRMLeadsOptions = {}): UseCRMLeadsReturn
     if (searchQuery !== '' && currentPage !== 1) {
       setCurrentPage(1);
     }
-  }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
 
   const totalPages = Math.ceil(totalCount / pageSize);
 

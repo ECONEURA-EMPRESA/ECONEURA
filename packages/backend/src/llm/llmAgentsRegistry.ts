@@ -576,7 +576,9 @@ export const llmAgents: LLMAgent[] = [
 **Formato de salida:**
 - Respuestas estructuradas con análisis de oportunidades
 - Incluye roadmaps de innovación y recomendaciones
-- Proporciona next steps de innovación accionables`,
+- Proporciona next steps de innovación accionables.
+    
+    IMPORTANTE: Responde de forma concisa y directa para minimizar el tiempo de espera.`,
     temperature: 0.6,
     maxTokens: 4096
   }

@@ -1,11 +1,5 @@
 
-import { getGeminiAdapter } from '../src/infra/llm/GeminiRestAdapter.ts';
-import { logger } from '../src/shared/logger';
-
-// Mock process.env for testing if not set
-if (!process.env.GEMINI_API_KEY) {
-    process.env.GEMINI_API_KEY = 'AIzaSyD7tuY948nL76Vtvz7Y1678cSLHN1j2aJI';
-}
+import { getGeminiAdapter } from '../src/infra/llm/GeminiRestAdapter.js';
 
 async function testGemini() {
     console.log('🚀 Iniciando prueba de Gemini 3 REST Adapter...');
@@ -35,5 +29,6 @@ async function testGemini() {
         console.error('💥 EXCEPCIÓN:', error);
     }
 }
+
 
 testGemini();

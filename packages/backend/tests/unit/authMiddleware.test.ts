@@ -43,8 +43,8 @@ describe('authMiddleware', () => {
 
     expect(getStatus()).toBe(200);
     expect(next).toHaveBeenCalled();
-    expect((req as any).authContext).toBeDefined();
-    expect((req as any).authContext.userId).toBe('dev-user');
+    expect((req as Request & { authContext: { userId: string } }).authContext).toBeDefined();
+    expect((req as Request & { authContext: { userId: string } }).authContext.userId).toBe('dev-user');
   });
 });
 

@@ -8,6 +8,11 @@ const router = Router();
 
 router.post('/api/neuras/:neuraId/chat', requireRoles('admin', 'user'), async (req, res) => {
   const { neuraId } = req.params;
+
+  if (!neuraId) {
+    return res.status(400).json({ success: false, error: 'Missing neuraId' });
+  }
+
   const normalizedNeuraId = neuraId.toLowerCase();
   const authContext = req.authContext;
 
@@ -44,5 +49,3 @@ router.post('/api/neuras/:neuraId/chat', requireRoles('admin', 'user'), async (r
 });
 
 export const neuraChatRoutes = router;
-
-

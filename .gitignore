@@ -12,6 +12,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+validation_log*.txt
+test_report*.txt
+test_failure*.txt
+lint_debug.txt
 
 # Coverage
 coverage/

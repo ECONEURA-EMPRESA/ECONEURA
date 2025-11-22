@@ -54,7 +54,7 @@ export const globalLimiter = rateLimit({
     logger.warn('[RateLimit] Global rate limit exceeded', {
       ip: req.ip ?? 'unknown',
       path: req.path,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       
       user: (req as RequestWithId).authContext?.userId ?? 'unknown'
     });
     res.status(429).json({
@@ -80,7 +80,7 @@ export const chatLimiter = rateLimit({
   handler: (req, res) => {
     logger.warn('[RateLimit] Chat rate limit exceeded', {
       ip: req.ip ?? 'unknown',
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       
       user: (req as RequestWithId).authContext?.userId ?? 'unknown'
     });
     res.status(429).json({
@@ -130,7 +130,7 @@ export const libraryUploadLimiter = rateLimit({
   legacyHeaders: false,
   keyGenerator: (req) => {
     // Rate limit por usuario autenticado
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     const userId = (req as RequestWithId).authContext?.userId;
     if (userId) {
       return `user:${userId}`;
@@ -148,7 +148,7 @@ export const libraryUploadLimiter = rateLimit({
   handler: (req, res) => {
     logger.warn('[RateLimit] Upload rate limit exceeded', {
       ip: req.ip ?? 'unknown',
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       
       user: (req as RequestWithId).authContext?.userId ?? 'unknown'
     });
     res.status(429).json({

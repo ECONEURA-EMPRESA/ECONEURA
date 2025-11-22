@@ -24,7 +24,7 @@ export function initializeApplicationInsights(): boolean {
 
     if (!connectionString || typeof connectionString !== 'string') {
       // ✅ AUDITORÍA: console.warn justificado aquí (bootstrap, logger puede causar circular dependency)
-      // eslint-disable-next-line no-console
+       
       console.warn('[ApplicationInsights] Connection string no configurado, telemetría deshabilitada');
       isInitialized = true;
       return false;

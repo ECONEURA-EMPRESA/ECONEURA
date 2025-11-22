@@ -61,6 +61,15 @@ export function registerServices(): void {
 
   // Redis Client (singleton)
   container.registerSingleton(ServiceTokens.RedisClient, () => {
+    if (!process.env['REDIS_URL'] && process.env['USE_MEMORY_STORE'] !== 'true') {
+      // Warn but don't crash if Redis is optional, OR crash if strict. 
+      // User asked for "Real Mode", so we should probably expect Redis.
+      // However, Redis might be optional for some things. 
+      // Let's warn for now or check if it's critical. 
+      // The prompt said "Redis: Image redis:7-alpine...". 
+      // Let's assume it's required for "Local Production Mirror".
+      logger.warn('[DI] REDIS_URL missing in Real Mode. Rate limiting might fall back to memory.');
+    }
     initializeRedis();
     const client = getRedisClient();
     if (!client) {
@@ -112,10 +121,22 @@ export function registerServices(): void {
 
   // Conversation Store (singleton)
   container.registerSingleton(ServiceTokens.ConversationStore, () => {
-    if (process.env['USE_MEMORY_STORE'] === 'true') {
-      logger.warn('[DI] Using InMemoryConversationStore');
+    const useMemory = process.env['USE_MEMORY_STORE'] === 'true';
+    const isProduction = process.env['NODE_ENV'] === 'production';
+
+    if (useMemory) {
+      if (isProduction) {
+        throw new Error('CRITICAL: Cannot use InMemoryConversationStore in production environment. Set USE_MEMORY_STORE=false.');
+      }
+      logger.warn('[DI] Using InMemoryConversationStore (Development Mode)');
       return new InMemoryConversationStore();
     }
+
+    if (!process.env['DATABASE_URL']) {
+      throw new Error('CRITICAL: DATABASE_URL is missing. Cannot start in Real Mode. Set USE_MEMORY_STORE=true for Toy Mode.');
+    }
+
+    logger.info('[DI] Using PostgresConversationStore');
     return new PostgresConversationStore();
   });
 

@@ -45,7 +45,8 @@ describe('invokeLLMAgent', () => {
       {
         agentId: 'neura-ceo',
         userInput: 'hola',
-        correlationId: 'test-correlation'
+        correlationId: 'test-correlation',
+        conversationHistory: [{ role: 'user', content: 'bypass cache' }]
       },
       { llmClient: new LLMClientMockError() }
     );

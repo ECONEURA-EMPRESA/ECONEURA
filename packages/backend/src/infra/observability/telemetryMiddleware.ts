@@ -7,8 +7,7 @@ import {
   getTelemetryClient,
   trackMetric,
   trackTrace,
-  setCorrelationContext,
-  startOperation
+  setCorrelationContext
 } from './applicationInsights';
 import type { RequestWithId } from '../../api/http/middleware/requestId';
 import type { AuthContext } from '../../shared/types/auth';
@@ -20,21 +19,14 @@ export function telemetryMiddleware(req: Request, res: Response, next: NextFunct
   const reqWithId = req as RequestWithId;
   const correlationId = reqWithId.id || 'unknown';
 
+  const startTime = Date.now();
+
   // Establecer contexto de correlación
   const authContext = (req as Request & { authContext?: AuthContext }).authContext;
   setCorrelationContext({
-    ...(authContext?.tenantId ? { tenantId: authContext.tenantId } : {}),
-    ...(authContext?.userId ? { userId: authContext.userId } : {}),
     correlationId
   });
 
-  // Iniciar operación para distributed tracing
-  const operation = startOperation(`${req.method} ${req.path}`);
-
-  // Medir tiempo de respuesta
-  const startTime = Date.now();
-
-  // Track request iniciada
   const client = getTelemetryClient();
   if (client) {
     client.trackRequest({

@@ -2,7 +2,7 @@
  * ECONEURA - User-based Rate Limiting Middleware
  * Rate limiting por usuario (no solo IP) con Redis
  */
-import type { Request, Response, NextFunction } from 'express';
+import type { Request, Response } from 'express';
 import rateLimit, { ipKeyGenerator } from 'express-rate-limit';
 import RedisStore from 'rate-limit-redis';
 import { getRedisClient, isRedisAvailable } from '../../../infra/cache/redisClient';
@@ -20,7 +20,7 @@ export interface UserRateLimitConfig {
   pro?: UserRateLimitTier;
   enterprise?: UserRateLimitTier;
   defaultTier?: 'free' | 'pro' | 'enterprise';
-  keyGenerator?: (req: Request) => string; // Función para generar key única por usuario
+  keyGenerator?: (_req: Request) => string; // Función para generar key única por usuario
 }
 
 /**
@@ -48,11 +48,11 @@ function parseWindow(window: string): number {
 /**
  * Obtener tier del usuario (por ahora todos son 'free', extensible)
  */
-function getUserTier(req: Request): 'free' | 'pro' | 'enterprise' {
+function getUserTier(_req: Request): 'free' | 'pro' | 'enterprise' {
   // ✅ AUDITORÍA: FUTURO - Obtener tier real del usuario desde base de datos
   // Por ahora, todos los usuarios tienen tier 'free' (sin restricciones adicionales)
-  const authContext = (req as Request & { authContext?: AuthContext }).authContext;
-  
+  // const authContext = (req as Request & { authContext?: AuthContext }).authContext;
+
   // Si hay authContext, podríamos obtener tier del usuario
   // Por ahora, retornar default
   return 'free';
@@ -63,7 +63,7 @@ function getUserTier(req: Request): 'free' | 'pro' | 'enterprise' {
  */
 function generateUserKey(req: Request): string {
   const authContext = (req as Request & { authContext?: AuthContext }).authContext;
-  const reqWithId = req as RequestWithId;
+  // const reqWithId = req as RequestWithId;
 
   // Prioridad: userId > tenantId > IP
   if (authContext?.userId) {

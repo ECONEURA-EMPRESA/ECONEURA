@@ -4,7 +4,7 @@
  * Mapea agentId del frontend (ej: a-ceo-01) a neuraId del backend (ej: neura-ceo)
  */
 import { Router } from 'express';
-import { sendNeuraMessage } from '../../../conversation/sendNeuraMessage';
+// import { sendNeuraMessage } from '../../../conversation/sendNeuraMessage';
 import { requireRoles } from '../middleware/rbacMiddleware';
 import type { NeuraId } from '../../../shared/types';
 import { logger } from '../../../shared/logger';
@@ -95,7 +95,7 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
     attachmentType,
     attachmentName,
     attachmentMimeType,
-    attachmentSize,
+    // attachmentSize,
     attachmentId
   } = req.body as {
     input?: string;
@@ -115,7 +115,7 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
   // ✅ SIN RESTRICCIONES: Permitir cualquier input (texto, imagen, archivo, audio, o combinación)
   // No validar - dejar que el LLM maneje lo que pueda
   let processedMessage = input?.trim() || '';
-  
+
   if (!input && !image && !file && !audio && !attachmentUrl && !attachmentId) {
     // Solo si NO hay nada, sugerir texto por defecto
     processedMessage = 'Hola, ¿en qué puedo ayudarte?';
@@ -164,7 +164,7 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
             const fileName = attachmentUrl.split('/').pop() || attachmentId || attachmentName;
             urlToFetch = `${baseUrl}/uploads/${fileName}`;
           }
-          
+
           // ✅ CORRECCIÓN: Usar fs.readFileSync para URLs locales en lugar de fetch
           if (urlToFetch.includes('localhost:3000/uploads') || urlToFetch.startsWith('/uploads/')) {
             const fileName = urlToFetch.split('/').pop() || attachmentId || attachmentName || 'temp_file';
@@ -267,18 +267,18 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
       const { extractTextFromFile } = await import('../../../shared/utils/fileExtractor');
       const mimeType = req.body.mimeType || req.body.attachmentMimeType || 'application/octet-stream';
       const fileName = req.body.fileName || req.body.attachmentName || 'archivo';
-      
+
       const extractResult = await extractTextFromFile(file, mimeType, fileName);
-      
+
       if (extractResult.success) {
         // Agregar el texto extraído al mensaje con contexto completo
         const fileText = extractResult.data.text;
-        processedMessage = processedMessage 
+        processedMessage = processedMessage
           ? `${processedMessage}\n\n--- CONTENIDO COMPLETO DEL ARCHIVO "${extractResult.data.fileName || fileName}" (${mimeType}): ---\n\n${fileText}\n\n--- FIN DEL ARCHIVO ---\n\nAnaliza este contenido en profundidad y proporciona toda la información relevante que puedas extraer.`
           : `Analiza este archivo en profundidad y proporciona toda la información relevante:\n\n--- CONTENIDO COMPLETO DEL ARCHIVO "${extractResult.data.fileName || fileName}" (${mimeType}): ---\n\n${fileText}\n\n--- FIN DEL ARCHIVO ---\n\nProporciona un análisis detallado y completo.`;
         fileContent = undefined; // Ya procesado, no enviar el base64
       } else {
-        logger.warn('[Invoke API] Error extrayendo archivo, intentando enviar directamente', { 
+        logger.warn('[Invoke API] Error extrayendo archivo, intentando enviar directamente', {
           error: extractResult.error.message,
           mimeType,
           fileName
@@ -288,8 +288,8 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
         processedMessage = processedMessage || `Analiza este archivo (${fileName}, ${mimeType}) y proporciona toda la información que puedas extraer.`;
       }
     } catch (e) {
-      logger.error('[Invoke API] Excepción extrayendo archivo, enviando directamente', { 
-        error: e instanceof Error ? e.message : String(e) 
+      logger.error('[Invoke API] Excepción extrayendo archivo, enviando directamente', {
+        error: e instanceof Error ? e.message : String(e)
       });
       // Si falla completamente, enviar el archivo directamente
       fileContent = file;
@@ -306,7 +306,7 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
     // Obtener información del agente para el modelo
     const { getNeuraById } = await import('../../../neura/neuraCatalog');
     const { getLLMAgent } = await import('../../../llm/llmAgentsRegistry');
-    
+
     const neuraResult = getNeuraById(neuraId);
     if (!neuraResult.success) {
       return res.status(500).json({
@@ -320,7 +320,7 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
 
     // Usar sendNeuraMessage con soporte para imágenes
     const { sendNeuraMessage } = await import('../../../conversation/sendNeuraMessage');
-    
+
     const result = await sendNeuraMessage({
       neuraId,
       tenantId: authContext?.tenantId ?? null,
@@ -334,20 +334,20 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
       attachmentType // ✅ Agregar attachmentType
     });
 
-            if (!result.success) {
-              // ✅ AUDITORÍA: Usar utilidad centralizada para logging de errores
-              logError('[Invoke API] Error enviando mensaje a NEURA', result.error, {
-                agentId,
-                neuraId
-              });
-              const httpError = resultToHttpError(result, 500);
-              return res.status(httpError.statusCode).json({
-                success: false,
-                error: httpError.message,
-                code: httpError.code,
-                details: httpError.details
-              });
-            }
+    if (!result.success) {
+      // ✅ AUDITORÍA: Usar utilidad centralizada para logging de errores
+      logError('[Invoke API] Error enviando mensaje a NEURA', result.error, {
+        agentId,
+        neuraId
+      });
+      const httpError = resultToHttpError(result, 500);
+      return res.status(httpError.statusCode).json({
+        success: false,
+        error: httpError.message,
+        code: httpError.code,
+        details: httpError.details
+      });
+    }
 
     return res.status(200).json({
       success: true,
@@ -358,23 +358,23 @@ router.post('/api/invoke/:agentId', requireRoles('admin', 'user'), async (req, r
       tokens: 0, // ✅ AUDITORÍA: FUTURO - Obtener de la respuesta real del LLM
       cost: 0 // ✅ AUDITORÍA: FUTURO - Calcular costo real basado en modelo y tokens
     });
-          } catch (e) {
-            // ✅ AUDITORÍA: Usar utilidad centralizada para manejo de errores
-            logError('[Invoke API] Excepción enviando mensaje', e, {
-              agentId,
-              neuraId
-            });
-            const httpError = resultToHttpError(
-              { success: false, error: e instanceof Error ? e : new Error(String(e)) },
-              500
-            );
-            return res.status(httpError.statusCode).json({
-              success: false,
-              error: httpError.message,
-              code: httpError.code,
-              details: process.env['NODE_ENV'] === 'development' ? httpError.details : undefined
-            });
-          }
+  } catch (e) {
+    // ✅ AUDITORÍA: Usar utilidad centralizada para manejo de errores
+    logError('[Invoke API] Excepción enviando mensaje', e, {
+      agentId,
+      neuraId
+    });
+    const httpError = resultToHttpError(
+      { success: false, error: e instanceof Error ? e : new Error(String(e)) },
+      500
+    );
+    return res.status(httpError.statusCode).json({
+      success: false,
+      error: httpError.message,
+      code: httpError.code,
+      details: process.env['NODE_ENV'] === 'development' ? httpError.details : undefined
+    });
+  }
 });
 
 export const invokeRoutes = router;

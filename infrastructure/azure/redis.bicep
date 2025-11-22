@@ -40,7 +40,7 @@ resource redisCache 'Microsoft.Cache/redis@2023-08-01' = {
     sku: {
       name: redisSku
       family: 'C'
-      capacity: 0 // C0 = 0, C1 = 1, C2 = 2
+      capacity: redisSku == 'C0' ? 0 : 1 // C0=0 (250MB), C1=1 (1GB)
     }
     enableNonSslPort: false
     minimumTlsVersion: '1.2'

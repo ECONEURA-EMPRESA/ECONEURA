@@ -1,15 +1,11 @@
-/**
- * ECONEURA - Dependency Injection Container
- * Contenedor ligero para inyección de dependencias
- */
-import type { Container, ServiceDescriptor, ServiceToken, Factory, ServiceScope } from './types';
 import { logger } from '../../shared/logger';
+import type { Container, ServiceDescriptor, ServiceToken, Factory } from './types';
 
-class DIContainer implements Container {
-  private readonly services = new Map<ServiceToken, ServiceDescriptor>();
-  private readonly singletons = new Map<ServiceToken, unknown>();
-  private readonly scopedInstances = new Map<ServiceToken, unknown>();
+export class DIContainer implements Container {
   private readonly parent: Container | undefined;
+  private services = new Map<ServiceToken, ServiceDescriptor<unknown>>();
+  private singletons = new Map<ServiceToken, unknown>();
+  private scopedInstances = new Map<ServiceToken, unknown>();
 
   constructor(parent?: Container) {
     this.parent = parent;
@@ -180,4 +176,3 @@ export function createContainer(): Container {
 export function resetContainer(): void {
   globalContainer = null;
 }
-

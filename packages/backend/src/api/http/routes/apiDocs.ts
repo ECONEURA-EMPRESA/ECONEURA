@@ -3,7 +3,6 @@
  * Genera documentación OpenAPI/Swagger automáticamente
  */
 import { Router } from 'express';
-import { logger } from '../../../shared/logger';
 
 const router = Router();
 
@@ -147,5 +146,3 @@ router.get('/api/docs', (_req, res) => {
 });
 
 export const apiDocsRoutes = router;
-
-

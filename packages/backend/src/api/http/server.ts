@@ -14,7 +14,7 @@ import { metricsRoutes, metricsMiddleware } from './routes/metricsRoutes';
 import { authMiddleware } from './middleware/authMiddleware';
 import { requestIdMiddleware } from './middleware/requestId';
 import { noCacheMiddleware } from './middleware/cacheHeaders';
-import { globalLimiter, chatLimiter, authLimiter } from './middleware/rateLimiter';
+import { globalLimiter, chatLimiter } from './middleware/rateLimiter';
 import { telemetryMiddleware } from '../../infra/observability/telemetryMiddleware';
 import { errorHandler } from '../../shared/utils/errorHandler';
 import { defaultSecurityMiddleware } from './middleware/security';
@@ -22,7 +22,7 @@ import { logger } from '../../shared/logger';
 import { webhookRoutes } from '../../crm/api/webhookRoutes';
 import { crmRoutes } from '../../crm/api/crmRoutes';
 import { authRoutes } from './routes/authRoutes';
-import { basicHealthCheck, fullHealthCheck, livenessProbe, readinessProbe } from './routes/healthRoutes';
+import { basicHealthCheck, healthCheck as fullHealthCheck, livenessProbe, readinessProbe } from './routes/healthRoutes';
 import { getValidatedEnv } from '../../config/env';
 import { uploadRoutes } from './routes/uploadRoutes';
 
