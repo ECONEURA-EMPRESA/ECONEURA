@@ -1,0 +1,209 @@
+build-and-deploy	Set up job	﻿2025-11-22T15:08:13.8726509Z Current runner version: '2.329.0'
+build-and-deploy	Set up job	2025-11-22T15:08:13.8764126Z ##[group]Runner Image Provisioner
+build-and-deploy	Set up job	2025-11-22T15:08:13.8765994Z Hosted Compute Agent
+build-and-deploy	Set up job	2025-11-22T15:08:13.8767521Z Version: 20251016.436
+build-and-deploy	Set up job	2025-11-22T15:08:13.8769054Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+build-and-deploy	Set up job	2025-11-22T15:08:13.8770573Z Build Date: 2025-10-15T20:44:12Z
+build-and-deploy	Set up job	2025-11-22T15:08:13.8771807Z ##[endgroup]
+build-and-deploy	Set up job	2025-11-22T15:08:13.8772913Z ##[group]Operating System
+build-and-deploy	Set up job	2025-11-22T15:08:13.8774213Z Ubuntu
+build-and-deploy	Set up job	2025-11-22T15:08:13.8775294Z 24.04.3
+build-and-deploy	Set up job	2025-11-22T15:08:13.8776337Z LTS
+build-and-deploy	Set up job	2025-11-22T15:08:13.8777371Z ##[endgroup]
+build-and-deploy	Set up job	2025-11-22T15:08:13.8778658Z ##[group]Runner Image
+build-and-deploy	Set up job	2025-11-22T15:08:13.8779870Z Image: ubuntu-24.04
+build-and-deploy	Set up job	2025-11-22T15:08:13.8780981Z Version: 20251112.124.1
+build-and-deploy	Set up job	2025-11-22T15:08:13.8783068Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+build-and-deploy	Set up job	2025-11-22T15:08:13.8785819Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+build-and-deploy	Set up job	2025-11-22T15:08:13.8788118Z ##[endgroup]
+build-and-deploy	Set up job	2025-11-22T15:08:13.8790848Z ##[group]GITHUB_TOKEN Permissions
+build-and-deploy	Set up job	2025-11-22T15:08:13.8794142Z Contents: read
+build-and-deploy	Set up job	2025-11-22T15:08:13.8795384Z Metadata: read
+build-and-deploy	Set up job	2025-11-22T15:08:13.8796468Z Packages: read
+build-and-deploy	Set up job	2025-11-22T15:08:13.8797734Z ##[endgroup]
+build-and-deploy	Set up job	2025-11-22T15:08:13.8801053Z Secret source: Actions
+build-and-deploy	Set up job	2025-11-22T15:08:13.8802472Z Prepare workflow directory
+build-and-deploy	Set up job	2025-11-22T15:08:13.9296334Z Prepare all required actions
+build-and-deploy	Set up job	2025-11-22T15:08:13.9333975Z Getting action download info
+build-and-deploy	Set up job	2025-11-22T15:08:14.3957168Z Download action repository 'actions/checkout@v6' (SHA:1af3b93b6815bc44a9784bd300feb67ff0d1eeb3)
+build-and-deploy	Set up job	2025-11-22T15:08:15.0502326Z Download action repository 'actions/setup-node@v6' (SHA:2028fbc5c25fe9cf00d9f06a71cc4710d4507903)
+build-and-deploy	Set up job	2025-11-22T15:08:15.2029348Z Download action repository 'azure/login@v1' (SHA:cb79c773a3cfa27f31f25eb3f677781210c9ce3d)
+build-and-deploy	Set up job	2025-11-22T15:08:17.2231248Z Download action repository 'azure/webapps-deploy@v2' (SHA:122b7ec46017e53a3f71e3a027d67550a1641f5e)
+build-and-deploy	Set up job	2025-11-22T15:08:20.0222231Z Complete job name: build-and-deploy
+build-and-deploy	Pre Login to Azure	﻿2025-11-22T15:08:20.0857605Z ##[group]Run azure/login@v1
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0858246Z with:
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0860780Z   creds: ***
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0861069Z   enable-AzPSSession: false
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0861368Z   environment: azurecloud
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0861663Z   allow-no-subscriptions: false
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0861993Z   audience: api://AzureADTokenExchange
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0862332Z   auth-type: SERVICE_PRINCIPAL
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0862855Z env:
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0863163Z   AZURE_WEBAPP_NAME: econeura-full-backend-prod
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0863519Z   NODE_VERSION: 20.x
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.0863793Z ##[endgroup]
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.1684650Z Clearing azure cli accounts from the local cache.
+build-and-deploy	Pre Login to Azure	2025-11-22T15:08:20.1685231Z [command]/usr/bin/az account clear
+build-and-deploy	Checkout code	﻿2025-11-22T15:08:35.8803632Z ##[group]Run actions/checkout@v6
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8803975Z with:
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8804236Z   repository: ECONEURA-EMPRESA/ECONEURA
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8804647Z   token: ***
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8804899Z   ssh-strict: true
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8805131Z   ssh-user: git
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8805383Z   persist-credentials: true
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8805656Z   clean: true
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8805902Z   sparse-checkout-cone-mode: true
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8806191Z   fetch-depth: 1
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8806416Z   fetch-tags: false
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8806662Z   show-progress: true
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8806924Z   lfs: false
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8807144Z   submodules: false
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8807387Z   set-safe-directory: true
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8807692Z env:
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8807951Z   AZURE_WEBAPP_NAME: econeura-full-backend-prod
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8808270Z   NODE_VERSION: 20.x
+build-and-deploy	Checkout code	2025-11-22T15:08:35.8808669Z ##[endgroup]
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9670733Z Syncing repository: ECONEURA-EMPRESA/ECONEURA
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9672290Z ##[group]Getting Git version info
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9672747Z Working directory is '/home/runner/work/ECONEURA/ECONEURA'
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9673362Z [command]/usr/bin/git version
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9777956Z git version 2.51.2
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9831217Z ##[endgroup]
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9847679Z Temporarily overriding HOME='/home/runner/work/_temp/e5e8dc7e-656f-4e1a-a840-294045283e4e' before making global git config changes
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9849412Z Adding repository directory to the temporary git global config as a safe directory
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9854074Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9893628Z Deleting the contents of '/home/runner/work/ECONEURA/ECONEURA'
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9897965Z ##[group]Initializing the repository
+build-and-deploy	Checkout code	2025-11-22T15:08:35.9903057Z [command]/usr/bin/git init /home/runner/work/ECONEURA/ECONEURA
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0027923Z hint: Using 'master' as the name for the initial branch. This default branch name
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0029231Z hint: is subject to change. To configure the initial branch name to use in all
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0030204Z hint: of your new repositories, which will suppress this warning, call:
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0030910Z hint:
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0031408Z hint: 	git config --global init.defaultBranch <name>
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0031784Z hint:
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0032408Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0033436Z hint: 'development'. The just-created branch can be renamed via this command:
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0033963Z hint:
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0034309Z hint: 	git branch -m <name>
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0034824Z hint:
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0035528Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0036686Z Initialized empty Git repository in /home/runner/work/ECONEURA/ECONEURA/.git/
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0045557Z [command]/usr/bin/git remote add origin https://github.com/ECONEURA-EMPRESA/ECONEURA
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0081122Z ##[endgroup]
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0081944Z ##[group]Disabling automatic garbage collection
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0085925Z [command]/usr/bin/git config --local gc.auto 0
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0114679Z ##[endgroup]
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0115444Z ##[group]Setting up auth
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0116195Z Removing SSH command configuration
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0122829Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0155169Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0513734Z Removing HTTP extra header
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0519558Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0552399Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0773044Z Removing includeIf entries pointing to credentials config files
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0780764Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build-and-deploy	Checkout code	2025-11-22T15:08:36.0815528Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build-and-deploy	Checkout code	2025-11-22T15:08:36.1042535Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-e148ea0a-ce00-4755-bcd8-27d6d4890837.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build-and-deploy	Checkout code	2025-11-22T15:08:36.1080138Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-e148ea0a-ce00-4755-bcd8-27d6d4890837.config
+build-and-deploy	Checkout code	2025-11-22T15:08:36.1111136Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-e148ea0a-ce00-4755-bcd8-27d6d4890837.config
+build-and-deploy	Checkout code	2025-11-22T15:08:36.1138168Z ##[endgroup]
+build-and-deploy	Checkout code	2025-11-22T15:08:36.1139231Z ##[group]Fetching the repository
+build-and-deploy	Checkout code	2025-11-22T15:08:36.1147896Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a63c1f3b2f1eb4eaf743953dedcfe5a08510ea8c:refs/remotes/origin/main
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8013217Z From https://github.com/ECONEURA-EMPRESA/ECONEURA
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8014364Z  * [new ref]         a63c1f3b2f1eb4eaf743953dedcfe5a08510ea8c -> origin/main
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8094114Z ##[endgroup]
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8094940Z ##[group]Determining the checkout info
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8097710Z ##[endgroup]
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8103469Z [command]/usr/bin/git sparse-checkout disable
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8151821Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8185397Z ##[group]Checking out the ref
+build-and-deploy	Checkout code	2025-11-22T15:08:36.8189875Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build-and-deploy	Checkout code	2025-11-22T15:08:36.9126455Z Switched to a new branch 'main'
+build-and-deploy	Checkout code	2025-11-22T15:08:36.9127911Z branch 'main' set up to track 'origin/main'.
+build-and-deploy	Checkout code	2025-11-22T15:08:36.9181575Z ##[endgroup]
+build-and-deploy	Checkout code	2025-11-22T15:08:36.9185890Z [command]/usr/bin/git log -1 --format=%H
+build-and-deploy	Checkout code	2025-11-22T15:08:36.9212211Z a63c1f3b2f1eb4eaf743953dedcfe5a08510ea8c
+build-and-deploy	Set up Node.js	﻿2025-11-22T15:08:36.9391742Z ##[group]Run actions/setup-node@v6
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9392089Z with:
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9392317Z   node-version: 20.x
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9392564Z   cache: npm
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9392785Z   always-auth: false
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9393032Z   check-latest: false
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9393385Z   token: ***
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9393634Z   package-manager-cache: true
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9393912Z env:
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9394173Z   AZURE_WEBAPP_NAME: econeura-full-backend-prod
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9394506Z   NODE_VERSION: 20.x
+build-and-deploy	Set up Node.js	2025-11-22T15:08:36.9394744Z ##[endgroup]
+build-and-deploy	Set up Node.js	2025-11-22T15:08:37.1264632Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+build-and-deploy	Set up Node.js	2025-11-22T15:08:37.1270649Z (node:2135) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build-and-deploy	Set up Node.js	2025-11-22T15:08:37.1272042Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build-and-deploy	Set up Node.js	2025-11-22T15:08:37.1273865Z ##[group]Environment details
+build-and-deploy	Set up Node.js	2025-11-22T15:08:39.2404495Z node: v20.19.5
+build-and-deploy	Set up Node.js	2025-11-22T15:08:39.2405216Z npm: 10.8.2
+build-and-deploy	Set up Node.js	2025-11-22T15:08:39.2405663Z yarn: 1.22.22
+build-and-deploy	Set up Node.js	2025-11-22T15:08:39.2407675Z ##[endgroup]
+build-and-deploy	Set up Node.js	2025-11-22T15:08:39.2427349Z [command]/opt/hostedtoolcache/node/20.19.5/x64/bin/npm config get cache
+build-and-deploy	Set up Node.js	2025-11-22T15:08:39.5215471Z /home/runner/.npm
+build-and-deploy	Set up Node.js	2025-11-22T15:08:39.6970115Z npm cache is not found
+build-and-deploy	Install dependencies	﻿2025-11-22T15:08:39.7097001Z ##[group]Run npm ci
+build-and-deploy	Install dependencies	2025-11-22T15:08:39.7097356Z [36;1mnpm ci[0m
+build-and-deploy	Install dependencies	2025-11-22T15:08:39.7142387Z shell: /usr/bin/bash -e ***0***
+build-and-deploy	Install dependencies	2025-11-22T15:08:39.7142690Z env:
+build-and-deploy	Install dependencies	2025-11-22T15:08:39.7142962Z   AZURE_WEBAPP_NAME: econeura-full-backend-prod
+build-and-deploy	Install dependencies	2025-11-22T15:08:39.7143310Z   NODE_VERSION: 20.x
+build-and-deploy	Install dependencies	2025-11-22T15:08:39.7143550Z ##[endgroup]
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3370917Z npm error code EUSAGE
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3371418Z npm error
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3372077Z npm error The `npm ci` command can only install with an existing package-lock.json or
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3373050Z npm error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3373881Z npm error later to generate a package-lock.json file, then try again.
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3374413Z npm error
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3374782Z npm error Clean install a project
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3375154Z npm error
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3375444Z npm error Usage:
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3375772Z npm error npm ci
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3376074Z npm error
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3376457Z npm error Options:
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3377119Z npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3377912Z npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3378815Z npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3379523Z npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3380912Z npm error [--no-bin-links] [--no-fund] [--dry-run]
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3381511Z npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3382144Z npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3382551Z npm error
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3382997Z npm error aliases: clean-install, ic, install-clean, isntall-clean
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3383675Z npm error
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3384117Z npm error Run "npm help ci" for more info
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3385270Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-11-22T15_08_39_782Z-debug-0.log
+build-and-deploy	Install dependencies	2025-11-22T15:08:41.3456381Z ##[error]Process completed with exit code 1.
+build-and-deploy	Post Checkout code	﻿2025-11-22T15:08:41.3583630Z Post job cleanup.
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4374828Z [command]/usr/bin/git version
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4443576Z git version 2.51.2
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4482467Z Temporarily overriding HOME='/home/runner/work/_temp/14adf60a-b3b7-45a1-8e54-17e4691fd7f8' before making global git config changes
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4484217Z Adding repository directory to the temporary git global config as a safe directory
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4489297Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ECONEURA/ECONEURA
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4521855Z Removing SSH command configuration
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4529050Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4570937Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4807771Z Removing HTTP extra header
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4813626Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.4850094Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5075250Z Removing includeIf entries pointing to credentials config files
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5082978Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5106910Z includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5107810Z includeif.gitdir:/github/workspace/.git.path
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5118758Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5140493Z /home/runner/work/_temp/git-credentials-e148ea0a-ce00-4755-bcd8-27d6d4890837.config
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5153542Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ECONEURA/ECONEURA/.git.path /home/runner/work/_temp/git-credentials-e148ea0a-ce00-4755-bcd8-27d6d4890837.config
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5187249Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5209401Z /github/runner_temp/git-credentials-e148ea0a-ce00-4755-bcd8-27d6d4890837.config
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5219655Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-e148ea0a-ce00-4755-bcd8-27d6d4890837.config
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5252261Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build-and-deploy	Post Checkout code	2025-11-22T15:08:41.5481290Z Removing credentials config '/home/runner/work/_temp/git-credentials-e148ea0a-ce00-4755-bcd8-27d6d4890837.config'
+build-and-deploy	Post Login to Azure	﻿2025-11-22T15:08:41.5615616Z Post job cleanup.
+build-and-deploy	Post Login to Azure	2025-11-22T15:08:41.6380755Z Clearing azure cli accounts from the local cache.
+build-and-deploy	Post Login to Azure	2025-11-22T15:08:41.6390592Z [command]/usr/bin/az account clear
+build-and-deploy	Complete job	﻿2025-11-22T15:08:42.0677062Z Cleaning up orphan processes
+build-and-deploy	Complete job	2025-11-22T15:08:42.1021706Z Terminate orphan process: pid (2320) (python3)

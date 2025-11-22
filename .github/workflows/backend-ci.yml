@@ -38,8 +38,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        run: npm run lint:backend || echo "⚠️ Linting no configurado aún"
-        continue-on-error: true
+        run: npm run lint:backend
 
   type-check:
     name: Type Check Backend

@@ -38,8 +38,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        run: npm run lint --workspace=@econeura/web || echo "⚠️ Linting no configurado aún"
-        continue-on-error: true
+        run: npm run lint --workspace=@econeura/web
 
   type-check:
     name: Type Check Frontend
