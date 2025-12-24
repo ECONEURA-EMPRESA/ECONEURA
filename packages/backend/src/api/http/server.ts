@@ -210,6 +210,9 @@ export async function createServer() {
   // Rate limiting global
   app.use(globalLimiter);
 
+  // ✅ PUBLIC CHAT ROUTES (Before Auth)
+  app.use(neuraChatRoutes);
+
   // A partir de aquí, todas las demás rutas requieren contexto de autenticación
   app.use(authMiddleware);
 
@@ -219,7 +222,6 @@ export async function createServer() {
 
   app.use(chatRoutes);
   app.use(conversationRoutes);
-  app.use(neuraChatRoutes); // Mounted after Auth Middleware or with selective public access
   try {
     app.use(invokeRoutes); // Endpoint /api/invoke/:agentId para compatibilidad con frontend
     logger.info('[Server] Rutas de invoke registradas');
