@@ -8,9 +8,7 @@
   "packageManager": "npm@10.9.0",
   "workspaces": [
     "packages/backend",
-    "packages/frontend",
-    "packages/shared",
-    "packages/config"
+    "packages/frontend"
   ],
   "scripts": {
     "build": "turbo run build",

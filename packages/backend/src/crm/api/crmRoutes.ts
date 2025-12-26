@@ -196,5 +196,75 @@ router.get('/sales-metrics', async (req: Request, res: Response) => {
   }
 });
 
+
+/**
+ * GET /api/crm/pipeline
+ * Get pipeline stages and conversion metrics
+ */
+router.get('/pipeline', async (req: Request, res: Response) => {
+  // Mock data for pipeline
+  return res.json({
+    success: true,
+    data: [
+      { stage: 'Lead', amount: 50000, conversion: 100, progress: 100, color: '#3B82F6', value: 50000 },
+      { stage: 'MQL', amount: 35000, conversion: 70, progress: 70, color: '#8B5CF6', value: 35000 },
+      { stage: 'SQL', amount: 25000, conversion: 50, progress: 50, color: '#10B981', value: 25000 },
+      { stage: 'Negotiation', amount: 15000, conversion: 60, progress: 30, color: '#F59E0B', value: 15000 },
+      { stage: 'Closed Won', amount: 12000, conversion: 80, progress: 24, color: '#6366F1', value: 12000 }
+    ]
+  });
+});
+
+/**
+ * GET /api/crm/agents
+ * Get agent impact metrics
+ */
+router.get('/agents', async (req: Request, res: Response) => {
+  // Mock data for agents
+  return res.json({
+    success: true,
+    data: [
+      { agent: 'Sarah Miller', impact: '+$125k', status: 'active', icon: 'User' },
+      { agent: 'John Smith', impact: '+$98k', status: 'active', icon: 'User' },
+      { agent: 'AI Agent Alpha', impact: '+$245k', status: 'active', icon: 'Bot' }
+    ]
+  });
+});
+
+/**
+ * GET /api/crm/alerts
+ * Get CRM alerts
+ */
+router.get('/alerts', async (req: Request, res: Response) => {
+  // Mock data for alerts
+  return res.json({
+    success: true,
+    data: [
+      { type: 'warning', message: 'High churn risk detected in Enterprise segment', ts: new Date().toISOString() },
+      { type: 'success', message: 'Q4 Revenue target exceeded by 15%', ts: new Date().toISOString() },
+      { type: 'info', message: 'New lead attribution model enabled', ts: new Date().toISOString() }
+    ]
+  });
+});
+
+/**
+ * GET /api/crm/revenue-trend
+ * Get revenue trend data
+ */
+router.get('/revenue-trend', async (req: Request, res: Response) => {
+  // Mock data for revenue trend
+  return res.json({
+    success: true,
+    data: [
+      { month: 'Jan', revenue: 45000, target: 40000 },
+      { month: 'Feb', revenue: 52000, target: 42000 },
+      { month: 'Mar', revenue: 49000, target: 45000 },
+      { month: 'Apr', revenue: 61000, target: 48000 },
+      { month: 'May', revenue: 55000, target: 50000 },
+      { month: 'Jun', revenue: 67000, target: 55000 }
+    ]
+  });
+});
+
 export { router as crmRoutes };
 
